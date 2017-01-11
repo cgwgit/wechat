@@ -9,6 +9,6 @@ return array(
     'DB_PREFIX'             =>  'tp_',    // 数据库表前缀
      //设置跟踪日志(以便查看function.php文件是否被引入)
     'SHOW_PAGE_TRACE' => true,
-    'AlidayuAppKey' => '23594461',
-    'AlidayuAppSecret' => '965876bbbd78e4338c92489432e6e746'
+    'AlidayuAppKey' => '',
+    'AlidayuAppSecret' => ''
 );
