@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+  <form method="post" action="__CONTROLLER__/cplan/cid/{$cinfo['id']}">
+	参保人：
+	<a href="{:U('Cinfo/selectperson',array('cid'=>$cinfo['id']))}">
+		<p>{$cinfo['cname']}</p>
+		<p>户口信息：{$cinfo['city']},<if condition="$cinfo['htype'] eq 0 ">城市<else />农村</if></p>
+	</a>
+	参保城市：
+	<input type="text" name="city"></input>
+	<input type="submit" value="下一步"></input>
+   </form>
+</body>
+</html>

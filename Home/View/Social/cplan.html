@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+   <form action="{:U('detail')}" method="post">
+		参保城市：{$cinfo['city']}
+		社保类型:<input type="text" name="htype" <if condition="$cinfo['htype'] eq 0"> value="城市户口"<else />value="城市户口"</if></input>
+		起缴月份：<input type="text" name="stime"></input>
+		截止月份：<input type="text" name="etime"></input>
+		参保基数：<input type="text" name="base"></input>
+		<input type="submit" value="计算保费"></input>
+   </form>
+</body>
+</html>
