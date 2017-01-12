@@ -63,7 +63,6 @@ class CinfoController extends Controller {
             $idpictures = M('idpicture')->where(array('cid' => $cinfo['id']))->select();
             $cinfo['zpic'] =  $idpictures[0]['pic'];
             $cinfo['fpic'] =  $idpictures[1]['pic'];
-            // var_dump($cinfo);die;
             $this->assign('cinfo', $cinfo);
             $this->display();
         }
@@ -124,11 +123,11 @@ class CinfoController extends Controller {
         }
         if($up_pics === true){
 	        $picpaths = D('idpicture')->where(array('cid' => $cid))->select();
-	    	foreach ($picpaths as $key => $value) {
-	    		$path = substr($value['pic'], 2);
-	    		$filename = SITE_URL.$path;
-	    		unlink($filename);
-	    	}
+            $picpaths = D('idpicture')->where(array('cid' => $cid))->select();
+            foreach ($picpaths as $key => $value) {
+                unlink($value['pic']);
+                unlink($value['small_pics']);
+            }
 	    	D('idpicture')->where(array('cid' => $cid))->delete();
 	        $up_pics = false;
 	            $cfg = array(
@@ -154,7 +153,7 @@ class CinfoController extends Controller {
                 $arr['small_pics'] = $small_pics;
                 D('idpicture')->add($arr);
             }
-            $this->success('社保人员信息修改成功', U('Social/social_buy') ,2);
+            $this->redirect('Social/social_buy',array('cid' => $cid));exit;
         }
     }
 
@@ -170,7 +169,6 @@ class CinfoController extends Controller {
     	M('idpicture')->where(array('cid' => $cid))->delete();
     	$rst = M('cinfo')->where(array('id' => $cid))->delete();
     	if($rst){
-    		// echo U('Social/social_buy');die;
     		$this->redirect('Social/social_buy');	
     	}
     }

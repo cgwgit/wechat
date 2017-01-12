@@ -5,6 +5,13 @@
 	<title>Document</title>
 </head>
 <body>
-	
+<form method="post" action="{:U('Pay/getpay')}">
+	<h3>订单信息</h3>
+	<input type="text" name="chargecount"></input>
+	<input type="text" name="servicemoney"></input>
+	<input type="text" name="allcount"></input>
+	<input type="hidden" name="cid"></input>
+	<input type="submit" value="提交"></input>
+</form>
 </body>
 </html>

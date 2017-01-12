@@ -8,4 +8,5 @@ define('JS', SITE_URL.'Public/Home/js/');
 define('APP_DEBUG',True);
 // echo JS;die;
 //引入tp框架的接口文件
+define('BASE_PATH','/ThinkPHP/Library/Vendor');
 include("./ThinkPHP/ThinkPHP.php");
