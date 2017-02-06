@@ -3,13 +3,8 @@
 //2017年1月12日09:54:35
 namespace Home\Controller;
 use Think\Controller;
+//社保公积金费用查询计算器
 class SocialfareController extends Controller {
-	public function _initialize() {
-	    if ($_SESSION['username'] == NULL) {
-	        $this->success('请先登陆', U('Manager/login'),1);
-	        exit();
-	    }
-    }
     //展示社保计算器页面
     public function jisuan(){
     	$this->display();

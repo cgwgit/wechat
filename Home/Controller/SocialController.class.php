@@ -3,6 +3,7 @@
 //2017年1月7日16:22:09
 namespace Home\Controller;
 use Think\Controller;
+//与购买社保相关的信息
 class SocialController extends Controller {
 	public function _initialize() {
 	    if ($_SESSION['username'] == NULL) {
@@ -10,9 +11,10 @@ class SocialController extends Controller {
 	        exit();
 	    }
     }
-    //展示购买社保的页面
+    //展示购买社保的页面(社保购买first)
     public function social_buy(){
         $cid = $_GET['cid'];
+        //判断一下是否有传过来的cid,如果没有，是从社保购买页面过来的，如果有，是从参保方案页面跳过来的
         if($cid){
           $cinfo = M('cinfo')->where(array('id' => $cid))->find();  
         }else{
@@ -23,7 +25,7 @@ class SocialController extends Controller {
     	$this->assign('cinfo', $cinfo);
     	$this->display();
     }
-    //社保参保方案
+    //社保参保方案(社保购买second)
     public function cplan(){
     	$cid = I('get.cid');
         $data = array(
@@ -129,9 +131,5 @@ class SocialController extends Controller {
     	}else{
     		$this->display();
     	}
-    }
-    //社保查询
-    public function social(){
-    	$this->display();
     }
 }

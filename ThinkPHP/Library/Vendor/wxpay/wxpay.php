@@ -54,8 +54,8 @@ class wxpay{
         // $Logwx = Logwx::Init($logHandler, 15);
         //统一下单输入对象
         $input = new WxPayUnifiedOrder();
-        $input->SetBody($this->_order_info['pay_sn'].'订单');
-        $input->SetAttach($this->_order_info['order_type']);
+        $input->SetBody($this->_order_info['pay_sn'].'订单');//设置订单信息
+        $input->SetAttach($this->_order_info['order_type']);//附加数据
         $input->SetOut_trade_no($this->_order_info['pay_sn']); //商户订单号
         $input->SetTotal_fee($this->_order_info['api_pay_amount']*100);//付款金额
         $input->SetTime_start(date("YmdHis"));//订单开始时间

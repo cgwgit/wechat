@@ -1,0 +1,132 @@
+[ 2017-02-01T13:20:58+08:00 ] 127.0.0.1 /index.php/Home/Manager/aliduanxin?telphone=15610688005
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003701s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005406s ]
+NOTIC: [8] Undefined property: stdClass::$err_code E:\wechat\Home\Controller\ManagerController.class.php 第 171 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002962s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003209s ]
+
+[ 2017-02-01T13:22:09+08:00 ] 127.0.0.1 /index.php/Home/My/Mysetinfo.html
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : SELECT * FROM `tp_area` WHERE `id` IN ()
+
+[ 2017-02-01T13:46:38+08:00 ] 127.0.0.1 /index.php/Home/Manager/aliduanxin?telphone=15610688005
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002141s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003531s ]
+NOTIC: [8] Undefined property: stdClass::$err_code E:\wechat\Home\Controller\ManagerController.class.php 第 170 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001952s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002160s ]
+
+[ 2017-02-01T14:01:47+08:00 ] 127.0.0.1 /index.php/Home/Area/getProvinces.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002125s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003401s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0301s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `type` = 1  [ RunTime:0.0813s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002442s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002680s ]
+
+[ 2017-02-01T14:01:55+08:00 ] 127.0.0.1 /index.php/Home/Area/getCitys/pid/17
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001892s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003187s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0216s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `parent_id` = 17  [ RunTime:0.0074s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001588s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001744s ]
+
+[ 2017-02-01T14:15:01+08:00 ] 127.0.0.1 /index.php/Home/Area/getCountys/xpid/234
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002363s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003642s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0221s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `parent_id` = 234  [ RunTime:0.0111s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001950s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002123s ]
+
+[ 2017-02-01T14:15:14+08:00 ] 127.0.0.1 /index.php/Home/Area/getCitys/pid/22
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002207s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003584s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0270s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `parent_id` = 22  [ RunTime:0.0103s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002075s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002304s ]
+
+[ 2017-02-01T14:15:20+08:00 ] 127.0.0.1 /index.php/Home/Area/getCountys/xpid/292
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002662s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004197s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0239s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `parent_id` = 292  [ RunTime:0.0087s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002825s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003045s ]
+
+[ 2017-02-01T14:15:51+08:00 ] 127.0.0.1 /index.php/Home/Area/getProvinces.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003149s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004860s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0383s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `type` = 1  [ RunTime:0.0188s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002306s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002644s ]
+
+[ 2017-02-01T14:16:22+08:00 ] 127.0.0.1 /index.php/Home/Area/getCitys/pid/22
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001912s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003465s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0362s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `parent_id` = 22  [ RunTime:0.0080s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001853s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002031s ]
+
+[ 2017-02-01T14:16:24+08:00 ] 127.0.0.1 /index.php/Home/Area/getCountys/xpid/292
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003538s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005063s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0248s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `parent_id` = 292  [ RunTime:0.0084s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002205s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002432s ]
+
+[ 2017-02-01T14:21:37+08:00 ] 127.0.0.1 /index.php/Home/Area/getProvinces.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002912s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009534s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0282s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `type` = 1  [ RunTime:0.0146s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002552s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002759s ]
+
+[ 2017-02-01T14:21:38+08:00 ] 127.0.0.1 /index.php/Home/Area/getProvinces.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001988s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003934s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0253s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `type` = 1  [ RunTime:0.0143s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001978s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002215s ]
+
+[ 2017-02-01T14:23:18+08:00 ] 127.0.0.1 /index.php/Home/Area/getProvinces.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001762s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003270s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0251s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `type` = 1  [ RunTime:0.0103s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002317s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002527s ]
+

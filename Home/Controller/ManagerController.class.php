@@ -9,7 +9,7 @@ class ManagerController extends Controller {
 	       trim(I('post.username')) ? $username = trim(I('post.username')) : $err = '用户名格式不正确';
 	       trim(I('post.pwd')) ? $pwd = trim(I('post.pwd')) : $err = '密码格式不正确';
 	       if($err){
-	       	$this->display($err, U('login'), 2);exit;
+	       	$this->error($err, U('login'), 2);exit;
 	       }
 	       if(is_numeric($username)){
 	       $where = array(
@@ -39,17 +39,13 @@ class ManagerController extends Controller {
                      'uname' => $rst['username'],  
                	);	
                M('login')->add($datas);
-               // echo D('login')->getLastsql();die;
-           //      $time = time();
-	       	 	// $sql = "INSERT INTO `tp_login` (`uname`,`logintime`) VALUES ('{$rst['username']}', '{$time}')";
-	       	 	// $model = D('login');
-	       	 	// $model->execute($sql);
 	       	 }
 	         session('username', $username);
 	         session('uid', $rst['id']);
-	         $this->success('登录成功', U('Index/index'), 2);
+	         $this->success('登录成功', U('Index/index'),2);
+	         // $this->redirect('Index/index');
 	       }else{
-	         $this->error('用户名或密码不正确，请重新登录', U('login'), 2);
+	         $this->error('用户名或密码不正确,请重新输入', U('login'), 2);
 	       }
        }else{
        	$this->display();
@@ -58,32 +54,39 @@ class ManagerController extends Controller {
     //用户注册
     public function register(){
        if(IS_POST){
-       	   trim(I('post.telphone')) ? $tel = trim(I('post.telphone')) : $err = '输入的电话号码不正确';
+       	   preg_match("/^1[3578][0-9]{9}$/", I('post.telphone')) ? $tel = trim(I('post.telphone')) : $err = '请填写正确的手机号';
+       	   if($err){
+       	   	   $this->error($err, U('register'), 1);exit;
+       	   }
+       	   // trim(I('post.telphone')) ? $tel = trim(I('post.telphone')) : $err = '输入的电话号码不正确';
        	   //判断用户手机号码是否注册过
        	   $result = M('user')->where(array('tel' => $tel))->find();
        	   if($result){
-              if(trim(I('post.checkcode')) == session('code')){
+              $this->error('手机号码已注册过', U('register'), 1);exit;	
+       	   }else{
+       	   	if(trim(I('post.checkcode')) == session('code') && I('post.checkcode') !=NULL){
 			     trim(I('post.pwd')) ? $pwd = trim(I('post.pwd')) : $err = '密码格式不正确';
 		         if($err){
-		       	   $this->error($err, U('register'), 2);
+		       	   $this->error($err, U('register'), 1);exit;
 		         }else{
+		         	//传入要输出的位数
+		           $username = GetfourStr(4);
 		       	   $data = array(
 		       		'tel' => $tel,
 		       		'pwd' => $pwd,
+		       		'username' => $username,
 		       		'retime' => time()
 		       		);
 			       	$res = M('user')->add($data);
 			       	if($res){
-			       		$this->success('注册成功', U('login'), 2);
+			       		$this->success('注册成功', U('login'), 1);exit;
 			       	}else{
-			       		$this->error('注册失败', U('register'), 2);
+			       		$this->error('注册失败', U('register'), 1);exit;
 			       	}
 		         }
 	       	  }else{
-	       	   	$this->error('验证码不正确', U('register'), 2);
+	       	   	$this->error('验证码不正确', U('register'), 1);exit;
 	       	  }
-       	   }else{
-       	   	$this->error('手机号码已注册过', U('login'), 2);
        	   } 
        }else{
        	$this->display();
@@ -134,7 +137,7 @@ class ManagerController extends Controller {
 	        return true;
 	    }
 	}
-
+    //用户找回密码
 	public function forgetpwd(){
 		if(IS_POST){
            if(trim(I('post.checkcode')) == session('code')){
@@ -142,7 +145,9 @@ class ManagerController extends Controller {
              $xpwd = I('post.xpwd');
              $rst = M('user')->where(array('tel' => $tel))->save(array('pwd' => $xpwd));
              if($rst){
-             	$this->success('密码修改成功', U('login'), 2);
+             	$this->success('密码修改成功', U('login'), 2);exit;
+             }else{
+             	$this->error('手机号不存在，请重新输入', U('forgetpwd'), 1);
              }
            }else{
            	 $this->error('验证码不正确，请重新输入', U('forgetpwd'), 1);
@@ -152,9 +157,10 @@ class ManagerController extends Controller {
 		}
 	}
 
-	//阿里大鱼短信
+	//阿里大鱼短信调用方法
 	public function aliduanxin(){
 		$code = rand(1000,9999);
+		//code为要发送的验证码，product为模板内容中的标签
 		$data = array('code' => "{$code}",'product' => '前程保');
 		session('code', $code);
 		$datas = json_encode($data);
@@ -162,9 +168,9 @@ class ManagerController extends Controller {
         $alidayu = new \Think\Lib\Alidayu\SendMSM();
         $result = $alidayu->send($to,$datas);
         if($result->err_code == 0){
-        	return true;
+        	echo 1;
         }else{
-        	return false;
+        	echo 0;
         }
     }
     //用户退出页面

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>显示参保人信息列表</title>
 </head>
 <body>
 	<p><a href="/index.php/Home/Cinfo/addperson">增加参保人</a></p>

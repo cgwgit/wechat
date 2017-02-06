@@ -67,10 +67,10 @@ class alipay{
             'partner'                   => $this->payment['payment_config']['alipay_partner'],	//合作伙伴ID
             'key'                       => $this->payment['payment_config']['alipay_key'],
             '_input_charset'            => 'UTF-8',					//网站编码
-            'notify_url'                => "http://www.shebao.com/index.php/Home/Pay/notify",	//通知URL
+            'notify_url'                => "http://123.57.252.16/index.php/Home/Pay/notify",	//通知URL
             'sign_type'                 => 'MD5',				//签名方式
             //跳转到的列表(支付成功后跳转的页面)
-            'return_url'                => "http://zq.zxyl1688.com/index.php/Home/List/rechargeList",	//返回URL
+            'return_url'                => "http://123.57.252.16/index.php/Home/My/order",	//返回URL
             'extra_common_param'        => $this->order['order_type'],
             'subject'                   => $this->order['subject'],	//商品名称
             'body'                      => $this->order['body'],	//商品描述

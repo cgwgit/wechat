@@ -1,12 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>登录操作</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<script type="text/javascript" src="{$Think.const.JS}jquery.js"></script>
-<script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>前程保注册</title>
+<script type="text/javascript" src="{$Think.const.JS}jquery1.8.3.min.js">
+</script>
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
+<script type="text/javascript">
 var itime = 59;//定义一个变量，倒计时初始化，从59秒开始
         function getTime(){
                 if(itime>=0){
@@ -31,11 +33,10 @@ $(function(){
         $("#getCodeBtn").click(function(){
                     //获取输入的手机号码
                     var telphone = $("#telphone").val();
-                    // alert(telphone);
                     //ajax请求文件，调用短信发送的接口
                     $.ajax({
                         type:'get',
-                        url:'__CONTROLLER__/checkcode?telphone='+telphone,
+                        url:'aliduanxin?telphone='+telphone,
                         success:function(msg){
                             //判断调用短信发送接口是否成功，
                                 if(msg==1){
@@ -50,33 +51,60 @@ $(function(){
         });
 });
 </script>
-<style type="text/css">
-</style>
 </head>
-    <body>
-    <div>
-    <form action="{:U('register')}" method="post">
-    <table>
-         <tr>
-            <td>手机</td>
-            <td><input type="text" name="telphone" id="telphone"/>
-         </tr>
-        <tr>
-               <td>密码</td>
-               <td><input type="text" name="pwd"/></td>
-         </tr>
-         <tr>
-            <td>验证码</td>
-            <td>
-            <input type="text" name="checkcode"/>
-            <input type="button" value="免费获取手机验证码" id="getCodeBtn"/></td>
-         </tr>
-         <tr>
-            <td></td><td><input type="reset" value="重填"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="注册"/></td>
-         </tr>
-       </table>
-    </form>
-    </div>
-    </body>
-</html>
+<body>
+<div id="app">
+<!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
+<div id="conttop">
+<div class="conttop_div1"><img src="{$Think.const.IMG}index_img1.jpg"  /></div>
+<div class="conttop_div2"><img src="{$Think.const.IMG}zhuce_img3.jpg" /></div>
+<div class="conttop_div1"><img src="{$Think.const.IMG}zhuce_img4.jpg"  /></div>
+</div>
+<div id="logo"><img src="{$Think.const.IMG}shebao_img4.jpg" width="193" height="196" /></div>
+<div id="contmiddle">
+<form action="{:U('register')}" name="form1" method="post">
+<ul>
+<li>
+<table style="margin:0 auto;" border="0" width="80%">
+  <tr>
+    <td width="31%">手机号</td>
+    <td width="69%"><input style="width:70%; height:24px; line-height:24px;border-radius:6px;" type="text" name="telphone" id="telphone" placeholder="请输入您的手机号" required="required"/></td>
+  </tr>
+</table>
+</li>
+<li>
+<table style="margin:0 auto;" border="0" width="80%">
+  <tr>
+    <td width="31%">密码</td>
+    <td width="69%"><input style="width:70%; height:24px; line-height:24px; border-radius:6px;" type="text" name="pwd" placeholder="密码为英文或数字" required="required"/></td>
+  </tr>
+</table>
+</li>
+<li>
+<table style="margin:0 auto;" border="0" width="80%">
+  <tr>
+    <td width="31%">验证码</td>
+    <td width="69%">
+        <input style="width:37%; height:24px; line-height:24px; border-radius:6px;" type="text" name="checkcode" placeholder="请输入短信验证码"/>
+     <input style="width:33%; height:30px; line-height:24px; border-radius:11px; background-color:#FFF;" type="button" id="getCodeBtn" value="获取验证码"/>
+    </td>
+  </tr>
+</table>
+</li>
+<li>
+<!-- <table style="margin:0 auto;" border="0" width="80%">
+  <tr>
+    <td width="31%">邀请码</td>
+    <td width="69%"><input style="width:70%; height:24px; line-height:24px; border-radius:6px;" type="text" name="phone"placeholder="6位邀请码" required="required"/></td>
+  </tr>
+</table> -->
+</li>
+</ul>
+<div id="cont_zhuce"><input style="padding:5% 23%; font-size:1em; color:#FFF; background:url({$Think.const.IMG}zhuce_img6.jpg); border:0px;" type="submit" name="subimt" value="注册"/></div>
+</form>
+</div>
+<include file="Public:header" />
+</div>
 
+</body>
+</html>

@@ -1,0 +1,26 @@
+/* CSS Document */
+
+body,hrml {
+	font-size:100%;
+    font-family: "Microsoft YaHei";
+    color:#000;
+    box-sizing: border-box;
+	height:auto;
+	
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+img {
+	max-width: 100%;
+	height:auto;
+	overflow: hidden;
+	-webkit-background-size: cover;
+}
+#header { width:100%; height:auto; overflow:hidden; }
+#banner { width:100%; height:auto; overflow:hidden;  }
+#banner img { max-width:100%; height:auto; overflow:hidden; -webkit-background-size: cover; }

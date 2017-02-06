@@ -5,6 +5,6 @@
 	<title>Document</title>
 </head>
 <body>
-	微信扫码支付的页面
+	<div class="pw-box-hd"> <img width="298" src="<?php echo SITE_URL?>index.php/Home/Pay/qrcode/data/<?php echo urlencode($pay_url);?>"> </div>
 </body>
 </html>

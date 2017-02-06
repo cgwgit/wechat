@@ -14,7 +14,7 @@ class PayController extends Controller {
 	//支付宝
 	public function alipay(){
 		// $post = I('post.');
-        $rst = M('chargedetail')->where(array('order_sn' => '590537445684296000'))->find();
+        $rst = M('chargedetail')->where(array('order_sn' => '300537461160735000'))->find();
         if($rst){
         	$config = array(
         		'alipay_service' => C('alipay_service'),
@@ -37,18 +37,14 @@ class PayController extends Controller {
 	//支付宝异步通知回调(在支付宝类中设置改毁掉地址)
     public function notify(){
         if(I('trade_status') == 'TRADE_SUCCESS'){
+        	//取出查看支付的这条订单
 			$check = M('chargedetail')->where(array('order_sn' => I('out_trade_no')))->find();
+			//如果没有支付，修改支付状态，支付成功
 			if(!$check['paystatus']){
 				$data['payid'] = I('trade_no');
 				$data['order_status'] = 1;
 				$data['paytime'] = time();
 				$res = M('chargedetail')->where(array('order_sn' => I('out_trade_no')))->save($data);
-				// $redata = M('zxzq_wallet_record')->where(array('paysn' => I('out_trade_no')))->find();
-				// $wall_data = M('zxzq_wallet')->where(array('memberud'=>$redata['memberid']))->find();
-				// $savedata = array(
-				// 	'money' => $wall_data['money'] + $redata['paymoney']
-				// );
-				// $wres = M('zxzq_wallet')->data($savedata)->where(array('memberud'=>$redata['memberid']))->save();
 				if(res){
 					echo 'success';exit();
 				}
@@ -70,16 +66,19 @@ class PayController extends Controller {
 	        $order_info['order_type'] = 'baodan_order';
 	        $order_info['pay_sn'] = $rst['order_sn'];
 	        $order_info['api_pay_amount'] = $rst['allcount'];
-	        Vendor('wxpay.wxpay');
-	        $payment_api = new \wxpay($rst,$order_info);
-	        $this->assign('pay_url',base64_encode(encrypt($payment_api->get_payurl(),MD5_KEY)));
-	        $this->display();
+	        // Vendor('wxpay.wxpay');
+	        Vendor('wx.example.wxpay');
+	        $payment_api = new \wxpay($rst,$order_info);//使用构造方法初始化一些变量
+	        // $this->assign('pay_url',base64_encode(encrypt($payment_api->get_payurl(),MD5_KEY)));
+	        // $this->display();
+	        $payment_api->getPay();
 		}
 	}
 	  //微信二维码
 	  public function qrcode(){
         $data = base64_decode($_GET['data']);
         $data = decrypt($data,MD5_KEY,30);
+        // var_dump($data);die;
         Vendor('wxpay.phpqrcode.phpqrcode');
         \QRcode::png($data);
     }

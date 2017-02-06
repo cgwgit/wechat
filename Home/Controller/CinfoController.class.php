@@ -12,18 +12,25 @@ class CinfoController extends Controller {
     }
     //增加参保人的页面
     public function addperson(){
-      if(IS_POST){
+      if(IS_POST){     
         trim(I('post.cname')) ? $cname = trim(I('post.cname')) : $err = '用户名格式不正确';
         preg_match("/^1[3578][0-9]{9}$/", $_POST['mobile']) ? $tel = trim($_POST['mobile']) : $err = '请填写正确的手机号';
         preg_match("/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/", $_POST['idCard']) ? $sfz = $_POST['idCard'] : $err = '请填写正确的身份证号';
+        if($err){
+            $this->error($err, U('addperson'), 1);exit;
+        }   
+       //获取城市信息
+        $province = I('post.province');
         $city = I('post.city');
+        $county = I('post.county');
+        $area = $province.','.$city.','.$county;
         $htype = I('post.htype');
         $data = array(
         	'uid' => $_SESSION['uid'],
         	'cname' => $cname,
         	'idnumber' => $sfz,
         	'mphone' => $tel,
-        	'city' => $city,
+        	'city' => $area,
         	'htype' => $htype
         	);
         $id = M('cinfo')->add($data);
@@ -42,7 +49,14 @@ class CinfoController extends Controller {
             trim(I('post.cname')) ? $cname = trim(I('post.cname')) : $err = '用户名格式不正确';
             preg_match("/^1[3578][0-9]{9}$/", $_POST['mobile']) ? $tel = trim($_POST['mobile']) : $err = '请填写正确的手机号';
             preg_match("/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/", $_POST['idCard']) ? $sfz = $_POST['idCard'] : $err = '请填写正确的身份证号';
+            if($err){
+                $this->error($err, U('editperson'), 1);exit;
+            }
+            //获取城市信息
+            $province = I('post.province');
             $city = I('post.city');
+            $county = I('post.county');
+            $area = $province.','.$city.','.$county;
             $htype = I('post.htype');
             $id = $_POST['id'];
             $data = array(
@@ -51,18 +65,20 @@ class CinfoController extends Controller {
                 'cname' => $cname,
                 'idnumber' => $sfz,
                 'mphone' => $tel,
-                'city' => $city,
+                'city' => $area,
                 'htype' => $htype
                 );
             $rst = M('cinfo')->save($data);
-            $this->edidpicture($id);
+            $this->editpicture($id);
         }else{
             //显示编辑的参保人信息页面
             $cid = I('get.cid');
             $cinfo = M('cinfo')->where(array('id' => $cid))->find();
-            $idpictures = M('idpicture')->where(array('cid' => $cinfo['id']))->select();
-            $cinfo['zpic'] =  $idpictures[0]['pic'];
-            $cinfo['fpic'] =  $idpictures[1]['pic'];
+            $sql = "select * from tp_area where id in({$cinfo['city']})";
+            $area = M()->query($sql);
+            $idpictures = M('idpicture')->where(array('cid' => $cinfo['id']))->find();
+            $cinfo['small_pics'] =  $idpictures['small_pics'];
+            $this->assign('area', $area);
             $this->assign('cinfo', $cinfo);
             $this->display();
         }
@@ -105,14 +121,12 @@ class CinfoController extends Controller {
                 $arr['small_pics'] = $small_pics;
                 D('idpicture')->add($arr);
             }
-            // $this->success('社保人员信息添加成功', U('Social/social_buy') ,2);
-            // echo U('Social/social_buy');die;
-            $this->redirect('Social/social_buy');
+            $this->success('参保人员信息保存', U('Social/social_buy') ,2);
         }
         
     }
     //身份证图片修改操作
-    public function edidpicture($cid){
+    public function editpicture($cid){
         foreach($_FILES['pics_tu']['error'] as $k => $v){
             if($v === 0){
                 $up_pics = true;
@@ -123,13 +137,10 @@ class CinfoController extends Controller {
         }
         if($up_pics === true){
 	        $picpaths = D('idpicture')->where(array('cid' => $cid))->select();
-            $picpaths = D('idpicture')->where(array('cid' => $cid))->select();
             foreach ($picpaths as $key => $value) {
                 unlink($value['pic']);
                 unlink($value['small_pics']);
             }
-	    	D('idpicture')->where(array('cid' => $cid))->delete();
-	        $up_pics = false;
 	            $cfg = array(
 	                'rootPath'      =>  './Public/Upload/', //保存根路径
 	                'exts'          =>  array('jpg','jpeg','png','gif'), //允许上传的文件后缀
@@ -138,7 +149,7 @@ class CinfoController extends Controller {
             //$_FILES: logo_tu和pics_tu两部分附件
             //upload(array('pics_tu'=>array(name=>123,error=>,tmp_name=>,size=>,type=>)))
             $z = $up -> upload(array('pics_tu'=>$_FILES['pics_tu']));
-            // var_dump($z);die;
+            $id = M('idpicture')->where(array('cid'=>$cid))->find();
             $arr = array();
             foreach($z as $m => $n){
                 //小图：50*50  中图:350*350  大图:800*800
@@ -148,10 +159,10 @@ class CinfoController extends Controller {
                 $im -> thumb(800,800,6);
                 $small_pics = $up->rootPath.$n['savepath'].'s_'.$n['savename'];
                 $im -> save($small_pics);
-                $arr['cid'] = $cid;
+                $arr['id'] = $id['id'];
                 $arr['pic'] = $yuan_pics;
                 $arr['small_pics'] = $small_pics;
-                D('idpicture')->add($arr);
+               $rst = D('idpicture')->where(array('cid'=>$cid))->save($arr);
             }
             $this->redirect('Social/social_buy',array('cid' => $cid));exit;
         }
@@ -169,7 +180,8 @@ class CinfoController extends Controller {
     	M('idpicture')->where(array('cid' => $cid))->delete();
     	$rst = M('cinfo')->where(array('id' => $cid))->delete();
     	if($rst){
-    		$this->redirect('Social/social_buy');	
+    		// $this->redirect('Social/social_buy');
+               $this->success('删除成功',U('Social/social_buy'), 1); 	
     	}
     }
     //选择参保人页面
@@ -179,23 +191,5 @@ class CinfoController extends Controller {
         $this->assign('persons', $persons);
         $this->assign('cid', $cid);
         $this->display();
-    }
-    //三级联动地区
-    //得到所有的省份(一级)
-    public function getProvinces(){
-       $provinces = M('area')->where(array('type' =>1))->field('id,name')->select();
-       var_dump($provinces);die;
-    }
-    //得到城市(二级)
-    public function getCitys(){
-       $pid = I('get.pid');
-       $citys = M('area')->where(array('parent_id' => $pid))->field('id,name')->select();
-       var_dump($citys);die;
-    }
-    //得到县(三级)
-    public function getCountys(){
-       $xpid = I('get.xpid');
-       $countys = M('area')->where(array('parent_id' => $xpid))->field('id,name')->select();
-       var_dump($countys);die;
     }
  }
