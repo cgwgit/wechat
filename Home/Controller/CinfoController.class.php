@@ -31,7 +31,8 @@ class CinfoController extends Controller {
         	'idnumber' => $sfz,
         	'mphone' => $tel,
         	'city' => $area,
-        	'htype' => $htype
+        	'htype' => $htype,
+            'status' => '0'
         	);
         $id = M('cinfo')->add($data);
         if($id){

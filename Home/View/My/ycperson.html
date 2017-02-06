@@ -32,17 +32,19 @@
       <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;户口性质</td>
       <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;户口信息</td>
       <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;身份证号</td>
+      <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;操作</td>
     </td>
   </tr>
   <foreach name="yperson" item="v">
   <tr align="center">
      <td>
         <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;{$v.cname}</td>
-        <td width="20%"><if condition="$v.htype==0">城镇<else />
-         农村</if>
+        <td width="20%"><if condition="$v.htype eq 0">城市<else />
+         农村</if>  
         </td>
-        <td width="20%">{$v.city}</td>
+        <td width="20%">{$v.province}{$v.citys}{$v.county}</td>
         <td width="20%" align="center">{$v.idnumber}</td>
+        <td width="20%" align="center"><a href="__MODULE__/Cinfo/editperson/cid/{$v.id}" style="color:black">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="__MODULE__/Cinfo/delperson/cid/{$v.id}" style="color:black">删除</a></td>
     </td>
   </tr>
   </foreach>

@@ -1,0 +1,33 @@
+[ 2017-02-06T17:12:24+08:00 ] 127.0.0.1 /index.php/Home/Area/getProvinces.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005062s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007696s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0379s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `type` = 1  [ RunTime:0.0128s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005188s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005493s ]
+
+[ 2017-02-06T17:13:17+08:00 ] 127.0.0.1 /index.php/Home/Area/getProvinces.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.006834s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008190s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0444s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `type` = 1  [ RunTime:0.0120s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001765s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001987s ]
+
+[ 2017-02-06T17:15:14+08:00 ] 127.0.0.1 /index.php/Home/Area/getProvinces.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003314s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005099s ]
+SQL: SHOW COLUMNS FROM `tp_area` [ RunTime:0.0277s ]
+SQL: SELECT `id`,`name` FROM `tp_area` WHERE `type` = 1  [ RunTime:0.0134s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001948s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002185s ]
+
+[ 2017-02-06T17:24:27+08:00 ] 127.0.0.1 /index.php/Home/Cinfo/%20delperson/cid/33
+ERR: 非法操作: delperson
+

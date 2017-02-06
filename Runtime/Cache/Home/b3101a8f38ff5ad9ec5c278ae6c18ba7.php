@@ -32,16 +32,19 @@
       <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;户口性质</td>
       <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;户口信息</td>
       <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;身份证号</td>
+      <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;操作</td>
+
     </td>
   </tr>
   <?php if(is_array($ncperson)): foreach($ncperson as $key=>$v): ?><tr align="center">
      <td>
         <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;<?php echo ($v["cname"]); ?></td>
-        <td width="20%"><?php if($v.htype==0): ?>城镇<?php else: ?>
+        <td width="20%"><?php if($v["htype"] == 0): ?>城市<?php else: ?>
          农村<?php endif; ?>
         </td>
-        <td width="20%"><?php echo ($v["city"]); ?></td>
+        <td width="20%"><?php echo ($v["province"]); echo ($v["citys"]); echo ($v["county"]); ?></td>
         <td width="20%" align="center"><?php echo ($v["idnumber"]); ?></td>
+              <td width="20%" align="center"><a href="/index.php/Home/Cinfo/editperson/cid/<?php echo ($v["id"]); ?>" style="color:black">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/index.php/Home/Cinfo/delperson/cid/<?php echo ($v["id"]); ?>" style="color:black">删除</a></td>
     </td>
   </tr><?php endforeach; endif; ?>
 </table>
