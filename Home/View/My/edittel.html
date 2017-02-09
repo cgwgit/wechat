@@ -52,12 +52,12 @@ $(function(){
 });
 </script>
 </head>
-<body>
+<body style="background: #fdb813;font-size: 80%">
 <div id="app">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
 <div class="conttop_div1"><img src="{$Think.const.IMG}index_img1.jpg"  /></div>
-<div class="conttop_div2"><img src="{$Think.const.IMG}xiugaishoujihao.jpg" /></div>
+<div class="conttop_div2"><span style="font-size: 10%">修改手机号</span></div>
 
 <div class="conttop_div1"><img src="{$Think.const.IMG}zhuce_img4.jpg"  /></div>
 </div>
@@ -66,20 +66,20 @@ $(function(){
 <form action="{:U('My/edittel')}" name="form1" method="post">
 <ul>
 <li>
-<table style="margin:0 auto;" border="0" width="80%">
+<table style="margin:0 auto;" border="0" width="100%">
   <tr>
     <td width="31%">手机号</td>
-    <td width="69%"><input style="width:70%; height:24px; line-height:24px;border-radius:6px;" type="text" name="telphone" id="telphone" placeholder="请输入您的原手机号" required="required"/></td>
+    <td width="69%"><input style="width:70%; height:24px; line-height:24px;border-radius:6px;font-size: 80%" type="text" name="telphone" id="telphone" placeholder="输入原手机号" required="required"/></td>
   </tr>
 </table>
 </li>
 <li>
-<table style="margin:0 auto;" border="0" width="80%">
+<table style="margin:0 auto;" border="0" width="100%">
   <tr>
     <td width="31%">验证码</td>
     <td width="69%">
-        <input style="width:37%; height:24px; line-height:24px; border-radius:6px;" type="text" name="checkcode" placeholder="请输入短信验证码"/>
-     <input style="width:33%; height:30px; line-height:24px; border-radius:11px; background-color:#FFF;" type="button" id="getCodeBtn" value="获取验证码"/>
+        <input style="width:45%; height:24px; line-height:24px; border-radius:6px;font-size: 70%" type="text" name="checkcode" placeholder="短信验证码"/>
+     <input style="width:40%; height:30px; line-height:24px; border-radius:3px; background-color:#fdb813;" type="button" id="getCodeBtn" value="获取验证码"/>
     </td>
   </tr>
 </table>

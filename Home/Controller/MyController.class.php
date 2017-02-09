@@ -12,7 +12,6 @@ class MyController extends Controller{
     }
 	//显示我的前程保首页面
 	public function myinfo(){
-
       $this->display();
 	}
 	// 得到用户的全部订单
@@ -59,6 +58,7 @@ class MyController extends Controller{
           $rst = M('area')->where(array('id' => $arr['2']))->find();
           $detailinfo[$key]['county'] = $rst['name'];
       }
+      // var_dump($detailinfo);die;
         $this->assign('detailinfo', $detailinfo);
         $this->display();
 	}
@@ -121,7 +121,7 @@ class MyController extends Controller{
              }
     		 $telrst = M('user')->where(array('tel' => $telphone))->find();
     		 if($telrst){
-	    		if(trim(I('post.checkcode')) == session('code') && I('post.checkcode') !=NULL){
+	    		if(trim(I('post.checkcode')) == cookie('code') && I('post.checkcode') !=NULL){
                         $this->redirect('bangdingtel');exit;  
 	            }else{
 	           	$this->error('验证码不正确',U('edittel'), 1);exit;
@@ -140,7 +140,7 @@ class MyController extends Controller{
              if($err){
                 $this->error($err,U('bangdingtel'),1);exit;
              }
-             if(trim(I('post.checkcode')) == session('code') && I('post.checkcode') !=NULL){
+             if(trim(I('post.checkcode')) == cookie('code') && I('post.checkcode') !=NULL){
                         $data = array(
                            'id' => session('uid'),
                             'tel' => $telphone
@@ -165,7 +165,7 @@ class MyController extends Controller{
             }
 		   $telrst = M('user')->where(array('tel' => $telphone))->find();
 		   if($telrst){
-	           if(trim(I('post.checkcode')) == session('code') && I('post.checkcode') !=NULL){
+	           if(trim(I('post.checkcode')) == cookie('code') && I('post.checkcode') !=NULL){
 	              $uid = session('uid');
 	              $pwd = I('post.pwd');
 	              $data = array(

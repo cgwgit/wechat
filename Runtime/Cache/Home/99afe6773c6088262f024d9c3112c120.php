@@ -130,12 +130,12 @@
 <!--<div id="header"><img src="<?php echo (IMG); ?>zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
 <div class="conttop_div1"><img src="<?php echo (IMG); ?>index_img1.jpg" /></div>
-<div id="shebao_title"><img src="<?php echo (IMG); ?>xinzengcanbaoren.jpg" /></div>
+<div id="shebao_title"><span style="font-size: 50%;font-weight: bold;">编辑参保人</span></div>
 <div class="conttop_div3"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></div>
 </div>
 <form method="post" action="<?php echo U('editperson');?>" enctype="multipart/form-data">
 <div class="acc_apply">
-	<ul>
+	<ul style="font-size: 80%">
 		<li class="clearfix">
 			<label class="tl">您的手机号：</label>
 			<input style="margin-left:14px;" autocomplete="off" placeholder="请输入的手机号码" value="<?php echo ($cinfo["mphone"]); ?>" class="" name="mobile" type="text" />
@@ -177,7 +177,7 @@
 				 <img class="acc_imgin" src="<?php echo (SITE_URL); echo (substr($cinfo['small_pics'],2)); ?>" id="img0">
 				</div>
 				<div class="acc_sc">
-					<a href="javascript:;" class="tc acc_scicon">修改上传身份证正面照片</a>
+					<a href="javascript:;" class="tc acc_scicon">点击此处上传</a>
 					<input type="file" name="pics_tu[]" id="file0" multiple class="ph08" />
 			  </div>
 			</div>
@@ -185,7 +185,7 @@
 	</ul>
 </div>
 <input type="hidden" name="id" value="<?php echo ($cinfo["id"]); ?>"></input>
-<div id="baocun"><input style=" padding:5% 23%; font-size:1em; color:#FFF; background:url(<?php echo (IMG); ?>zhuce_img6.jpg); border:0px;" type="submit" value="修改"/></div>
+<div id="baocun"><input style=" padding:5% 23%; font-size:80%; color:#FFF; background:url(<?php echo (IMG); ?>zhuce_img6.jpg); border:0px;" type="submit" value="修改"/></div>
 </form>
 <div id="contbottom">
 <div class="contbottom_div1">

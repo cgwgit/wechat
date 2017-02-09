@@ -3,82 +3,39 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>我的订单(订单详细信息)</title>
+<title>订单详情</title>
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
 </head>
 
 <body>
-<div id="app">
+<div id="app" style="background:#DADADA;">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
-<div class="conttop_div1"><img src="{$Think.const.IMG}wodeqianchengbao2.jpg" /></div>
-<div id="shebao_jisuanqi"><img src="{$Think.const.IMG}wodecanbaoren1.jpg" /></div>
+<div class="conttop_div1"><</div>
+<div id="shebao_title">订单详情</div>
 <div class="conttop_div3"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></div>
 </div>
-<div id="content">
-<div id="content_nav">
-<div id="content_cont">
+<div id="dingdan_top"> 
+   &nbsp;&nbsp;&nbsp;订单号：{$detailinfo[0][order_sn]}
+      <if condition="$detailinfo[0][order_status]==1">
+           <span style="float:right;width: 15%">已支付 &nbsp;&nbsp;&nbsp;</span>
+   	   <else />
+   	     	 <span style="float:right;width: 15%"">待支付 &nbsp;&nbsp;&nbsp;</span>
+   	   </if>
+ </div>
+<div id="dingdan_content">
 <ul>
-   <li style="border-bottom:1px solid #CCC;">
-   	  <table width="100%" border="0">
-   	     <tr align="center">
-   	     	<td width="20%">订单号：</td>
-   	     	<td width="50%">{$detailinfo.order_sn}</td>
-   	     	<if condition="$detailinfo.order_status==1"><td width="30%">已支付</td>
-   	     	<else />
-   	     	 <td width="30%">待支付</td>
-   	     	 </if>
-   	     </tr>
-   	  </table>
-   </li>
-     <li style="border-bottom:1px solid #CCC;">
-   	  <table width="100%" border="0">
-   	     <tr align="left">
-   	     	<td width="80%" colspan="3">参保人:{$detailinfo.cname}{$detailinfo.idnumber}</td>
-   	     </tr>
-   	     <tr align="left">
-   	     	<td width="100%">户口信息:{$detailinfo.cname}{$detailinfo.idnumber}</td>
-   	     </tr>
-   	      <tr align="left">
-   	     	<td width="100%">参保地：临沂</td>
-   	     </tr>
-   	     <tr align="left">
-   	     	<td width="100%">社保保费：{$detailinfo.allcount}</td>
-   	     </tr>
-   	  </table>
-   </li>
-   <li style="border-bottom:1px solid #CCC;">
-   <table width="100%" border="0">
-	  <tr align="center">
-	     <td>
-	        <td width="50%"> &nbsp;&nbsp;&nbsp;&nbsp;{$v.cname}的参保订单</td>
-	        <td width="50%"><if condition="$v.order_status==1">已支付<else />
-	         待支付</if>
-	        </td>
-	    </td>
-	  </tr>
-	   <tr align="center">
-	     <td>
-	        <td width="50%"> &nbsp;&nbsp;&nbsp;&nbsp;{$v.ordertime|date="Y-m-d H:i:s",###}</td>
-	        <td width="50%"> &nbsp;&nbsp;&nbsp;&nbsp;{$v.allcount}
-	        </td>
-	    </td>
-	  </tr>
-</table>
-</li>
+	<li>参保人：{$detailinfo[0].cname}{$detailinfo[0].idnumber}</li>
+	<li>户口信息：{$detailinfo[0].province},{$detailinfo[0].citys},{$detailinfo[0].county}/<if condition="$detailinfo[0][htype] eq 0">城市<else />农村</if></li>
+	<li style="border-bottom:1px solid #CCC;">参保地	：{$detailinfo[0].city}</li>
+	<li>社保保费：2017.02.02—-2017.02.04 <span style="float:right;">{$detailinfo[0].chargecount}</span></li>
+	<li style="border-bottom:1px solid #CCC;">服务费 <span style="float:right;">{$detailinfo[0].servicemoney}</span></li>
+	<li style="border-bottom:2px solid #CCC;">实付款：<span style="float:right;">{$detailinfo[0].allcount}</span></li>
+	<li>提交时间：{$detailinfo[0].ordertime|date="Y-m-d H:i:s",###}</li>
+	<li style="text-align:center;">客服热线：400-66613331</li>
 </ul>
 </div>
-<if condition="$detailinfo == null" >
-<p style="text-align:center; margin:3%;">暂无订单信息</p>
-</if>
-<a href="{:U('Cinfo/addperson')}">
- <p style="text-align:center; margin-bottom:20%;"><!-- <input style="padding:1% 3%; color:#090;" type="button" value="立即参保" /> --></p>
-</a>
 </div>
-</div>
-<include file="Public:footer" />
-</div>
-
 </body>
 </html>

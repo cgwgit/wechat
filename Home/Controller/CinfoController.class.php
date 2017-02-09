@@ -47,6 +47,7 @@ class CinfoController extends Controller {
     //修改参保人信息页面
     public function editperson(){
         if(IS_POST){
+
             trim(I('post.cname')) ? $cname = trim(I('post.cname')) : $err = '用户名格式不正确';
             preg_match("/^1[3578][0-9]{9}$/", $_POST['mobile']) ? $tel = trim($_POST['mobile']) : $err = '请填写正确的手机号';
             preg_match("/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/", $_POST['idCard']) ? $sfz = $_POST['idCard'] : $err = '请填写正确的身份证号';
@@ -94,7 +95,8 @@ class CinfoController extends Controller {
                 $up_pics = true;
                 break;
             }else{
-            	$this->error('请选择上传身份证图片', U('addperson'), 2);
+                M('cinfo')->delete($id);
+            	$this->error('图片过大,请重新上传', U('addperson'), 2);
             }
         }
         if($up_pics === true){
@@ -122,7 +124,7 @@ class CinfoController extends Controller {
                 $arr['small_pics'] = $small_pics;
                 D('idpicture')->add($arr);
             }
-            $this->success('参保人员信息保存', U('Social/social_buy') ,2);
+            $this->success('参保人员信息保存', U('My/ncperson') ,2);
         }
         
     }
@@ -182,13 +184,22 @@ class CinfoController extends Controller {
     	$rst = M('cinfo')->where(array('id' => $cid))->delete();
     	if($rst){
     		// $this->redirect('Social/social_buy');
-               $this->success('删除成功',U('Social/social_buy'), 1); 	
+               $this->success('删除成功',U('My/ncperson'), 1); 	
     	}
     }
     //选择参保人页面
     public function selectperson(){
         $cid = I('get.cid');
         $persons = M('cinfo')->where(array('uid' => session('uid')))->order('id desc')->select();
+        foreach ($persons as $key => $value) {
+          $arr = explode(',', $value['city']);
+          $rst = M('area')->where(array('id' => $arr['0']))->find();
+          $persons[$key]['province'] = $rst['name']; 
+          $rst = M('area')->where(array('id' => $arr['1']))->find();
+          $persons[$key]['citys'] = $rst['name']; 
+          $rst = M('area')->where(array('id' => $arr['2']))->find();
+          $persons[$key]['county'] = $rst['name'];
+      }
         $this->assign('persons', $persons);
         $this->assign('cid', $cid);
         $this->display();

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+  <form method="post" action="__CONTROLLER__/orderinfo/cid/{$post.cid}"></form>
+	<ul>
+		<li>社保费用明细</li>
+		<li><a href="{:U('chargedetail')}">{$post.stime}至{$post.etime}{$post.chargemount}</a></li>
+
+	</ul>
+</body>
+</html>

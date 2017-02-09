@@ -64,7 +64,7 @@ class ManagerController extends Controller {
        	   if($result){
               $this->error('手机号码已注册过', U('register'), 1);exit;	
        	   }else{
-       	   	if(trim(I('post.checkcode')) == session('code') && I('post.checkcode') !=NULL){
+       	   	if(trim(I('post.checkcode')) == cookie('code') && I('post.checkcode') !=NULL){
 			     trim(I('post.pwd')) ? $pwd = trim(I('post.pwd')) : $err = '密码格式不正确';
 		         if($err){
 		       	   $this->error($err, U('register'), 1);exit;
@@ -85,7 +85,7 @@ class ManagerController extends Controller {
 			       	}
 		         }
 	       	  }else{
-	       	   	$this->error('验证码不正确', U('register'), 1);exit;
+	       	   	$this->error('验证码不正确或已过期', U('register'), 1);exit;
 	       	  }
        	   } 
        }else{
@@ -140,7 +140,7 @@ class ManagerController extends Controller {
     //用户找回密码
 	public function forgetpwd(){
 		if(IS_POST){
-           if(trim(I('post.checkcode')) == session('code')){
+           if(trim(I('post.checkcode')) == cookie('code')){
              $tel = I('post.telphone');
              $xpwd = I('post.xpwd');
              $rst = M('user')->where(array('tel' => $tel))->save(array('pwd' => $xpwd));
@@ -150,7 +150,7 @@ class ManagerController extends Controller {
              	$this->error('手机号不存在，请重新输入', U('forgetpwd'), 1);
              }
            }else{
-           	 $this->error('验证码不正确，请重新输入', U('forgetpwd'), 1);
+           	 $this->error('验证码不正确或已过期，请重新输入', U('forgetpwd'), 1);
            }
 		}else{
 			$this->display();
@@ -162,7 +162,7 @@ class ManagerController extends Controller {
 		$code = rand(1000,9999);
 		//code为要发送的验证码，product为模板内容中的标签
 		$data = array('code' => "{$code}",'product' => '前程保');
-		session('code', $code);
+		cookie('code', $code,60);
 		$datas = json_encode($data);
         $to = $_GET['telphone'];
         $alidayu = new \Think\Lib\Alidayu\SendMSM();

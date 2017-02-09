@@ -3,20 +3,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>无标题文档</title>
+<title>未参保人</title>
 <link rel="stylesheet" type="text/css" href="<?php echo (CSS); ?>content.css">
 <link rel="stylesheet" type="text/css" href="<?php echo (CSS); ?>base.css">
 </head>
 
 <body>
-<div id="app">
+<div id="app" style="background:white;">
 <!--<div id="header"><img src="<?php echo (IMG); ?>zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
 <div class="conttop_div1"><img src="<?php echo (IMG); ?>wodeqianchengbao2.jpg" /></div>
 <div id="shebao_jisuanqi"><img src="<?php echo (IMG); ?>wodecanbaoren1.jpg" /></div>
 <div class="conttop_div3"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></div>
 </div>
-<div id="content">
+<div id="content" style="font-size: 10%">
 <div id="content_nav">
 <a href="<?php echo U('ycperson');?>"><div id="content_daicanbao_navleft">已参保</div></a>
 <div id="content_daicanbao_navright">待参保</div>
@@ -24,38 +24,17 @@
 
 <div id="content_cont">
 <ul>
-<li style="border-bottom:1px solid #CCC;">
-<table width="100%" border="0">
-  <tr align="center">
-    <td>
-      <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;姓名</td>
-      <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;户口性质</td>
-      <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;户口信息</td>
-      <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;身份证号</td>
-      <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;操作</td>
-
-    </td>
-  </tr>
-  <?php if(is_array($ncperson)): foreach($ncperson as $key=>$v): ?><tr align="center">
-     <td>
-        <td width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;<?php echo ($v["cname"]); ?></td>
-        <td width="20%"><?php if($v["htype"] == 0): ?>城市<?php else: ?>
-         农村<?php endif; ?>
-        </td>
-        <td width="20%"><?php echo ($v["province"]); echo ($v["citys"]); echo ($v["county"]); ?></td>
-        <td width="20%" align="center"><?php echo ($v["idnumber"]); ?></td>
-              <td width="20%" align="center"><a href="/index.php/Home/Cinfo/editperson/cid/<?php echo ($v["id"]); ?>" style="color:black">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/index.php/Home/Cinfo/delperson/cid/<?php echo ($v["id"]); ?>" style="color:black">删除</a></td>
-    </td>
-  </tr><?php endforeach; endif; ?>
-</table>
-</li>
+<?php if(is_array($ncperson)): foreach($ncperson as $key=>$v): ?><li>
+   <a href="<?php echo U('Social/social_buy',array('cid' => $v['id']));?>" style="color: #999">&nbsp;&nbsp;&nbsp;<span style="color: #0C0;"><?php echo ($v["cname"]); ?></span><br/>
+&nbsp;&nbsp;&nbsp;户口信息：<?php echo ($v["province"]); ?>,<?php echo ($v["citys"]); ?>,<?php echo ($v["county"]); ?>,<?php if($v["htype"] == 0 ): ?>城市<?php else: ?>农村<?php endif; ?></a><span style="float: right; color:#3C0;">
+<a href="/index.php/Home/Cinfo/editperson/cid/<?php echo ($v["id"]); ?>" style="color:blue">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/index.php/Home/Cinfo/delperson/cid/<?php echo ($v["id"]); ?>" style="color:blue">删除</a>&nbsp;&nbsp;&nbsp; </span></li><?php endforeach; endif; ?>
 </ul>
 </div>
 <?php if($ncperson == null): ?><p style="text-align:center; margin:3%;">暂无参保人</p><?php endif; ?>
 <p style="text-align:center; margin-bottom:20%;"><a href="<?php echo U('Cinfo/addperson');?>"><input style="padding:1% 3%; color:#090;" type="button" value="添加参保人" /></a></p>
 </div>  
 </div>
-<div id="contbottom">
+<!-- <div id="contbottom">
 <div class="contbottom_div1">
 	<a href="<?php echo U('Index/index');?>">
 	<img src="<?php echo (IMG); ?>zhuce_img7.jpg"  />
@@ -77,7 +56,7 @@
 	<img src="<?php echo (IMG); ?>zhuce_img11.jpg"  />
 	</a>
 </div>
-</div>
+</div> -->
 </div>
 
 </body>
