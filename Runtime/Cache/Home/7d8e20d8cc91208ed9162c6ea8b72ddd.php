@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,8 +9,8 @@ div { width:100%; height:auto; overflow:hidden; margin:0 auto; }
 ul { list-style:none; font-size:70%; } 
 li { padding:3% 2%; }
 </style>
-<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
-<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
+<link rel="stylesheet" type="text/css" href="<?php echo (CSS); ?>content.css">
+<link rel="stylesheet" type="text/css" href="<?php echo (CSS); ?>base.css">
 
 
 
@@ -39,16 +39,15 @@ if(targetObj.style.display!="none"){
 
 <body>
 <div id="app" style="background:#DADADA;">
-<!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
-<if condition="$chargeinfo['sid'] eq 1">
-<div id="conttop">
+<!--<div id="header"><img src="<?php echo (IMG); ?>zhuce_img1.jpg" width="100%"  height="40" /></div>-->
+<?php if($chargeinfo['sid'] == 1): ?><div id="conttop">
 <div class="conttop_div1"></div>
 <div id="shezhi_title">社保险种收费明细</div>
-<div class="conttop_div3"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></div>
+<div class="conttop_div3"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></div>
 </div>
 <div id="xianzhong_div">
 <ul>
-<li>参保基数：{$chargeinfo['sbase']}</li>
+<li>参保基数：<?php echo ($chargeinfo['sbase']); ?></li>
 <li>险种 <span style="float:right;">费用(元)</span></li>
 </ul>
 </div>
@@ -56,43 +55,43 @@ if(targetObj.style.display!="none"){
 <table style="margin:0 auto;" width="98%" border="0">
   <tr>
     <td width="49%" height="35">养老保险</td>
-    <td width="51%" align="right">{$chargeinfo['endowment']}</td>
+    <td width="51%" align="right"><?php echo ($chargeinfo['endowment']); ?></td>
   </tr>
   <tr>
     <td height="35">医疗保险</td>
-    <td align="right">{$chargeinfo['yiliao']}</td>
+    <td align="right"><?php echo ($chargeinfo['yiliao']); ?></td>
   </tr>
   <tr>
     <td height="35">失业保险</td>
-    <td align="right">{$chargeinfo['unemployment']}</td>
+    <td align="right"><?php echo ($chargeinfo['unemployment']); ?></td>
   </tr>
   <tr>
     <td height="35">工伤保险</td>
-    <td align="right">{$chargeinfo['employment']}</td>
+    <td align="right"><?php echo ($chargeinfo['employment']); ?></td>
   </tr>
   <tr>
     <td height="35">生育保险</td>
-    <td align="right">{$chargeinfo['maternity']}</td>
+    <td align="right"><?php echo ($chargeinfo['maternity']); ?></td>
   </tr>
   <tr>
     <td height="35">每月费用小计</td>
-    <td align="right"><span style="color: #390;">{$chargeinfo['wuxian']}</span></td>
+    <td align="right"><span style="color: #390;"><?php echo ($chargeinfo['wuxian']); ?></span></td>
   </tr>
   <tr>
     <td height="45" >当前时段费用小计</td>
-    <td align="right">{$chargeinfo['wuxian']}X{$chargeinfo['smonths']}个月={$chargeinfo['wuxian']*$chargeinfo['smonths']}</td>
+    <td align="right"><?php echo ($chargeinfo['wuxian']); ?>X<?php echo ($chargeinfo['smonths']); ?>个月=<?php echo ($chargeinfo['wuxian']*$chargeinfo['smonths']); ?></td>
   </tr>
 </table>
 </div>
-<elseif condition="$chargeinfo['sid'] eq 2" />
+<?php elseif($chargeinfo['sid'] == 2): ?>
   <div id="conttop">
 <div class="conttop_div1"></div>
 <div id="shezhi_title">公积金险种收费明细</div>
-<div class="conttop_div3"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></div>
+<div class="conttop_div3"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></div>
 </div>
 <div id="xianzhong_div">
 <ul>
-<li>参保基数：{$chargeinfo['gbase']}</li>
+<li>参保基数：<?php echo ($chargeinfo['gbase']); ?></li>
 <li>险种 <span style="float:right;">费用</span></li>
 </ul>
 </div>
@@ -100,19 +99,18 @@ if(targetObj.style.display!="none"){
 <table style="margin:0 auto;" width="98%" border="0">
   <tr>
     <td width="49%" height="35">公积金</td>
-    <td width="51%" align="right">{$chargeinfo['gjj']}</td>
+    <td width="51%" align="right"><?php echo ($chargeinfo['gjj']); ?></td>
   </tr>
   <tr>
     <td height="35">每月费用小计</td>
-    <td align="right"><span style="color: #390;">{$chargeinfo['gjj']}</span></td>
+    <td align="right"><span style="color: #390;"><?php echo ($chargeinfo['gjj']); ?></span></td>
   </tr>
   <tr>
     <td height="45" >当前时段费用小计</td>
-    <td align="right">{$chargeinfo['gjj']}X{$chargeinfo['gmonths']}个月={$chargeinfo['gjj']*$chargeinfo['gmonths']}</td>
+    <td align="right"><?php echo ($chargeinfo['gjj']); ?>X<?php echo ($chargeinfo['gmonths']); ?>个月=<?php echo ($chargeinfo['gjj']*$chargeinfo['gmonths']); ?></td>
   </tr>
 </table>
-</div>
-</if>
+</div><?php endif; ?>
 </div>
 </body>
 </html>

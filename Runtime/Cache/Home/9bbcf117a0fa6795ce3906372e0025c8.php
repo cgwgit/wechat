@@ -116,26 +116,26 @@ if(targetObj.style.display!="none"){
 <div id="dingdan_top"> &nbsp;&nbsp;&nbsp;参保城市：<?php echo ($cinfo['city']); ?><span style="float:right;">截点日：每月4号 &nbsp;&nbsp;&nbsp;</span></div>
 <div id="shezhi_top">
 <div id="shezhi_top_left">社保</div>
-<div id="shezhi_top_right"><span style="float:right;margin-top: 3px"onclick="openShutManager(this,'box')"><input type="checkbox" name="stype[]"></input></span></div>
+<div id="shezhi_top_right"><span style="float:right;margin-top: 3px"onclick="openShutManager(this,'box')"><input type="checkbox" name="stype[]" value="1"></input></span></div>
 
 </div>
 <div id="box" style="display:none; background:#FFF; margin:1% 0; padding-bottom:3%;">
 <ul>
 <li style="border-bottom:1px solid #CCC;">社保类型<span style="float:right;"><?php if($cinfo['htype'] == 0): ?>城市户口<?php else: ?>农村户口<?php endif; ?></span></li>
-<li style="border-bottom:1px solid #CCC;">起缴月份<input type="text" class="input" id="monthly" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;"></li>
-<li style="border-bottom:1px solid #CCC;">截止月份<input type="text" class="input" id="monthly1" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;"></li>
+<li style="border-bottom:1px solid #CCC;">起缴月份<input type="text" name="stime" class="input" id="monthly" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;"></li>
+<li style="border-bottom:1px solid #CCC;">截止月份<input type="text" name="etime" class="input" id="monthly1" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;"></li>
 <li>参保基数<input type="text" name="sbase" placeholder="参保基数" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;" /></li>
 </ul>
 </div>
 <div id="datePlugin"></div>
 <div id="shezhi_conter" style="padding-bottom:5%;">
 <div id="shezhi_conter_left">公积金</div>
-<div id="shezhi_conter_right"><span style="float:right;margin-top: 3px"; onclick="openShutManager(this,'box3')"><input type="checkbox" name="stype[]"></input></span></div>
+<div id="shezhi_conter_right"><span style="float:right;margin-top: 3px"; onclick="openShutManager(this,'box3')"><input type="checkbox" name="stype[]" value="2"></input></span></div>
 </div>
 <div id="box3" style="display:none;  background:#FFF; margin:1% 0;">
 <ul>
-<li style="border-bottom:1px solid #CCC;">起缴月份<input type="text" class="input" id="monthly2" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;"></li>
-<li style="border-bottom:1px solid #CCC;">截止月份<input type="text" class="input" id="monthly3" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;"></li>
+<li style="border-bottom:1px solid #CCC;">起缴月份<input type="text" name="gstime" class="input" id="monthly2" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;"></li>
+<li style="border-bottom:1px solid #CCC;">截止月份<input type="text" name="getime"class="input" id="monthly3" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;"></li>
 <li>参保基数<input type="text" name="gbase" placeholder="公积金基数" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;" /></li>
 
 </ul>

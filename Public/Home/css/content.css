@@ -457,3 +457,22 @@ header { width:95%; height:auto; overflow:auto; margin:0 auto; margin-top:2%; }
 #baofeimingxi_bottom ul { list-style:none; margin:0px 1.5%; padding:0px; }
 #baofeimingxi_bottom ul li {	padding: 2% 0;}
 #baofeimingxi_foot { width:100%; height:auto; overflow:hidden; text-align:center;background:#FFF; }
+/*--险种收费明细--*/
+#xianzhong_div { width:100%; height:auto; overflow:hidden; background:#FFF; font-size: 80%; }
+#xianzhong_div ul { list-style:none; margin:0px 1.5%; padding:0px; }
+#xianzhong_div ul li {	padding: 2% 0;}
+/*--订单支付--*/
+#zhifu_div {
+	width: 100%;
+	height: auto;
+	padding-bottom: 5px;
+	overflow: hidden;
+	background: #FFF;
+	font-size: 70%;
+	border-bottom: 1px solid #CCC;
+	font-weight: bold;
+}
+#zhifu_div_left img { float:left; padding-top:5px; padding-right:9px;}
+#zhifu_div_left { width:90%; height:auto; overflow:hidden; background:#FFF; font-size:70%; margin:2% auto;}
+
+

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>无标题文档</title>
+<title>保费明细</title>
 <style>
 div { width:100%; height:auto; overflow:hidden; margin:0 auto; }
 ul { list-style:none; font-size:70%; } 
@@ -45,17 +45,41 @@ if(targetObj.style.display!="none"){
 <div id="shezhi_title">保费明细</div>
 <div class="conttop_div3"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></div>
 </div>
+<?php if($chargeinfo['ctype'] == 1): ?><div id="baofeimingxi_div">
+		<ul>
+			<li><span style="color:#0C3;">社保</span>费用明细</li>
+			<a href="<?php echo U('chargedetail',array('cid' => $chargeinfo['cid'],'id' =>1));?>" style="color: black"><li><?php echo ($chargeinfo['stime']); ?>至<?php echo ($chargeinfo['etime']); ?> <span style="float:right;margin-top: 3px"><?php echo ($chargeinfo['wuxian']*$chargeinfo['smonths']); ?>&nbsp;&nbsp;&nbsp;></span></li></a>
+			<li>费用小计 <span style="float:right;"><?php echo ($chargeinfo['wuxian']*$chargeinfo['smonths']); ?>/人</span></li>
+		</ul>
+	</div>
+	<div id="baofeimingxi_div" style="padding:2% 0;">
+	 &nbsp;&nbsp;保费共计：<span style="float:right; color:#3C3;"><?php echo ($chargeinfo['wuxian']*$chargeinfo['smonths']); ?>/人</span>
+	</div>
+<?php elseif($chargeinfo['ctype'] == 2): ?>
+   <div id="baofeimingxi_div">
+		<ul>
+			<li><span style="color:#0C3;">公积金</span>费用明细</li>
+			<a href="<?php echo U('chargedetail',array('cid' => $chargeinfo['cid'],'id' =>2));?>" style="color: black"><li><?php echo ($chargeinfo['gstime']); ?>至<?php echo ($chargeinfo['getime']); ?> <span style="float:right;margin-top: 3px"><?php echo ($chargeinfo['gjj']*$chargeinfo['gmonths']); ?>&nbsp;&nbsp;&nbsp;></span></li></a>
+			<li>费用小计 <span style="float:right;"><?php echo ($chargeinfo['gjj']*$chargeinfo['gmonths']); ?>/人</span></li>
+		</ul>
+	</div>
+	<div id="baofeimingxi_div" style="padding:2% 0;">
+	 &nbsp;&nbsp;保费共计：<span style="float:right; color:#3C3;"><?php echo ($chargeinfo['gjj']*$chargeinfo['gmonths']); ?>/人</span>
+	</div>
+<?php else: ?>
 <div id="baofeimingxi_div">
-<ul>
-<li><span style="color:#0C3;">社保</span>费用明细</li>
-<li>2017-03至2017-05 <span style="float:right;">3820.17</span></li>
-<li>费用小计 <span style="float:right;">3820.17/人</span></li>
-</ul>
+  <ul>
+	<li><span style="color:#0C3;">社保</span>费用明细</li>
+	<a href="<?php echo U('chargedetail',array('cid' => $chargeinfo['cid'],'id' =>1));?>" style="color: black"><li><?php echo ($chargeinfo['stime']); ?>至<?php echo ($chargeinfo['etime']); ?> <span style="float:right;margin-top: 3px"><?php echo ($chargeinfo['wuxian']*$chargeinfo['smonths']); ?>&nbsp;&nbsp;&nbsp;></span></li></a>
+	<li>费用小计 <span style="float:right;"><?php echo ($chargeinfo['wuxian']*$chargeinfo['smonths']); ?>/人</span></li>
+	<li><span style="color:#0C3;">公积金</span>费用明细</li>
+	<a href="<?php echo U('chargedetail',array('cid' => $chargeinfo['cid'],'id' =>2));?>" style="color: black"><li><?php echo ($chargeinfo['gstime']); ?>至<?php echo ($chargeinfo['getime']); ?> <span style="float:right;margin-top: 3px"><?php echo ($chargeinfo['gjj']*$chargeinfo['gmonths']); ?>&nbsp;&nbsp;&nbsp;></span></li></a>
+	<li>费用小计 <span style="float:right;"><?php echo ($chargeinfo['gjj']*$chargeinfo['gmonths']); ?>/人</span></li>
+ </ul>
 </div>
-<div id="baofeimingxi_div" style="padding:2% 0;">
- &nbsp;&nbsp;保费共计：<span style="float:right; color:#3C3;">3820.17/人</span>
-</div>
-
+	<div id="baofeimingxi_div" style="padding:2% 0;">
+	 &nbsp;&nbsp;保费共计：<span style="float:right; color:#3C3;"><?php echo ($chargeinfo['gjj']*$chargeinfo['gmonths']+$chargeinfo['wuxian']*$chargeinfo['smonths']); ?>/人</span>
+	</div><?php endif; ?>
 <div id="baofeimingxi_bottom">
 <ul>
 <li>参保需提供以下材料</li>
@@ -66,7 +90,8 @@ if(targetObj.style.display!="none"){
 <li> &nbsp;温馨提示：企业法人将无法通过前程保申请社保</li>
 </ul>
 </div>
-<div id="baofeimingxi_foot"><font style="padding:5% 30%; background:#fdb813; border-radius:10px;">立即参保</font></div>
+<a href="<?php echo U('orderinfo',array('cid' => $chargeinfo['cid']));?>" style="color:black"><div id="baofeimingxi_foot"><font style="padding:5% 30%; background:#fdb813; border-radius:10px;">立即参保</font></div>
+</a>
 </div>
 </body>
 </html>
