@@ -80,7 +80,6 @@ $(function(){
 	})
 });
 </script>
-
 <script type="text/javascript">
 //===========================点击展开关闭效果====================================
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
@@ -103,15 +102,34 @@ if(targetObj.style.display!="none"){
 }
 </script>
 </head>
-
-<body>
+<body style="position:relative;">
 <div id="app" style="background:#DADADA;">
 <form method="post" action="<?php echo U('Social/detail');?>">
 <!--<div id="header"><img src="<?php echo (IMG); ?>zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
 <div class="conttop_div1"><</div>
 <div id="shezhi_title">设置<?php echo ($cinfo['cname']); ?>的参保方案</div>
-<div class="conttop_div3"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></div>
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></a>
+</div>
+</div>
+<style type="text/css">
+	a{
+		color:black;
+	}
+</style>
+<div id="box4" style="display:none; width:100px; background:#fdb813; margin:1% 2%; right:0px; position:absolute; z-index:9999; padding-bottom:1%;">
+<ul>
+<a href="<?php echo U('Index/index');?>">
+   <li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="<?php echo (IMG); ?>home.png" />首页</li>
+</a>
+<a href="<?php echo U('My/myinfo');?>">
+   <li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="<?php echo (IMG); ?>news.png" />我的前程保</li>
+</a>
+<a href="<?php echo U('Service/index');?>">
+   <li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="<?php echo (IMG); ?>fuwubiaozhi.png" />服务大厅</li>
+</a>
+</ul>
+</div>
 </div>
 <div id="dingdan_top"> &nbsp;&nbsp;&nbsp;参保城市：<?php echo ($cinfo['city']); ?><span style="float:right;">截点日：每月4号 &nbsp;&nbsp;&nbsp;</span></div>
 <div id="shezhi_top">

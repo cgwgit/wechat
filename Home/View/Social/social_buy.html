@@ -7,15 +7,18 @@
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
 </head>
+<include file="Public:tanchuang" />
 
-<body>
+<body style="position:relative;font-size: 80%">
 <div id="app" style="background:#DADADA;">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
 <div class="conttop_div1"><img src="{$Think.const.IMG}index_img1.jpg" /></div>
 <div id="shebao_title"><img src="{$Think.const.IMG}shebao_9.jpg" /></div>
-<div class="conttop_div3"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></div>
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
 </div>
+</div>
+<include file="Public:tanchu" />
 <div id="shebao_div" style="background: #FFF; margin: 1.5% 0; padding: 1% 0; font-size: 85%;"><a href="{:U('shuoming')}" style="color: black">
 &nbsp;&nbsp;服务说明</span> &nbsp;<span style="color: #F00; font-size: 90%;">社保/公积金同时缴纳仅收一次服务费</span></a></div>
 <if condition="$cinfo == NULL">

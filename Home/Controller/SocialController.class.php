@@ -110,8 +110,9 @@ class SocialController extends Controller {
                 $employment = $sbase*0.007;
                 $maternity = $sbase*0.01;
                 $wuxian = $endowment+$medical+$unemployment+$employment+$maternity;
+                $chargecount = $wuxian;
                 $servicemoney = 80;
-                $allcount = $wuxian+$servicemoney;
+                $allcount = ($wuxian+$servicemoney)*$months;
                 $ctype = 1;
             }else{
                 $this->error('社保月份选择错误', U('Social/cplan',array('cid' => $cid)), 1);exit;
@@ -129,8 +130,9 @@ class SocialController extends Controller {
             $gmonths = substr($getime, 5)-substr($gstime, 5); 
             if($gmonths > 0){
                 $gjj = $gbase*0.24;
+                $chargecount = $gjj;
                 $servicemoney = 80;
-                $allcount = $gjj+$servicemoney;
+                $allcount = ($gjj+$servicemoney)*$gmonths;
                 $ctype = 2;   
             }else{
                 $this->error('公积金月份选择错误', U('Social/cplan',array('cid' => $cid)), 1);exit;
@@ -162,7 +164,7 @@ class SocialController extends Controller {
                 $gjj = $gbase*0.24;
                 $chargecount = $wuxian+$gjj;
                 $servicemoney =  160;
-                $allcount = $chargecount+$servicemoney; 
+                $allcount = $wuxian*$months+$gjj*$gmonths+80*($months+$gmonths); 
                 $ctype = 3;
             }else{
                 $this->error('月份选择错误', U('Social/cplan',array('cid' => $cid)), 1);exit;
@@ -186,7 +188,7 @@ class SocialController extends Controller {
             'getime' => isset($getime) ? $getime : 0,
             'smonths' => isset($months) ? $months : 0,
             'gmonths' => isset($gmonths) ? $gmonths : 0,
-            'chargecount' => $chargecount,
+            'chargecount' => isset($chargecount) ? $chargecount : 0,
             'servicemoney' => $servicemoney,
             'allcount' => $allcount,
             'order_time' => time(),
@@ -205,8 +207,12 @@ class SocialController extends Controller {
     //订单信息
     public function orderinfo(){
     	$id = I('get.cid');
-    	$cinfo = M('cinfo')->alias('`c`')->field('`c`.`cname`,`ch`.`chargecount`,`ch`.`servicemoney`,`ch`.`allcount`')->join('`tp_chargedetail` as ch on c.id=ch.cid')->order('ch.cid desc')->find();
+    	$cinfo = M('cinfo')->alias('`c`')->field('`c`.`cname`,`ch`.*')->join('`tp_chargedetail` as ch on c.id=ch.cid')->where(array('c.id' => $id))->find();
+        $cinfo['sum'] = $cinfo['wuxian']*$cinfo['smonths']+$cinfo['gjj']*$cinfo['gmonths'];
+        $cinfo['service'] = 80*$cinfo['smonths']+80*$cinfo['gmonths'];
+        $cinfo['count'] = $cinfo['sum']+$cinfo['service'];
     	$this->assign('cinfo',$cinfo);
+        $this->assign('cid', $id);
         //查询投保人信息
     	$tinfo = M('tinfo')->where(array('uid' => session('uid')))->find();
     	if($tinfo){

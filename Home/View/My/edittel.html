@@ -51,6 +51,7 @@ $(function(){
         });
 });
 </script>
+<include file="Public:tanchuang" />
 </head>
 <body style="background: #fdb813;font-size: 80%">
 <div id="app">
@@ -59,8 +60,9 @@ $(function(){
 <div class="conttop_div1"><img src="{$Think.const.IMG}index_img1.jpg"  /></div>
 <div class="conttop_div2"><span style="font-size: 10%">修改手机号</span></div>
 
-<div class="conttop_div1"><img src="{$Think.const.IMG}zhuce_img4.jpg"  /></div>
-</div>
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
+</div></div>
+<include file="Public:tanchu" />
 <div id="logo"><img src="{$Think.const.IMG}shebao_img4.jpg" width="193" height="196" /></div>
 <div id="contmiddle">
 <form action="{:U('My/edittel')}" name="form1" method="post">

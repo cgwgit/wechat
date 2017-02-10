@@ -128,14 +128,17 @@
 		});
 	});
 </script>
-<body>
+<include file="Public:tanchuang" />
+<body style="position:relative;font-size: 80%>
 <div id="app">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
 <div class="conttop_div1"><img src="{$Think.const.IMG}index_img1.jpg" /></div>
 <div id="shebao_title"><img src="{$Think.const.IMG}xinzengcanbaoren.jpg" /></div>
-<div class="conttop_div3"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></div>
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
 </div>
+</div>
+<include file="Public:tanchu" />
 <form method="post" action="{:U('addperson')}" enctype="multipart/form-data">
 <div class="acc_apply">
 	<ul style="font-size: 60%">

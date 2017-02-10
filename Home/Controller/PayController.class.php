@@ -5,7 +5,7 @@ namespace Home\Controller;
 use Think\Controller;
 class PayController extends Controller {
 	//展示支付订单页面
-	public function getpay(){
+	public function dingdanzhifu(){
 	   $post = I('post.');
        $info = M('chargedetail')->where(array('cid' => $post['cid'], 'order_status' =>'0'))->find();
        $this->assign('info', $info);

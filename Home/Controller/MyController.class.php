@@ -241,6 +241,7 @@ class MyController extends Controller{
     //修改用户地址
     public function editaddress(){
         if(IS_POST){
+          //判断传过来的id,好跳转到不同的页面
           $post = I('post.');
           $rst = M('tinfo')->where(array('uid' => session('uid')))->find();
           $data = array(

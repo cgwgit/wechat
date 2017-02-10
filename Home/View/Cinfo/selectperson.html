@@ -7,15 +7,18 @@
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
 </head>
+<include file="Public:tanchuang" />
 
-<body>
+<body style="position:relative;font-size: 80%>
 <div id="app" style="background:#DADADA;">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
 <div class="conttop_div1"><img src="{$Think.const.IMG}index_img1.jpg" /></div>
 <div id="shebao_title">选择参保人</div>
-<div class="conttop_div3"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></div>
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
 </div>
+</div>
+<include file="Public:tanchu" />
 <a href="{:U('Cinfo/addperson')}" style="color: black"><div id="jiaoshebao" style="background: #FFF; padding:2% 0; text-align: center; font-size: 90%;">+ &nbsp;新增参保人
 </div></a>
 <!-- <p style="background: #FFF; font-size: 85%; padding:1% 0; border-bottom:1px solid #CCC;"> &nbsp;&nbsp;&nbsp;待参保？</p> -->

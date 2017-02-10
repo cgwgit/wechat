@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>待参保人</title>
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
+</head>
+<include file="Public:tanchuang" />
+<body style="position:relative;font-size: 80%;background-color: white">
+<div id="app" style="background:white;">
+<!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
+<div id="conttop">
+<div class="conttop_div1"><img src="{$Think.const.IMG}wodeqianchengbao2.jpg" /></div>
+<div id="shebao_jisuanqi"><img src="{$Think.const.IMG}wodecanbaoren1.jpg" /></div>
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
+</div>
+<include file="Public:tanchu" />
+
+<div id="content" style="font-size: 15%">
+<div id="content_nav">
+<a href="{:U('ycperson')}"><div id="content_daicanbao_navleft" >已参保</div></a>
+<div id="content_daicanbao_navright">待参保</div>
+</div>
+
+<div id="content_cont">
+<ul>
+<foreach name="ncperson" item="v">
+<li>
+   <a href="{:U('Social/social_buy',array('cid' => $v['id']))}" style="color: #999">&nbsp;&nbsp;&nbsp;<span style="color: #0C0;">{$v.cname}</span><br/>
+&nbsp;&nbsp;&nbsp;户口信息：{$v.province},{$v.citys},{$v.county},<if condition="$v.htype eq 0 "> 城市<else />农村</if></a><span style="float: right; color:#3C0;">
+<a href="__MODULE__/Cinfo/editperson/cid/{$v.id}" style="color:blue">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="__MODULE__/Cinfo/delperson/cid/{$v.id}" style="color:blue">删除</a>&nbsp;&nbsp;&nbsp; </span></li>
+</foreach>
+</ul>
+</div>
+<if condition="$ncperson == null" >
+<p style="text-align:center; margin:3%;">暂无参保人</p>
+</if>
+<p style="text-align:center; margin-bottom:20%;"><a href="{:U('Cinfo/addperson')}"><input style="padding:1% 3%; color:#090;" type="button" value="添加参保人" /></a></p>
+</div>  
+</div>
+<!-- <include file="Public:footer" /> -->
+</div>
+
+</body>
+</html>

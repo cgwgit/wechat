@@ -1,11 +1,11 @@
 /* CSS Document */
 #app { width:100%; height:100%; overflow:hidden; margin:0px auto; background:#fdb813;}
 .conttop_divmiddle {
-    margin: 0% 34% 0 35%;
+    margin: 0% 34% 0 34%;
 	width: 20%;
 	height: auto;
 	overflow: hidden;
-	text-align: center;s
+	text-align: center;
 	float: left;
 	font-size: 0.9em;
 	color: #FFFFFF;
@@ -19,16 +19,7 @@
 	color: #FFF;
 	font-size: 110%;
 }
-.conttop_div2 {
-	margin: 0% 37.5% 0 37.5%;
-	width: 14%;
-	height: auto;
-	overflow: hidden;
-	text-align: center;
-	float: left;
-	font-size: 0.9em;
-	color: #FFFFFF;
-}
+
 .conttop_div3 { width:5%; height:auto; overflow:hidden; float:right; background-size:cover; }
 #logo { width:100%; height:auto; margin:5% 0; overflow:hidden; text-align:center; }
 #contmiddle { width:80%; height:auto; overflow:hidden; margin:0 auto; color:#FFF; font-size:1.2em; background:#fdb813; position:relative; }
@@ -186,14 +177,14 @@ p a { color:#000; text-decoration:none; }
 }
 
 /*--社保计算器--*/
-#shebao_jisuanqi { 
-    margin:0% 33%;
+#shebao_jisuanqi {
+	margin: 0% 33%;
 	width: 23.5%;
 	height: auto;
 	overflow: hidden;
 	text-align: center;
 	float: left;
-	font-size:300%;
+	font-size: 80%;
 	color: #FFFFFF;
 }
 #shebao_jisuanqi_middle { width:80%; height:auto; overflow:hidden; margin:0 auto; color:#FFF; font-size:1.2em; background:#fdb813; } 
@@ -448,6 +439,8 @@ header { width:95%; height:auto; overflow:auto; margin:0 auto; margin-top:2%; }
  #shezhi_bottom { width:100%; height:auto; overflow:hidden; text-align:center; background:#FFF; }
  
 /*--保费明细--*/
+#baofeimingxi2 { width:100%; height:auto; overflow:hidden; background:#FFF; font-size: 80%; margin-bottom:3px; }
+#baofeimingxi2_div { width:39.5%; height:auto; overflow:hidden; border-right:1px solid #CCC; float:left; }
 #baofeimingxi_div { width:100%; height:auto; overflow:hidden; background:#FFF; margin:1% 0; font-size: 80%; }
 #baofeimingxi_div ul { list-style:none; margin:0px 1.5%; padding:0px; }
 #baofeimingxi_div ul li {
@@ -455,7 +448,10 @@ header { width:95%; height:auto; overflow:auto; margin:0 auto; margin-top:2%; }
 }
 #baofeimingxi_bottom { width:100%; height:auto; overflow:hidden; background:#FFF; color:#999;}
 #baofeimingxi_bottom ul { list-style:none; margin:0px 1.5%; padding:0px; }
-#baofeimingxi_bottom ul li {	padding: 2% 0;}
+#baofeimingxi_bottom ul li {
+	padding: 2% 0;
+	color: #000;
+}
 #baofeimingxi_foot { width:100%; height:auto; overflow:hidden; text-align:center;background:#FFF; }
 /*--险种收费明细--*/
 #xianzhong_div { width:100%; height:auto; overflow:hidden; background:#FFF; font-size: 80%; }
@@ -474,5 +470,9 @@ header { width:95%; height:auto; overflow:auto; margin:0 auto; margin-top:2%; }
 }
 #zhifu_div_left img { float:left; padding-top:5px; padding-right:9px;}
 #zhifu_div_left { width:90%; height:auto; overflow:hidden; background:#FFF; font-size:70%; margin:2% auto;}
+/*--服务内容--*/
+#fuwu { width:100%; height:auto; overflow:hidden; background:#FFF; margin-bottom:4px; }
+#fuwu_div1 { width:33%; height:auto; overflow:hidden; float:left; font-size:70%; text-align:center; padding:2% 0; border-right:1px solid #CCC; }
 
-
+#fuwu_m { width:100%; height:auto; overflow:hidden; background:#FFF; margin-bottom:4px; font-size:80%; }
+#fuwu_m_div { width:33%; height:auto; overflow:hidden; float:left; text-align:center; }

@@ -3,56 +3,60 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>无标题文档</title>
+<title>填写订单信息</title>
 <style>
 div { width:100%; height:auto; overflow:hidden; margin:0 auto; }
 ul { list-style:none; font-size:70%; } 
-li { padding:3% 2%; }
+li { padding:1% 0; }
 </style>
-<link rel="stylesheet" type="text/css" href="css/content.css">
-<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
+<include file="Public:tanchuang" />
+
 </head>
 
-<body>
+<body style="position:relative;">
 <div id="app" style="background:#DADADA;">
-<!--<div id="header"><img src="image/zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
 <div class="conttop_div1"><</div>
 <div id="shezhi_title">填写订单信息</div>
-<div class="conttop_div3"><img src="image/zhuce_img4.jpg" /></div>
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
 </div>
-<p style=" padding:2% 2%; font-size: 70%;">您正在为<span style="color:#0C3;">甑子丹</span>参保：</p>
+</div>
+<include file="Public:tanchu" />
+<p style=" padding:2% 2%; font-size: 70%;">您正在为<span style="color:#0C3;">{$cinfo['cname']}</span>参保：</p>
 <p style="padding: 1% 2%; background: #FFF; font-size: 70%;">费用明细</p>
-<form name="zhifu">
+<form method="post" action="{:U('Pay/dingdanzhifu')}">
 <table style="background:#FFF; font-size:70%; padding: 0% 2%;" width="100%" border="0">
    <tr>
     <td height="10" colspan="2"><hr/></td>
     </tr>
   <tr>
     <td width="50%" height="35">保费小计</td>
-    <td width="50%" align="right">3820.17</td>
+    <td width="50%" align="right">{$cinfo['sum']}</td>
   </tr>
   <tr>
     <td  height="35">服务费</td>
-    <td align="right">300.00</td>
+    <td align="right">{$cinfo['service']}</td>
   </tr>
   <tr>
     <td height="35">费用共计</td>
-    <td align="right">4120.17</td>
+    <td align="right">{$cinfo['count']}</td>
   </tr>
     <tr>
     <td height="10" colspan="2"><hr/></td>
     </tr>
   <tr>
     <td height="35">实付款</td>
-    <td align="right">4120.17</td>
+    <td align="right">{$cinfo['count']}</td>
   </tr>
      <tr>
     <td height="10" colspan="2"><hr/></td>
     </tr>
-  <tr>
-    <td height="35">投保人信息<span style="color:#F00;">*</span></td>
-    <td align="right">王五 &nbsp;> </td>
+    <tr>
+    <td colspan="2" height="35">
+    <a href="{:U('Tinfo/addtinfo',array('cid' => $cinfo['cid']))}" style="color: black"><li style="list-style: none">投保人信息<span style="color:#F00;">*</span> <span style="float: right;">{$tinfo['tname']} &nbsp;></span></li></a>
+   </td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -60,8 +64,8 @@ li { padding:3% 2%; }
   </tr>
 </table>
 
-
-<p style="text-align:center; padding:30px 0 25px 0; background:#FFF; font-size: 90%;"><input style="background:#F90; padding:10px; " type="button" name="ezhifu" value="同意服务协议，立即结算"/></p>
+<input type="hidden" name="cid" value="{$cid}"></input>
+<p style="text-align:center; padding:30px 0 25px 0; background:#FFF; font-size: 90%;"><input style="background:#F90; padding:10px; " type="submit" value="同意服务协议，立即结算"/></p>
   <p style="text-align: center; padding-top: 5px; background: #FFF; font-size: 80%;">《同意前程保服务协议》</p>
 </form>
 </div>

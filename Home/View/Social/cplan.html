@@ -80,38 +80,19 @@ $(function(){
 	})
 });
 </script>
-
-<script type="text/javascript">
-//===========================点击展开关闭效果====================================
-function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
-var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
-var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
-var openTip = oOpenTip || "";
-var shutTip = oShutTip || "";
-if(targetObj.style.display!="none"){
-   if(shutAble) return;
-   targetObj.style.display="none";
-   if(openTip  &&  shutTip){
-    sourceObj.innerHTML = shutTip; 
-   }
-} else {
-   targetObj.style.display="block";
-   if(openTip  &&  shutTip){
-    sourceObj.innerHTML = openTip; 
-   }
-}
-}
-</script>
+<include file="Public:tanchuang" />
 </head>
-
-<body>
+<body style="position:relative;">
 <div id="app" style="background:#DADADA;">
 <form method="post" action="{:U('Social/detail')}">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
 <div class="conttop_div1"><</div>
 <div id="shezhi_title">设置{$cinfo['cname']}的参保方案</div>
-<div class="conttop_div3"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></div>
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
+</div>
+</div>
+<include file="Public:tanchu" />
 </div>
 <div id="dingdan_top"> &nbsp;&nbsp;&nbsp;参保城市：{$cinfo['city']}<span style="float:right;">截点日：每月4号 &nbsp;&nbsp;&nbsp;</span></div>
 <div id="shezhi_top">
