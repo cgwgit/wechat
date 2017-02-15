@@ -8,17 +8,16 @@
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
 </head>
 <include file="Public:tanchuang" />
-<body style="position:relative;font-size: 80%;">
+<body style="position:relative;font-size: 100%;">
 <div id="app" style="background:white;">
-<!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
-<div class="conttop_div1"><img src="{$Think.const.IMG}wodeqianchengbao2.jpg" /></div>
-<div id="shebao_jisuanqi"><img src="{$Think.const.IMG}wodecanbaoren1.jpg" /></div>
+<div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white"><</a></div>
+<div class="conttop_divmiddle" style="text-align: center;"><span style="font-size: 130%;">我的待参保人</span></div>
 <div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
 </div>
 </div>
 <include file="Public:tanchu" />
-<div id="content" style="font-size: 15%">
+<div id="content">
 <div id="content_nav">
 <a href="{:U('My/ycperson')}"><div id="content_daicanbao_navleft">已参保</div></a>
 <div id="content_daicanbao_navright">待参保</div>
@@ -35,7 +34,7 @@
 </ul>
 </div>
 </div>
-<if condition="$yperson == null" >
+<if condition="$ncperson == null" >
 <p style="text-align:center; margin:3%;">暂无参保人</p>
 </if>
 <a href="{:U('Cinfo/addperson')}">
@@ -43,7 +42,6 @@
 </a>
 </div>
 </div>
-<!-- <include file="Public:footer" /> -->
 </div>
 
 </body>

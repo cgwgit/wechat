@@ -6,8 +6,8 @@
 <title>参保方案</title>
 <style>
 div { width:100%; height:auto; overflow:hidden; margin:0 auto; }
-ul { list-style:none; font-size:70%; } 
-li { padding:3% 2%; }
+ul { list-style:none; font-size:100%; } 
+li { padding:1% 2%; }
 </style>
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
@@ -19,14 +19,14 @@ li { padding:3% 2%; }
 <script type="text/javascript">
 $(function(){
 	$('#monthpicker').monthpicker({
-        years: [2017,2016, 2015, 2014, 2013,],
+        years: [2017, 2018, 2019, 2020, 2021,2022,],
         topOffset: 6,
         onMonthSelect: function(m, y) {
           console.log('Month: ' + m + ', year: ' + y);
         }
     });
 	$('#monthly').monthpicker({
-		years: [2017, 2016, 2015, 2014, 2013],
+		years: [2017, 2018, 2019, 2020, 2021,2022,],
         topOffset: 6
 	})
 });
@@ -36,14 +36,14 @@ $(function(){
 <script type="text/javascript">
 $(function(){
 	$('#monthpicker').monthpicker({
-        years: [2017,2016, 2015, 2014, 2013,],
+        years: [2017, 2018, 2019, 2020, 2021,2022,],
         topOffset: 6,
         onMonthSelect: function(m, y) {
           console.log('Month: ' + m + ', year: ' + y);
         }
     });
 	$('#monthly1').monthpicker({
-		years: [2017, 2016, 2015, 2014, 2013],
+		years: [2017, 2018, 2019, 2020, 2021,2022,],
         topOffset: 6
 	})
 });
@@ -52,14 +52,14 @@ $(function(){
 <script type="text/javascript">
 $(function(){
 	$('#monthpicker').monthpicker({
-        years: [2017,2016, 2015, 2014, 2013,],
+        years: [2017, 2018, 2019, 2020, 2021,2022,],
         topOffset: 6,
         onMonthSelect: function(m, y) {
           console.log('Month: ' + m + ', year: ' + y);
         }
     });
 	$('#monthly2').monthpicker({
-		years: [2017, 2016, 2015, 2014, 2013],
+		years: [2017, 2018, 2019, 2020, 2021,2022,],
         topOffset: 6
 	})
 });
@@ -68,39 +68,38 @@ $(function(){
 <script type="text/javascript">
 $(function(){
 	$('#monthpicker').monthpicker({
-        years: [2017,2016, 2015, 2014, 2013,],
+        years: [2017, 2018, 2019, 2020, 2021,2022,],
         topOffset: 6,
         onMonthSelect: function(m, y) {
           console.log('Month: ' + m + ', year: ' + y);
         }
     });
 	$('#monthly3').monthpicker({
-		years: [2017, 2016, 2015, 2014, 2013],
+		years: [2017, 2018, 2019, 2020, 2021,2022,],
         topOffset: 6
 	})
 });
 </script>
 <include file="Public:tanchuang" />
 </head>
-<body style="position:relative;">
-<div id="app" style="background:#DADADA;">
+<body style="position:relative;font-size: 100%">
+<div id="app" style="background:#DADADA; height: auto; ">
 <form method="post" action="{:U('Social/detail')}">
-<!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
-<div class="conttop_div1"><</div>
+<div class="conttop_div1" ><a href="{:U('Social/social_buy',array('cid' => $cinfo['id']))}" style="color: white"><</a></div>
 <div id="shezhi_title">设置{$cinfo['cname']}的参保方案</div>
 <div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
 </div>
 </div>
 <include file="Public:tanchu" />
 </div>
-<div id="dingdan_top"> &nbsp;&nbsp;&nbsp;参保城市：{$cinfo['city']}<span style="float:right;">截点日：每月4号 &nbsp;&nbsp;&nbsp;</span></div>
+<div id="dingdan_top" style="font-size: 100%"> &nbsp;&nbsp;&nbsp;参保城市：{$cinfo['city']}<span style="float:right;">截点日：每月4号 &nbsp;&nbsp;&nbsp;</span></div>
 <div id="shezhi_top">
 <div id="shezhi_top_left">社保</div>
 <div id="shezhi_top_right"><span style="float:right;margin-top: 3px"onclick="openShutManager(this,'box')"><input type="checkbox" name="stype[]" value="1"></input></span></div>
 
 </div>
-<div id="box" style="display:none; background:#FFF; margin:1% 0; padding-bottom:3%;">
+<div id="box" style="display:none; background:#FFF; margin:0% 0; padding-bottom:0%;">
 <ul>
 <li style="border-bottom:1px solid #CCC;">社保类型<span style="float:right;"><if condition="$cinfo['htype'] eq 0">城市户口<else />农村户口</if></span></li>
 <li style="border-bottom:1px solid #CCC;">起缴月份<input type="text" name="stime" class="input" id="monthly" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;"></li>
@@ -109,11 +108,11 @@ $(function(){
 </ul>
 </div>
 <div id="datePlugin"></div>
-<div id="shezhi_conter" style="padding-bottom:5%;">
+<div id="shezhi_conter" style="padding-bottom:0%;">
 <div id="shezhi_conter_left">公积金</div>
 <div id="shezhi_conter_right"><span style="float:right;margin-top: 3px"; onclick="openShutManager(this,'box3')"><input type="checkbox" name="stype[]" value="2"></input></span></div>
 </div>
-<div id="box3" style="display:none;  background:#FFF; margin:1% 0;">
+<div id="box3" style="display:none;  background:#FFF; margin:0% 0;">
 <ul>
 <li style="border-bottom:1px solid #CCC;">起缴月份<input type="text" name="gstime" class="input" id="monthly2" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;"></li>
 <li style="border-bottom:1px solid #CCC;">截止月份<input type="text" name="getime"class="input" id="monthly3" style="width:22%; height:13px; line-height:13px; padding:2px; float:right;"></li>

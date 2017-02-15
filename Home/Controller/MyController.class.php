@@ -156,36 +156,6 @@ class MyController extends Controller{
                 $this->display();exit;
         }
     }
-    //修改登录密码
-    public function editpwd(){
-    	if(IS_POST){
-            preg_match("/^1[3578][0-9]{9}$/", I('post.telphone')) ? $telphone = trim(I('post.telphone')) : $err = '请填写正确的手机号';
-            if($err){
-                $this->error($err, U('editpwd'),1);exit;
-            }
-		   $telrst = M('user')->where(array('tel' => $telphone))->find();
-		   if($telrst){
-	           if(trim(I('post.checkcode')) == cookie('code') && I('post.checkcode') !=NULL){
-	              $uid = session('uid');
-	              $pwd = I('post.pwd');
-	              $data = array(
-	                 'id' => $uid,
-	                 'pwd' => $pwd
-	              	);
-	              $rst = M('user')->save($data);
-	              if($rst){
-	              	$this->success('密码修改成功', U('Mysetinfo'), 1);exit;
-	              }
-	           }else{
-	           	 $this->error('验证码不正确',U('editpwd'), 1);exit;
-	           }
-            }else{
-            	$this->error('手机号不正确',U('editpwd'),1);exit;
-            }
-    	}else{
-    		$this->display();
-    	}
-    }
 
     //显示二维码
     public function erweima(){
@@ -234,6 +204,15 @@ class MyController extends Controller{
     	 if($err){
     	 	$this->error($err,U('Mysetinfo'),1);exit;
     	 }
+       $tinfo = M('tinfo')->where(array('uid' => session('uid')))->find();
+          $data = array(
+             'id' => $tinfo['id'],
+             'email' => $email
+            );
+          $rst = M('tinfo')->save($data);
+          if($rst){
+              $this->redirect('Mysetinfo');exit;
+            }
     	}else{
     		$this->display();
     	}

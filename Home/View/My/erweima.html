@@ -6,27 +6,28 @@
 <title>二维码</title>
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
-</head>
 <include file="Public:tanchuang" />
 
-<body style="position:relative;font-size: 80%>
+</head>
+
+<body style="background:#fdb813;position:relative;font-size: 100%">
 <div id="app">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
-<div class="conttop_div1"><img src="{$Think.const.IMG}zhuce_img2.jpg" /></div>
-<div class="conttop_divmiddle">我的二维码</div>
+<div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white;font-size: 120%"><</a></div>
+<div class="conttop_divmiddle" style="text-align: center;"><span style="font-size: 130%;">我的二维码</span></div>
 <div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
 </div>
+</div>
 <include file="Public:tanchu" />
-
 <div id="logo"><img src="{$Think.const.IMG}zhuce_logo.jpg"  /></div>
 <form action="" name="form1">
  <ul>
-	 	 <li style="text-align:center;">手机扫描下方二维码<br/>即可成为您推荐的好友</li>
+         <li style="text-align:center;">手机扫描下方二维码<br/>即可成为您推荐的好友</li>
          <br/>
          <li style="text-align:center;"><img src="{$Think.const.IMG}erweima.jpg" /></li>  
          <li style="text-align:center; padding:6% 0;">咨询电话：400-655-6063</li>
-	 </ul>
+     </ul>
 </form>
 
 </div>

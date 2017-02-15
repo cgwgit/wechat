@@ -51,7 +51,6 @@ body{ background: #FCD103; font-family: '微软雅黑'; color: #fff; font-size: 
 <div>
     <a id="href" id="btn-now" href="<?php echo($jumpUrl); ?>">立即跳转</a> 
     <button id="btn-stop" type="button" onclick="stop()">停止跳转</button> 
-    <a id="href" id="btn-now" href="<?php echo(U('Public/logout')); ?>">重新登录</a> 
 </div>
 </div>
 <script type="text/javascript">

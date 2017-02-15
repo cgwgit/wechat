@@ -26,14 +26,27 @@ class SocialfareController extends Controller {
     //社保费用计算
     public function socialfare(){
     	$post = I('post.');
-    	if($post['ctype'] == '1'){
-    		$data = $this->sumbaoxian($post);
-    	}elseif($post['ctype'] == '0'){
-            $data = $this->sumgj($post);
-    	}else{
-        	$data = cookie('data');
+        !empty($post['stype']) ? $stype = $post['stype'] : $err = '请选择参保类型';
+        !empty($post['stime']) ? $stime = substr($post['stime'],0,7) :$err='请选择参保开始时间';
+        !empty($post['etime']) ? $etime = substr($post['etime'],0,7) : $err = '请选择参保截止时间';
+        is_numeric($post['sbase']) ? $sbase = $post['sbase'] : $err = '请填写正确的参保基数';
+        is_numeric($post['gbase']) ? $gbase = $post['gbase'] : $err = '请填写正确的公积金基数';
+        !empty($post['city']) ? $city = $post['city'] : $err = '请选择参保城市';
+        if($err){
+            $this->error($err,U('jisuan'),1);exit;
         }
-        $this->assign('data', $data);
+        $time = strtotime($etime)-strtotime($stime);
+        $months = $time/2592000;
+        //计算社保.公积金
+    	if($post['stype'][0] == 1 && !isset($post['stype'][1])){
+            //计算社保费用
+            $ctype = 1;
+            $this->sumbaoxian($sbase,$ctype);
+    	}elseif($post['stype'][0] == 2 && !isset($post['stype'][1])){
+            echo "2";die;
+    	}else{
+        	echo "3";die;
+        }
     	$this->display();
     }
     //保险险种明细
@@ -43,39 +56,20 @@ class SocialfareController extends Controller {
         $this->display();
     }
 
-    //计算保费明细
-    public function sumbaoxian($info){
-    	$base = '1';
-    	$endowment = '1';
-    	$medical = '1';
-    	$unemployment = '1';
-    	$employment = '1';
-    	$maternity = '1';
-    	$dabing = '1';
-    	$canjiren = '1';
-    	$count = '1';
-    	$allcount = '1';
-    	$ctime = '1';
-    	$ccity = '';
-    	$hcity = '';
-    	$data = array(
-            'base' => $base,
-	    	'endowment' => $endowment,
-	    	'medical' => $medical,
-	    	'unemployment' => $unemployment,
-	    	'employment' => $employment,
-	    	'maternity' => $maternity,
-	    	'dabing' => $dabing,
-	    	'canjiren' => $canjiren,
-	    	'count' => $count,
-	    	'allcount' => $allcount,
-	    	'ctime' => $ctime,
-	    	'ccity' => $ccity,
-	    	'hcity' => $hcity
-    		);
-    	// var_dump($data);die;
-    	cookie('data', $data ,time()+3600);
-    	return $data;
+    //计算社保保费
+    public function sumbaoxian($sbase,$ctype){
+        if($ctype  == 1){
+            $wuxian['ctype'] = $ctype;
+            $wuxian['endowment'] = $sbase*0.26;
+            $wuxian['unemployment'] = $sbase*0.02;
+            $wuxian['yiliao'] = $sbase*0.11;
+            $wuxian['employment'] = $sbase*0.007;
+            $wuxian['maternity'] = $sbase*0.01;
+            $wuxian['service'] = $months*80;
+            $wuxian['count'] = $wuxian['endowment']+$wuxian['unemployment']+$wuxian['yiliao']+$wuxian['employment']+$wuxian['maternity']+$wuxian['service'];
+            $this->assign('wuxian',$wuxian);
+        }
+        $this->display();
     }
     //计算公积金
     public function sumgj($info){
@@ -98,6 +92,10 @@ class SocialfareController extends Controller {
     public function gjjdetail(){
     	$detail = cookie('data');
     	$this->assign('detail', $detail);
+        $this->display();
+    }
+    //保费明细
+    public function detail(){
         $this->display();
     }
 }

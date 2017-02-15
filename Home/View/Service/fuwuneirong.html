@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>服务内容</title>
+<style>
+div { width:100%; height:auto; overflow:hidden; margin:0 auto; }
+ul { list-style:none; font-size:70%; } 
+li { padding:3% 2%; }
+</style>
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}jquery.monthpicker.css">
+<!--日期-->
+<script type="text/javascript" src="{$Think.const.JS}jquery.min.riqi.js"></script>
+<script src="{$Think.const.JS}jquery.monthpicker.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#monthpicker').monthpicker({
+        years: [2017,2016, 2015, 2014, 2013,],
+        topOffset: 6,
+        onMonthSelect: function(m, y) {
+          console.log('Month: ' + m + ', year: ' + y);
+        }
+    });
+	$('#monthly').monthpicker({
+		years: [2017, 2016, 2015, 2014, 2013],
+        topOffset: 6
+	})
+});
+</script>
+
+
+
+<script type="text/javascript">
+//===========================点击展开关闭效果====================================
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = shutTip; 
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = openTip; 
+   }
+}
+}
+</script>
+</head>
+<include file="Public:tanchuang" />
+<body style="position:relative;">
+<div id="app" style="background:#DADADA;">
+<!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
+<div id="conttop">
+<div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white;"><</a></div>
+<div class="conttop_divmiddle" align="center"><span style="color:white;font-size: 130%;">服务内容</span></div>
+<!-- <div id="shebao_title"><img src="{$Think.const.IMG}xinzengcanbaoren.jpg" /></div> -->
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
+</div>
+</div>
+<include file="Public:tanchu" />
+
+<div id="box4" style="display:none; width:90px; background:#fdb813; margin:1% 2%; right:0px; position:absolute; z-index:9999; padding-bottom:1%;">
+<ul>
+<li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="{$Think.const.IMG}home.png" />首页</li>
+<li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="{$Think.const.IMG}news.png" />消息</li>
+<li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="{$Think.const.IMG}fuwubiaozhi.png" />服务大厅</li>
+</ul>
+</div>
+<div id="fuwu">
+<div id="fuwu_div1">餐A<br/><span style="color:#F90;">3个月</span>服务费<br/>
+<span style="font-size:150%; color:#3C3;">&yen;300</span>/人</div>
+<div id="fuwu_div1">套餐B<br/><span style="color:#F90;">6个月</span>服务费<br/>
+<span style="font-size:150%; color:#3C3;">&yen;540</span>/人</div>
+<div id="fuwu_div1" style="border-right:0px;">套餐C<br/><span style="color:#F90;">12个月</span>服务费<br/>
+<span style="font-size:150%; color:#3C3;">&yen;960</span>/人</div>
+</div>
+<div id="fuwu_m">
+<table width="100%" border="0" style="font-size:90%;">
+  <tr>
+    <td width="20%" align="right"><img src="{$Think.const.IMG}fuwu_tubiao.jpg" /></td>
+    <td width="20%">标准服务</td>
+    <td width="20%" align="center"><img src="{$Think.const.IMG}tu.png" /></td>
+    <td width="20%" align="right"><img src="{$Think.const.IMG}zengzhi_tubiao.png" /></td>
+    <td width="20%" align="left">增值业务</td>
+  </tr>
+</table>
+</div>
+<div id="fuwu_m" style="font-size:90%; padding:0 0%;">
+<table width="100%" border="0">
+  <tr>
+    <td height="25" width="50%">代办五险缴纳</td>
+    <td>异地就医备案</td>
+  </tr>
+  <tr>
+    <td height="25">代办住房公积金缴纳</td>
+    <td>医疗保险报销</td>
+  </tr>
+  <tr>
+    <td height="25">代办社保基数调整</td>
+    <td>社保转移</td>
+  </tr>
+  <tr>
+    <td height="25">代办公积金基数调整</td>
+    <td>公积金转移</td>
+  </tr>
+  <tr>
+    <td height="25">协助提供参保证明</td>
+    <td>生育备案</td>
+  </tr>
+  <tr>
+    <td height="25">协助提供公积金提取、</td>
+    <td>生育待遇申请</td>
+  </tr>
+  <tr>
+    <td height="25">按月转账申请盖章材料</td
+    ><td>..........</td>
+  </tr>
+</table>
+</div>
+<p style="font-size:50%;"><span style="color:#F00;">注</span>：具体增值服务可办理项以当地政策和无忧保规则为准,服务费不做拆分。</p>
+<div id="fuwu_m" style="font-size:100%; padding:0 0%;">
+<table width="100%" border="0">
+  <tr>
+    <td width="19%" align="right";><img src="{$Think.const.IMG}tubiao.png" /></td>
+    <td width="78%"><span style="font-size: 90%; font-weight: bold;">前程保服务优势！</span><br/><span style="font-size: 60%; color: #F90;">让您更轻松缴社保</span></td>
+    <td width="3%"><a style="float:right;" href="###" onclick="openShutManager(this,'box')"><img src="{$Think.const.IMG}jian1.png" /></a></td>
+  </tr>
+</table>
+<div id="box" style=" display:none; background:#FFF; margin:1% 0; padding-bottom:3%;">
+<table width="100%" border="0" style="font-size:80%;">
+  <tr>
+    <td width="12%" align="center" valign="top"><img style="padding-top:10px;" src="{$Think.const.IMG}img1.png" /></td>
+    <td width="88%" valign="top"><span style="font-weight:bold;">分段计算/自动调整</span><br/><span style="font-size:60%;">根据分段计算规则对当年基数进行专业预判，提前向用户预收补差费用，并在调整ji月为用户做自动调基，防止社保断缴。</span></td>
+  </tr>
+      <tr>
+    <td height="10" colspan="2"><hr/></td>
+    </tr>
+  <tr>
+    <td align="center"><img style="padding-top:10px;" src="{$Think.const.IMG}img2.png" /></td>
+    <td><span style="font-weight:bold;">便捷体验/清晰透明</span><br/><span style="font-size:60%;">从登录微信平台到社保订单生成，3分钟完成社保公积金缴纳，随时随地进行个人订单查询。</span></td>
+  </tr>
+      <tr>
+    <td height="10" colspan="2"><hr/></td>
+    </tr>
+  <tr>
+    <td align="center"><img style="padding-top:10px;" src="{$Think.const.IMG}img3.png" /></td>
+    <td><span style="font-weight:bold;">微信操作/简单易用</span><br/><span style="font-size:60%;">用前程保是目前是国内在微信平台提供新型社保缴纳服务平台，轻松上手，简单易用。</span></td>
+  </tr>
+      <tr>
+    <td height="10" colspan="2"><hr/></td>
+    </tr>
+</table>
+
+</div>
+<p style="text-align:center; padding:5% 0;">咨询电话：400-6661-3331</p>
+</div>
+</div>
+</body>
+</html>

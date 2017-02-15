@@ -7,105 +7,104 @@
 <meta content="yes" name="apple-mobile-web-app-capable">
 <meta content="black" name="apple-mobile-web-app-status-bar-style">
 <meta content="telephone=no" name="format-detection">
-<title>无标题文档</title>
+<title>社保计算</title>
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
 <link rel="stylesheet" href="{$Think.const.CSS}cityPicker.css">
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}jquery.monthpicker.css">
+<style>
+ul { list-style:none; }
+ul li { padding:2% 0; border-bottom:1px solid #CCC; }
+	
+</style>
+<script type="text/javascript" src="{$Think.const.JS}hDate.js"></script>
+<link href="{$Think.const.CSS}hDate.css" rel="stylesheet" />
+
 <!--城市-->
-<script src="{$Think.const.JS}jquery1.8.3.min.js"></script>
+<script src="{$Think.const.JS}jquery-2.1.4.min.js"></script>
 <script src="{$Think.const.JS}cityPicker.js"></script>
 <!--时间-->
 <script type="text/javascript" src="{$Think.const.JS}hDate.js"></script>
 <link href="{$Think.const.CSS}hDate.css" rel="stylesheet" />
-</head>
 <script type="text/javascript">
-	$(function(){
-		$("#cityone").click(function(){
-			window.location.href="{:U('Area/getProvinces')}";
-		})
-	})
+//===========================点击展开关闭效果====================================
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = shutTip; 
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = openTip; 
+   }
+}
+}
 </script>
+</head>
+<include file="Public:tanchuang" />
 <body>
-<div id="app">
+<div id="app" style="background:#fff;">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
-<div class="conttop_div1"><img src="{$Think.const.IMG}index_img1.jpg"  /></div>
-<div id="shebao_jisuanqi"><img src="{$Think.const.IMG}baofeijisuan1.jpg" /></div>
-<div class="conttop_div3"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></div>
+<div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white"><</a></div>
+<div id="shezhi_title">社保计算</div>
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
+</div>
+</div>
+<include file="Public:tanchu" />
+<div id="box4" style="display:none; width:120px; background:#fdb813; margin:1% 2%; right:0px; position:absolute; z-index:9999; padding-bottom:1%;">
+<ul>
+<li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="{$Think.const.IMG}home.png" />首页</li>
+<li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="{$Think.const.IMG}news.png" />消息</li>
+<li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="{$Think.const.IMG}fuwubiaozhi.png" />服务大厅</li>
+</ul>
 </div>
 <div id="banner"><img src="{$Think.const.IMG}baofeijisuan2.jpg" width="100%" /></div>
-<div id="shebao_jisuanqi_middle">
-<form name="form1">
-<div id="cityone">&nbsp;&nbsp;&nbsp;参保城市<input style="width:60%; height:24px; font-size:1em; margin-left:2%; background-color:transparent; color:#FFF; border:0px;" type="text" name="city" readonly/>
-<span><img src="{$Think.const.IMG}shebaojisuan4.png" width="35" height="37" style="width: 22px" /></span>
-</div>
-<div> &nbsp;&nbsp;&nbsp;户口城市<input style="width:60%; height:24px; font-size:1em; margin-left:2%; background-color:transparent; color:#FFF; border:0px;" type="text" name="hukoucengshi" class="citytwo" readonly/>
-<span><img src="{$Think.const.IMG}shebaojisuan4.png" width="35" height="37" style="width: 22px" /></span>
-<script type="text/jscript">
-    $(".citytwo").CityPicker();
-</script>
-</div>
-<div> &nbsp;&nbsp;&nbsp;户口性质
-<span><img src="{$Think.const.IMG}shebaojisuan4.png" width="35" height="37" style="width: 22px" /></span>
-</div>
-
-<div> &nbsp;&nbsp;&nbsp;参保年月<input style="width:60%; height:24px; font-size:1em; margin-left:2%; background-color:transparent; color:#FFF; border:0px;" id="Text1" onClick="calendar.show({ id: this })" type="text" readonly="readonly" />
-<span><img src="{$Think.const.IMG}shebaojisuan4.png" width="35" height="37" style="width: 22px" /></span>
-</div>
-<div> &nbsp;&nbsp;&nbsp;计算社保费用
-<span><img src="{$Think.const.IMG}shebaojisuan4.png" width="35" height="37" style="width: 22px" /></span>
-</div>
-<div> &nbsp;&nbsp;&nbsp;计算公积金费用
-<span><img src="{$Think.const.IMG}shebaojisuan4.png" width="35" height="37" style="width: 22px" /></span>
-</div>
-
-</form>
-</div>
-<div id="baofei_jisuan_bottom">
-<form>
-<table width="100%" border="0">
+<form method="post" action="{:U('Socialfare/socialfare')}">
+<div id="shebao_jisuanqi_middle" style="background:white;color: black;" >
+<ul>
+<a href="{:U('Social/selectCity',array('jid' =>2))}"><li>参保城市
+<if condition="$city!=null"><span style="float: right;">{$city}</span><else /><span style="float: right;"><img src="{$Think.const.IMG}jiantou.jpg" />
+</span>
+ </if>
+</li>
+</a>
+<li><table width="100%" border="0">
   <tr>
-    <td width="15%" height="39"><span>保险外伤</span></td>
-    <td width="17%"><font>工伤</font></td>
-    <td width="18%"><font>医疗</font></td>
-    <td width="17%"><font>养老</font></td>
-    <td width="17%"><font>生育</font></td>
-    <td width="16%"><font>失业</font></td>
+    <td width="59%">户口性质</td>
+    <td width="13%">农村</td>
+    <td width="9%"><input type="radio" name="pay" value="1" /></td>
+    <td width="13%">城市</td>
+    <td width="6%"><input type="radio" name="pay" value="2" /></td>
   </tr>
-  <tr>
-    <td height="37"><span>保险代理</span></td>
-    <td><font>工伤</font></td>
-    <td><font>医疗</font></td>
-    <td><font>养老</font></td>
-    <td><font>生育</font></td>
-    <td><font>失业</font></td>
-  </tr>
-  <tr>
-    <td height="32"><span>员工人数</span></td>
-    <td colspan="5" align="center">
-    <input style="width:20%; height:20px;" type="text" name="baofei"/>
-    </td>
-    </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td colspan="2" align="center"><img src="{$Think.const.IMG}baofeijisuan3.jpg" /></td>
-    <td colspan="2" align="right"><img src="{$Think.const.IMG}shebao_img4.png" /></td>
-    </tr>
 </table>
+</li>
+<li>参保年月<input name="stime" style="width:60%; height:24px; font-size:1em; margin-left:2%; background-color:transparent; color:#000; border:0px;" id="Text1" onClick="calendar.show({ id: this })" type="text" readonly="readonly" placeholder="请选择参保年月" /></li>
+<li>截止年月<input name="etime" style="width:60%; height:24px; font-size:1em; margin-left:2%; background-color:transparent; color:#000; border:0px;" id="Text1" onClick="calendar.show({ id: this })" type="text" readonly="readonly" placeholder="请选择截止年月" /></li>
+<li>计算社保费用<span style="float:right;margin-top: 3px" onclick="openShutManager(this,'box')"><input type="checkbox" name="stype[]" value="1" ></input></span></li>
+<li  id="box" style="display:none; background:#FFF; margin:1% 0; padding-bottom:3%;">
+<ul>
+<li>参保基数<span style="float:right;"><input style="width:25%; float:right;" type="text" name="sbase" value="3036"/></span></li>
+</ul>
+</li>
+<li>计算公积金费用<span style="float:right;margin-top: 3px" onclick="openShutManager(this,'box1')"><input type="checkbox" name="stype[]" value="2"></input></span></li>
+<li id="box1" style="display:none; background:#FFF; margin:1% 0; padding-bottom:3%;">
+<ul>
+<li>参保基数<span style="float:right;"><input style="width:25%; float:right;" type="text" name="gbase" value="3036"/></span></li>
+</ul>
+</li>
+</ul>
+<input type="hidden" name="city" value="{$city}"></input>
+</div>
+<p style="text-align:center; padding:30px 0 25px 0; background:#FFF; font-size: 90%;border: 0"><input style="background:#F90; padding:8px; " type="submit" value="计算保费"/></p>
 </form>
 </div>
-
-
-</div>
-<div id="contbottom">
-<div class="contbottom_div1"><img src="{$Think.const.IMG}zhuce_img7.jpg"  /></div>
-<div class="contbottom_div2"><img src="{$Think.const.IMG}zhuce_img8.jpg"  /></div>
-<div class="contbottom_div"><img src="{$Think.const.IMG}zhuce_img9.jpg"  /></div>
-<div class="contbottom_div"><img src="{$Think.const.IMG}zhuce_img10.jpg"  /></div>
-<div class="contbottom_div"><img src="{$Think.const.IMG}zhuce_img11.jpg"  /></div>
-</div>
-</div>
-
 </body>
 </html>

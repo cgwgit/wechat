@@ -6,14 +6,11 @@
 <title>险种收费明细</title>
 <style>
 div { width:100%; height:auto; overflow:hidden; margin:0 auto; }
-ul { list-style:none; font-size:70%; } 
+ul { list-style:none; font-size:100%; } 
 li { padding:3% 2%; }
 </style>
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
-
-
-
 <script type="text/javascript">
 //===========================点击展开关闭效果====================================
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
@@ -38,11 +35,12 @@ if(targetObj.style.display!="none"){
 
 </head>
 <include file="Public:tanchuang" />
-<body style="position:relative;">
+<body style="position:relative;font-size: 100%">
 <div id="app" style="background:#DADADA;">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <if condition="$chargeinfo['sid'] eq 1">
 <div id="conttop">
+<div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white"><</a></div>
 <div class="conttop_div1"></div>
 <div id="shezhi_title">社保险种收费明细</div>
 <div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
@@ -83,16 +81,19 @@ if(targetObj.style.display!="none"){
   </tr>
   <tr>
     <td height="45" >当前时段费用小计</td>
-    <td align="right">{$chargeinfo['wuxian']}X{$chargeinfo['smonths']}个月={$chargeinfo['wuxian']*$chargeinfo['smonths']}</td>
+    <td align="right">{$chargeinfo['wuxian']|number_format=###,2}*{$chargeinfo['smonths']}个月={$chargeinfo['wuxian']*$chargeinfo['smonths']|number_format=###,2}</td>
   </tr>
 </table>
 </div>
 <elseif condition="$chargeinfo['sid'] eq 2" />
-  <div id="conttop">
+<div id="conttop">
+<div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white"><</a></div>
 <div class="conttop_div1"></div>
-<div id="shezhi_title">公积金险种收费明细</div>
-<div class="conttop_div3"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></div>
+<div id="shezhi_title">公积金收费明细</div>
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
 </div>
+</div>
+<include file="Public:tanchu" />
 <div id="xianzhong_div">
 <ul>
 <li>参保基数：{$chargeinfo['gbase']}</li>
@@ -111,7 +112,7 @@ if(targetObj.style.display!="none"){
   </tr>
   <tr>
     <td height="45" >当前时段费用小计</td>
-    <td align="right">{$chargeinfo['gjj']}X{$chargeinfo['gmonths']}个月={$chargeinfo['gjj']*$chargeinfo['gmonths']}</td>
+    <td align="right">{$chargeinfo['gjj']}*{$chargeinfo['gmonths']}个月={$chargeinfo['gjj']*$chargeinfo['gmonths']}</td>
   </tr>
 </table>
 </div>

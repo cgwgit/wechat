@@ -7,14 +7,27 @@ class PayController extends Controller {
 	//展示支付订单页面
 	public function dingdanzhifu(){
 	   $post = I('post.');
+	   if(empty($post['tname'])){
+	   	$this->error('参保人信息不能为空',U('Social/orderinfo',array('cid' => $post['cid'])));exit;
+	   }
        $info = M('chargedetail')->where(array('cid' => $post['cid'], 'order_status' =>'0'))->find();
+       $info['allcount'] = number_format($info['allcount'],2);
        $this->assign('info', $info);
        $this->display();
 	}
+
+	//处理订单支付(如果传过来1微信支付，2支付宝支付)
+	public function selectPay(){
+		$order_info = I('post.');
+		if($order_info['pay'] == 1){
+			$this->wxpay($order_info);
+		}else{
+            $this->alipay($order_info);
+		}
+	}
 	//支付宝
-	public function alipay(){
-		// $post = I('post.');
-        $rst = M('chargedetail')->where(array('order_sn' => '300537461160735000'))->find();
+	public function alipay($order_info){
+        $rst = M('chargedetail')->where(array('order_sn' => $order_info['order_sn']))->find();
         if($rst){
         	$config = array(
         		'alipay_service' => C('alipay_service'),
@@ -27,7 +40,7 @@ class PayController extends Controller {
 		    $order_info['order_type'] = 'qiancheng';
 		    $order_info['api_pay_amount'] = $rst['allcount'];
 		    $order_info['pay_sn'] = $rst['order_sn'];
-		    $order_info['body'] = "参保用户ID：{$rst['cid']}, 金额：{$rst['allcount']},订单生成时间：" . time();
+		    $order_info['body'] = "参保用户ID：{$rst['cid']}, 金额：{$rst['allcount']},订单生成时间：" . $rst['1486363487'];
 		    $payment_api = new \Think\Pay\alipay($rst,$order_info);
 		    @header("Location: ".$payment_api->get_payurl()); 
         }
@@ -53,8 +66,8 @@ class PayController extends Controller {
 		
 	}
 	//微信支付
-	public function wxpay(){
-		$rst = M('chargedetail')->where(array('order_sn' => '590537445684296000'))->find();
+	public function wxpay($order_info){
+		$rst = M('chargedetail')->where(array('order_sn' => $order_info['order_sn']))->find();
 		if($rst){
 			$config = array(
         		'appid' => C('appid'),
@@ -66,11 +79,9 @@ class PayController extends Controller {
 	        $order_info['order_type'] = 'baodan_order';
 	        $order_info['pay_sn'] = $rst['order_sn'];
 	        $order_info['api_pay_amount'] = $rst['allcount'];
-	        // Vendor('wxpay.wxpay');
 	        Vendor('wx.example.wxpay');
 	        $payment_api = new \wxpay($rst,$order_info);//使用构造方法初始化一些变量
-	        // $this->assign('pay_url',base64_encode(encrypt($payment_api->get_payurl(),MD5_KEY)));
-	        // $this->display();
+
 	        $payment_api->getPay();
 		}
 	}

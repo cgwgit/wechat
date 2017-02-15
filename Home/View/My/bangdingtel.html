@@ -53,13 +53,12 @@ $(function(){
 </script>
 <include file="Public:tanchuang" />
 </head>
-<body style="background: #fdb813;font-size: 80%">
-<div id="app">
+<body style="background: #fdb813;font-size: 100%">
+<div id="app" style="font-size: 80%">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
 <div class="conttop_div1"><img src="{$Think.const.IMG}index_img1.jpg"  /></div>
-<div class="conttop_div2"><span style="font-size: 10%">绑定手机号</span></div>
-
+<div class="conttop_div2"><span style="font-size: 130%">绑定手机号</span></div>
 <div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
 </div>
 </div>
@@ -69,7 +68,7 @@ $(function(){
 <form action="{:U('My/bangdingtel')}" name="form1" method="post">
 <ul>
 <li>
-<table style="margin:0 auto;" border="0" width="100%" style="font-size: 80%">
+<table style="margin:0 auto;" border="0" width="95%" style="font-size: 80%">
   <tr>
     <td width="31%">新手机号</td>
     <td width="69%"><input style="width:70%; height:24px; line-height:24px;border-radius:6px;" type="text" name="telphone" id="telphone" placeholder="请输入您的新手机号" required="required"/></td>
@@ -77,12 +76,12 @@ $(function(){
 </table>
 </li>
 <li>
-<table style="margin:0 auto;" border="0" width="100%">
+<table style="margin:0 auto;" border="0" width="95%">
   <tr>
     <td width="31%">验证码</td>
     <td width="69%">
-        <input style="width:45%; height:24px; line-height:24px; border-radius:6px;font-size: 70%" type="text" name="checkcode" placeholder="短信验证码"/>
-     <input style="width:40%; height:30px; line-height:24px; border-radius:3px; background-color:#fdb813;" type="button" id="getCodeBtn" value="获取验证码"/>
+        <input style="width:45%; height:24px; line-height:24px; border-radius:6px;" type="text" name="checkcode" placeholder="短信验证码"/>
+     <input style="width:40%; height:30px; line-height:24px; border:0;border-radius:3px; background-color:#fdb813;" type="button" id="getCodeBtn" value="获取验证码"/>
     </td>
   </tr>
 </table>

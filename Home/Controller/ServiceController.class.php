@@ -14,4 +14,21 @@ class ServiceController extends Controller {
     public function index(){
     	$this->display();
     }
+    //服务内容
+    public function fuwuneirong(){
+    	$this->display();
+    }
+
+    //关于我们
+    public function guanyuwomen(){
+        $this->display();
+    }
+    //联系我们
+        public function lianxiwomen(){
+        $this->display();
+    }
+    //首次参保问题
+    public function shoucicanbaowenti(){
+     $this->display();
+    }
 }

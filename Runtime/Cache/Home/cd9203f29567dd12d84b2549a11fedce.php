@@ -29,13 +29,13 @@ if(targetObj.style.display!="none"){
 }
 </script>
 
-<body style="position:relative;font-size: 80%">
+<body style="position:relative;font-size: 100%">
 <div id="app" style="background:#DADADA;">
 <!--<div id="header"><img src="<?php echo (IMG); ?>zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
-<div class="conttop_div1"><img src="<?php echo (IMG); ?>index_img1.jpg" /></div>
-<div id="shebao_title"><img src="<?php echo (IMG); ?>shebao_9.jpg" /></div>
-<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></a>
+<div class="conttop_div1" ><a href="<?php echo U('Index/index');?>" style="font-size: 130%;color: white"><</a></div>
+<div class="conttop_divmiddle" align="center"><span style="color:white;font-size: 130%;"> 买社保</span></div>
+<div class="conttop_div3"><a style="float:right;margin-top: 5px" href="###" onclick="openShutManager(this,'box4')"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></a>
 </div>
 </div>
 <style type="text/css">
@@ -43,7 +43,7 @@ if(targetObj.style.display!="none"){
 		color:black;
 	}
 </style>
-<div id="box4" style="display:none; width:100px; background:#fdb813; margin:1% 2%; right:0px; position:absolute; z-index:9999; padding-bottom:1%;">
+<div id="box4" style="display:none; width:120px; background:#fdb813; margin:1% 4%; right:0px; position:absolute; z-index:9999; padding-bottom:1%;">
 <ul>
 <a href="<?php echo U('Index/index');?>">
    <li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="<?php echo (IMG); ?>home.png" />首页</li>
@@ -58,7 +58,7 @@ if(targetObj.style.display!="none"){
 </div>
 <div id="shebao_div" style="background: #FFF; margin: 1.5% 0; padding: 1% 0; font-size: 85%;"><a href="<?php echo U('shuoming');?>" style="color: black">
 &nbsp;&nbsp;服务说明</span> &nbsp;<span style="color: #F00; font-size: 90%;">社保/公积金同时缴纳仅收一次服务费</span></a></div>
-<?php if($cinfo == NULL): ?><a href="<?php echo U('Cinfo/addperson');?>">
+<?php if($cinfo['id'] == NULL): ?><a href="<?php echo U('Cinfo/addperson');?>">
 <div id="jiaoshebao" style="background:#FFF;">
 <div id="jiaoshebao_img"><img src="<?php echo (IMG); ?>16F58PICk6m_1024_03.jpg" /></div>
 <div id="jiaoshebao_zi">新增参保人</div><br/>
@@ -73,11 +73,12 @@ if(targetObj.style.display!="none"){
 <ul>
 <a href="<?php echo U('Cinfo/selectperson');?>"><li> <p style="color:green"> &nbsp;&nbsp;<?php echo ($cinfo['cname']); ?></p>&nbsp;&nbsp;户口信息:&nbsp;&nbsp;<?php echo ($cinfo['province']); ?>,<?php echo ($cinfo['citys']); ?>,<?php echo ($cinfo['county']); ?>,<?php if($cinfo['htype'] == 0 ): ?>城市<?php else: ?>农村<?php endif; ?></li></a>
 </ul>
-</div>
+</div><?php endif; ?>
 <div id="jiaoshebao_city" style="background:#FFF;">
 <div id="jiaoshebao_city_left"><img src="<?php echo (IMG); ?>citytu.jpg" width="20" height="23" /></div>
 <a href="<?php echo U('Social/selectCity',array('cid'=>$cinfo['id']));?>" style="color:black;font-size: 80%"><div style="width:80%;float:left;margin-top: 5px" >&nbsp;&nbsp;参保城市&nbsp;&nbsp;<?php echo ($cinfo['ccity']); ?></div></a>
-</div><?php endif; ?>
+</div>
+
 <div id="jiaoshebao_list">
 <ul>
 <li></li>

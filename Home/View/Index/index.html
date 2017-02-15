@@ -13,9 +13,9 @@
 <div id="app" style="background:#FFF;">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
-<div class="conttop_div1"><img src="{$Think.const.IMG}index_img1.jpg" /></div>
-<div class="conttop_div2"><img src="{$Think.const.IMG}inddex_img.jpg" /></div>
-<div class="conttop_div3"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></div>
+<!-- <div class="conttop_div1"><img src="{$Think.const.IMG}index_img1.jpg" /></div> -->
+<div class="shebao_jisuanqi" align="center"><span style="color:white;font-size: 130%;"> 首页</span></div>
+<!-- <div class="conttop_div3"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></div> -->
 </div> 
 <div id="slider">
 	<ul class="slides clearfix">
@@ -52,19 +52,20 @@
 	});
 </script>
 <div id="index_main">
-<div id="index_main_img1"><a href="{:U('Social/social_buy')}" style="color:blue"><img src="{$Think.const.IMG}index-img1.jpg" /><br/>买社保</a></div>
-<div id="index_main_img2"><a href="{:U('Search/index')}" style="color:blue"><img src="{$Think.const.IMG}index-img2.jpg" /><br/>查社保</a></div>
-<div id="index_main_img3"><a href="{:U('Socialfare/jisuan')}" style="color:blue"><img src="{$Think.const.IMG}index-img3.jpg" /><br/>算保费</a></div>
+<div id="index_main_img1"><a href="{:U('Social/social_buy')}" style="color:black"><img src="{$Think.const.IMG}index-img1.jpg" /><br/>买社保</a></div>
+<div id="index_main_img2"><a href="{:U('Search/index')}" style="color:black"><img src="{$Think.const.IMG}index-img2.jpg" /><br/>查社保</a></div>
+<div id="index_main_img3"><a href="{:U('Socialfare/jisuan')}" style="color:black"><img src="{$Think.const.IMG}index-img3.jpg" /><br/>算保费</a></div>
 </div>
 <div id="index_main_middle">
 <div class="index_main_middle_div"><img src="{$Think.const.IMG}index-img4.jpg" /></div> 
 <div class="index_main_middle_div"><img src="{$Think.const.IMG}index-img5.jpg" /></div>
-<div class="index_main_middle_div"><img src="{$Think.const.IMG}index-img6.jpg" /></div> 
+<a href="{:U('Service/fuwuneirong')}"><div class="index_main_middle_div"><img src="{$Think.const.IMG}index-img6.jpg" /></div> 
+</a>
 <div class="index_main_middle_div"><img src="{$Think.const.IMG}index-img7.jpg" /></div>
 </div>
-<p style="margin:2% 0;">&nbsp;&nbsp;&nbsp;&nbsp;社保刊物</p>
+<p style="margin:2% 0;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;社保刊物</p>
   <div id="banner"><img src="{$Think.const.IMG}index_img8.jpg" width="100%" /></div>
-  <p style="margin:2% 0;">&nbsp;&nbsp;&nbsp;&nbsp;社保用途</p>
+  <p style="margin:2% 0;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;社保用途</p>
 <div id="index_main_bottom">
 <div id="index_main_bottom_img1"><img src="{$Think.const.IMG}index-img9.jpg" /></div>
 <div id="index_main_bottom_img2"><img src="{$Think.const.IMG}index-img10.jpg" /></div>
@@ -72,7 +73,7 @@
 <div id="index_main_bottom_img4"><img src="{$Think.const.IMG}index-img12.jpg" /></div>
 </div>
   <p><li style="font-size: 1.4em; color: #000; margin: 1em;">职工怎样缴纳养老保险费？</li></p>
-<include file="Public:footer" />
+<!-- <include file="Public:footer" /> -->
 </div>
 
 </body>

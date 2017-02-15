@@ -28,16 +28,14 @@ if(targetObj.style.display!="none"){
 }
 }
 </script>
-<body style="background: #fdb813;position:relative;font-size: 80%">
+<body style="background: #fdb813;position:relative;font-size: 100%">
 <div id="app">
 <!--<div id="header"><img src="<?php echo (IMG); ?>zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
-<div class="conttop_div1"><img src="<?php echo (IMG); ?>wodeqianchengbao2.jpg" /></div>
-<div id="shebao_jisuanqi"><img src="<?php echo (IMG); ?>wodeqianchengbao1.jpg" />
-</div>
+<div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white;font-size: 120%"><</a></div>
+<div class="conttop_divmiddle" align="center"><span style="color:white;font-size: 130%;">我的前程保</span></div>
 <div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></a>
 </div>
-
 </div>
 <header>
 <!-- <div id="my_touxiang"><img src="<?php echo (IMG); ?>tu29241_3.jpg" /></div> -->
@@ -53,7 +51,7 @@ if(targetObj.style.display!="none"){
 		color:black;
 	}
 </style>
-<div id="box4" style="display:none; width:100px; background:#fdb813; margin:1% 2%; right:0px; position:absolute; z-index:9999; padding-bottom:1%;">
+<div id="box4" style="display:none; width:120px; background:#fdb813; margin:1% 4%; right:0px; position:absolute; z-index:9999; padding-bottom:1%;">
 <ul>
 <a href="<?php echo U('Index/index');?>">
    <li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="<?php echo (IMG); ?>home.png" />首页</li>
@@ -94,38 +92,6 @@ if(targetObj.style.display!="none"){
 </form>
 </div>
 <div id="my_chanchengbao_bottom"><img src="<?php echo (IMG); ?>shebao_img4.png" /></div>
-</div>
-<style type="text/css">
-	  #contbottom {
-        /*background: #00A2EA;*/
-        width: 100%;
-        height: 55px;
-        position: fixed;
-        bottom: 0;
-    }
-</style>
-<div id="contbottom" >
-<div class="contbottom_div1">
-	<a href="<?php echo U('Index/index');?>">
-	<img src="<?php echo (IMG); ?>zhuce_img7.jpg"  />
-	</a>
-</div>
-<div class="contbottom_div2">
-	<a href="<?php echo U('Social/social_buy');?>">
-	<img src="<?php echo (IMG); ?>zhuce_img8.jpg"  />
-	</a>
-</div>
-<div class="contbottom_div">
-    <a href="<?php echo U('My/Mysetinfo');?>">
-<img src="<?php echo (IMG); ?>zhuce_img9.jpg"  />
-    </a>
-</div>
-<div class="contbottom_div"><img src="<?php echo (IMG); ?>zhuce_img10.jpg"  /></div>
-<div class="contbottom_div">	
-	<a href="<?php echo U('My/myinfo');?>">
-	<img src="<?php echo (IMG); ?>zhuce_img11.jpg"  />
-	</a>
-</div>
 </div>
 </div>
 

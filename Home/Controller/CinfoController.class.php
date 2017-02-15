@@ -108,7 +108,7 @@ class CinfoController extends Controller {
             //$_FILES: logo_tu和pics_tu两部分附件
             //upload(array('pics_tu'=>array(name=>123,error=>,tmp_name=>,size=>,type=>)))
             $z = $up -> upload(array('pics_tu'=>$_FILES['pics_tu']));
-            // var_dump($z);die;
+            
             //遍历$z,并制作缩略图，完成sp_goods_pics数据表的记录填充
             $arr = array();
             foreach($z as $m => $n){
@@ -184,7 +184,7 @@ class CinfoController extends Controller {
     	$rst = M('cinfo')->where(array('id' => $cid))->delete();
     	if($rst){
     		// $this->redirect('Social/social_buy');
-               $this->success('删除成功',U('My/ncperson'), 1); 	
+               $this->success('删除成功',U('selectperson'), 1); 	
     	}
     }
     //选择参保人页面

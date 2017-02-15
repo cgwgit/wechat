@@ -93,6 +93,39 @@ class ManagerController extends Controller {
        }
     }
 
+        //修改登录密码
+    public function editpwd(){
+    	if(IS_POST){
+            preg_match("/^1[3578][0-9]{9}$/", I('post.telphone')) ? $telphone = trim(I('post.telphone')) : $err = '请填写正确的手机号';
+            if($err){
+                $this->error($err, U('editpwd'),1);exit;
+            }
+		   $telrst = M('user')->where(array('tel' => $telphone))->find();
+		   if($telrst){
+	           if(trim(I('post.checkcode')) == cookie('code') && I('post.checkcode') !=NULL){
+	              $result = M('user')->where(array('tel' => $telphone))->find();
+	              $pwd = I('post.pwd');
+	              $data = array(
+	                 'id' => $result['id'],
+	                 'pwd' => $pwd
+	              	);
+	              $rst = M('user')->save($data);
+	              if($rst){
+	              	$this->success('密码修改成功', U('Manager/login'), 1);exit;
+	              }else{
+	              	$this->error('请输入注册手机号', U('Manager/editpwd'),1);exit;
+	              }
+	           }else{
+	           	 $this->error('验证码不正确',U('Manager/editpwd'), 1);exit;
+	           }
+            }else{
+            	$this->error('手机号不正确',U('Manager/editpwd'),1);exit;
+            }	
+    	}else{
+    		$this->display();
+    	}
+    }
+
     //获取验证码的接口
     public function checkcode(){
     	$code = rand(1000,9999);
@@ -162,7 +195,7 @@ class ManagerController extends Controller {
 		$code = rand(1000,9999);
 		//code为要发送的验证码，product为模板内容中的标签
 		$data = array('code' => "{$code}",'product' => '前程保');
-		cookie('code', $code,60);
+		cookie('code', $code,3600);
 		$datas = json_encode($data);
         $to = $_GET['telphone'];
         $alidayu = new \Think\Lib\Alidayu\SendMSM();
@@ -170,7 +203,7 @@ class ManagerController extends Controller {
         if($result->err_code == 0){
         	echo 1;
         }else{
-        	echo 0;
+        	echo $result->err_code;
         }
     }
     //用户退出页面

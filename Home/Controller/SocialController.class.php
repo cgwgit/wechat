@@ -37,8 +37,14 @@ class SocialController extends Controller {
     //社保参保方案(社保购买second)
     public function cplan(){
     	$cid = I('get.cid');
+        if(empty($cid)){
+            $this->error('请填写参保人信息', U('social_buy',array('cid' => $cid)), 1);exit;
+        }
     	$cinfo = M('cinfo')->where(array('id' => $cid))->find();
     	$city = M('city')->where(array('cid' => $cid))->find();
+        if(empty($city['city'])){
+            $this->error('参保城市不能为空', U('social_buy',array('cid' => $cid)), 1);exit;
+        }
     	$cinfo['city'] = $city['city'];
     	$this->assign('cinfo', $cinfo);
     	$this->display();
@@ -58,8 +64,8 @@ class SocialController extends Controller {
     // ordertime订单时间
     // order_sn订单号
     public function detail(){
-         $post = I('post.');
-         $cid = $post['cid'];
+        $post = I('post.');
+        $cid = $post['cid']; 
         $rst = $this->addcharge($cid,$post);
         if($rst){
            $chargeinfo = D('chargedetail')->where(array('cid' => $cid))->find();
@@ -74,6 +80,12 @@ class SocialController extends Controller {
         $id = I('get.id');
         $chargeinfo = M('chargedetail')->where(array('cid' => $cid,'status' =>'0'))->order('id desc')->find();
         $chargeinfo['sid'] = $id;
+        $chargeinfo['endowment'] = number_format($chargeinfo['endowment'],2);
+        $chargeinfo['yiliao'] = number_format($chargeinfo['yiliao'],2);
+        $chargeinfo['unemployment'] = number_format($chargeinfo['unemployment'],2);
+        $chargeinfo['employment'] = number_format($chargeinfo['employment'],2);
+        $chargeinfo['maternity'] = number_format($chargeinfo['maternity'],2);
+        $chargeinfo['wuxian'] = number_format($chargeinfo['wuxian'],2);
         $this->assign('chargeinfo', $chargeinfo);
     	$this->display();
     }
@@ -93,6 +105,9 @@ class SocialController extends Controller {
     // order_sn订单号
      //详细的保费计算，并添加数据到数据库
     public function addcharge($cid,$post){
+    	if(empty($post['stype'])){
+    		$this->error('请选择参保类型',U('cplan',array('cid'=>$cid)),1);exit;
+    	}
         //社保
         if($post['stype'][0] == 1 && !isset($post['stype'][1])){
             is_numeric($post['sbase']) ? $sbase = $post['sbase'] : $err = '社保基数不是一个数字';
@@ -191,15 +206,16 @@ class SocialController extends Controller {
             'chargecount' => isset($chargecount) ? $chargecount : 0,
             'servicemoney' => $servicemoney,
             'allcount' => $allcount,
-            'order_time' => time(),
+            'order_sn' => makeSn(),
+            'ordertime' => time(),
             'ctype' => $ctype
         );
         $chargeinfo = M('chargedetail')->where(array('cid' => $cid,'order_status' =>'0'))->find();
         if($chargeinfo){
            return M('chargedetail')->where(array('id' => $chargeinfo['id']))->save($data);
         }else{
-          $order = makeSn();
-          $data['order_sn'] = $order;
+          // $order = makeSn();
+          // $data['order_sn'] = $order;
           return M('chargedetail')->add($data);  
         }
 
@@ -208,9 +224,9 @@ class SocialController extends Controller {
     public function orderinfo(){
     	$id = I('get.cid');
     	$cinfo = M('cinfo')->alias('`c`')->field('`c`.`cname`,`ch`.*')->join('`tp_chargedetail` as ch on c.id=ch.cid')->where(array('c.id' => $id))->find();
-        $cinfo['sum'] = $cinfo['wuxian']*$cinfo['smonths']+$cinfo['gjj']*$cinfo['gmonths'];
-        $cinfo['service'] = 80*$cinfo['smonths']+80*$cinfo['gmonths'];
-        $cinfo['count'] = $cinfo['sum']+$cinfo['service'];
+        $cinfo['sum'] =number_format($cinfo['wuxian']*$cinfo['smonths']+$cinfo['gjj']*$cinfo['gmonths'],2) ;
+        $cinfo['service'] = number_format(80*$cinfo['smonths']+80*$cinfo['gmonths'],2);
+        $cinfo['count'] = number_format($cinfo['sum']+$cinfo['service'],2);
     	$this->assign('cinfo',$cinfo);
         $this->assign('cid', $id);
         //查询投保人信息
@@ -234,6 +250,10 @@ class SocialController extends Controller {
         if(IS_POST){
           $post = I('post.');
           $area = M('area')->where(array('id' => $post['city']))->find();
+          if($post['jid']==2){
+            $this->assign('city',$area['name']);
+            $this->display('Socialfare/jisuan');exit;
+          }
           $rst = M('city')->where(array('cid' =>$id))->find();
           if($rst){
            $data = array(
@@ -252,6 +272,9 @@ class SocialController extends Controller {
             }
           }
         }
+          if(I('get.jid')==2){
+            $this->assign('jid',I('get.jid'));
+          }
           $this->assign('id', $id);
           $this->display();
     }

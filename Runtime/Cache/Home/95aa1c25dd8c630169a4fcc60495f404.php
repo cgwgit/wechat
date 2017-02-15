@@ -128,19 +128,60 @@
 		});
 	});
 </script>
-<body style="background: #fdb813">
+<script type="text/javascript">
+//===========================点击展开关闭效果====================================
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = shutTip; 
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = openTip; 
+   }
+}
+}
+</script>
+<body style="background: #fdb813;position:relative;font-size: 100%">
 <div id="app">
 <!--<div id="header"><img src="<?php echo (IMG); ?>zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
-<div class="conttop_div1"><img src="<?php echo (IMG); ?>index_img1.jpg" /></div>
+<div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white;"><</a></div>
+<div class="conttop_divmiddle" align="center"><span style="color:white;font-size: 130%;">选择地址</span></div>
 <!-- <div id="shebao_title"><img src="<?php echo (IMG); ?>xinzengcanbaoren.jpg" /></div> -->
-<div class="conttop_div3"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></div>
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></a>
+</div>
+</div>
+<style type="text/css">
+	a{
+		color:black;
+	}
+</style>
+<div id="box4" style="display:none; width:120px; background:#fdb813; margin:1% 4%; right:0px; position:absolute; z-index:9999; padding-bottom:1%;">
+<ul>
+<a href="<?php echo U('Index/index');?>">
+   <li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="<?php echo (IMG); ?>home.png" />首页</li>
+</a>
+<a href="<?php echo U('My/myinfo');?>">
+   <li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="<?php echo (IMG); ?>news.png" />我的前程保</li>
+</a>
+<a href="<?php echo U('Service/index');?>">
+   <li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="<?php echo (IMG); ?>fuwubiaozhi.png" />服务大厅</li>
+</a>
+</ul>
 </div>
 <form method="post" action="<?php echo U('Social/selectCity',array('cid' => $id));?>">
 <div class="acc_apply">
 	<ul>
-		<li class="clearfix">
-		  <label class="tl acc_five" style="font-size: 20%">修改联系人地址:</label>
+		<li class="clearfix" style="border-top: 0px solid #d6d6d6;">
+		  <label class="tl acc_five" style="font-size: 80%">修改联系人地址:</label>
 		  	  <select name="province" id="first" style="font-size: 80%">
 		  	       <option>参保省份</option>
 		           <option value="<?php echo ($area[0]['id']); ?>"><?php echo ($area[0]['name']); ?></option>
@@ -152,40 +193,10 @@
 		</li>
 	</ul>
 </div>
+<input type="hidden" name="jid" value="<?php echo ($jid); ?>"></input>
 <div id="baocun"><input style=" padding:5% 23%; font-size:80%; color:#FFF; background:url(<?php echo (IMG); ?>zhuce_img6.jpg); border:0px;" type="submit" value="保存"/></div>
 </form>
-<!-- <style type="text/css">
-	  #contbottom {
-        /*background: #00A2EA;*/
-        width: 100%;
-        height: 55px;
-        position: fixed;
-        bottom: 0;
-    }
-</style>
-<div id="contbottom" >
-<div class="contbottom_div1">
-	<a href="<?php echo U('Index/index');?>">
-	<img src="<?php echo (IMG); ?>zhuce_img7.jpg"  />
-	</a>
-</div>
-<div class="contbottom_div2">
-	<a href="<?php echo U('Social/social_buy');?>">
-	<img src="<?php echo (IMG); ?>zhuce_img8.jpg"  />
-	</a>
-</div>
-<div class="contbottom_div">
-    <a href="<?php echo U('My/Mysetinfo');?>">
-<img src="<?php echo (IMG); ?>zhuce_img9.jpg"  />
-    </a>
-</div>
-<div class="contbottom_div"><img src="<?php echo (IMG); ?>zhuce_img10.jpg"  /></div>
-<div class="contbottom_div">	
-	<a href="<?php echo U('My/myinfo');?>">
-	<img src="<?php echo (IMG); ?>zhuce_img11.jpg"  />
-	</a>
-</div>
-</div> -->
+<!--  -->
 </div>
 </body>
 </html>

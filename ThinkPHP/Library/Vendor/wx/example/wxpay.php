@@ -67,7 +67,7 @@ class wxpay{
         //初始化日志
         $logHandler= new CLogFileHandler("../logs/".date('Y-m-d').'.log');
         $log = Log::Init($logHandler, 15);
-
+        
         //打印输出数组信息
         function printf_info($data)
         {
@@ -88,8 +88,8 @@ class wxpay{
         $input->SetTime_start(date("YmdHis"));
         $input->SetTime_expire(date("YmdHis", time() + 600));
         $input->SetGoods_tag("test");
-        $input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");//支付异步回调地址
-        $input->SetTrade_type("JSAPI");
+        $input->SetNotify_url("http://123.57.252.16/index.php/Home/Pay/wxnotify/");//支付异步回调地址
+        $input->SetTrade_type("JSAPI");//手机支付
         $input->SetOpenid($openId);
         $order = WxPayApi::unifiedOrder($input);
         echo '<font color="#f00"><b>统一下单支付单信息</b></font><br/>';

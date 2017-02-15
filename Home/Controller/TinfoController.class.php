@@ -98,14 +98,16 @@ class TinfoController extends Controller{
             );
           $rst1 = M('tinfo')->save($data);
           if($rst1){
-            $this->redirect('addtinfo');exit;
+            $this->redirect('addtinfo',array('cid' => $post['cid']));exit;
           }else{
-            $this->error('非法操作', U('addtinfo'), 2);exit; 
+             $this->redirect('addtinfo',array('cid' => $post['cid']));exit;
           }
         }else{
+           $cid = I('get.cid');
            $tinfo = M('tinfo')->where(array('uid' => session('uid')))->find();
            $sql = "SELECT * FROM `tp_area` WHERE `id` IN ({$tinfo['area']})";
            $area = M()->query($sql);
+           $this->assign('cid', $cid);
            $this->assign('area', $area);
            $this->assign('detailarea', $tinfo['detailarea']);
            $this->display();
