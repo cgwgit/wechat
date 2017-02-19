@@ -1,50 +1,29 @@
 		<include file='Public:header' />
 			<div class="page-title">
 				<div class="title-env">
-					<h1 class="title">证券表相关信息查询</h1>
+					<h1 class="title">前程保相关信息查询</h1>
 					<p class="description"></p>
-				</div>
-				<div class="breadcrumb-env">
-						<ol class="breadcrumb bc-1">
-							<li>
-								<a href="__MODULE__/Index/login"><i class="fa-home"></i>Home</a>
-							</li>
-							<li class="active">
-								<strong>证券表相关信息查询</strong>
-							</li>
-						</ol>
 				</div>
 			</div>
 			<div class="panel panel-default">
 				<div class="row">
 					<div class="col-md-12">
-						<form role="form" class="form-horizontal" name="frm" action="__MODULE__/Search/index" method="get">
+						<form role="form" class="form-horizontal" name="frm" action="__MODULE__/Search/index" method="post">
 							<div class="panel-body">
 								<div class="form-group">
-									<label class="col-sm-1 control-label" for="username">表名</label>
+									<label class="col-sm-1 control-label" for="username">手机号：</label>
 									<div class="col-sm-2">
-									<select class="form-control" name="list">
-									        <option value="">请选择</option>
-									        <option value="12">钱包表</option> 
-                                            <option value="1">钱包充值记录表</option> 
-                                            <option value="2">证券发行数量表</option>
-                                            <option value="3">保单推荐人奖励表</option> 
-                                            <option value="4">生成证券报单记录表</option>
-                                            <option value="5">换算率表</option> rate
-                                            <option value="6">证券人员基本信息表 </option>
-                                            <option value="7">积分、福利、可体现记录生成记录表</option>
-                                            <option value="8">持有证券数表</option>
-                                            <option value="9">投资额表 </option>
-                                            <option value="10">用户可提现证券明细</option>
-                                            <option value="11">用户可提现证券余额</option>
+									       <input type="text" class="form-control" id="username" name="tel" placeholder="请输入"  >
+									</div>
+										<label class="col-sm-1 control-label" for="username">根据注册时间排序：</label>
+									<div class="col-sm-1">
+									<select class="form-control" name="sort">
+									      <option value="">请选择</option>
+									      <option value="1">升序</option>
+									      <option value="2">降序</option>
 									</select>
-                                                                           
 									</div>
-									<label class="col-sm-1 control-label" for="bankno">用户名</label>
-									<div class="col-sm-2">
-									       <input type="text" class="form-control" id="username" name="username" placeholder="请输入"  >
-									</div>
-									<label class="col-sm-1 control-label" for="bankno">购买日期</label>
+									<label class="col-sm-1 control-label" for="bankno">注册时间：</label>
 									<div class="col-sm-2">
 										<input id="finishdate" name="date" class="form-control daterange" data-format="YYYY-MM-DD" data-start-date="2016-11-01 13:18:45" data-end-date="2016-11-01 13:18:45" data-separator=" 至 " value="{$date}" type="text">
 									</div>
@@ -62,28 +41,22 @@
 								<tr>
 									<th>序号</th>
 									<th>用户名(姓名)</th>
-									<th>银行名称</th>
-									<th>银行卡号</th>
-									<th>钱包金额</th>
-									<th>冻结金额</th>
-									<th>冻结状态</th>
+									<th>注册手机号</th>
+									<th>注册时间</th>
 								</tr>
 							</thead>
 							<tbody>
-                               <foreach name="data" item="vo" >  
+                               <foreach name="users" item="vo" >  
 									<tr>
 										<td>{$vo.id}</td>
-										<td>{$vo.member_name}</td>
-										<td>{$vo.member_bankname}</td>
-										<td>{$vo.member_bankcard}</td>
-										<td>{$vo.money}</td>
-										<td>{$vo.frozen}</td>		
-										<td><?php if($vo['status']==0){echo "冻结";}else if($vo['status']==1){echo "激活";}?></td>
+										<td>{$vo.username}</td>
+										<td>{$vo.tel}</td>
+										<td>{$vo.retime|date='Y-m-d', ###}</td>
 								    </tr>
                                </foreach>
 							</tbody>
 						</table>
-					                                <div class="row"><div class="col-xs-6"><div class="dataTables_info" id="example-1_info" role="status" aria-live="polite"></div></div><div class="col-xs-6"><div class="dataTables_paginate paging_simple_numbers" id="example-1_paginate">{$show}</div></div></div>
+					                                <div class="row"><div class="col-xs-6"><div class="dataTables_info" id="example-1_info" role="status" aria-live="polite"></div></div><div class="col-xs-6"><div class="dataTables_paginate paging_simple_numbers" id="example-1_paginate">{$page}</div></div></div>
 					</div>
 				</div>
 			</div>
@@ -91,21 +64,6 @@
 			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
 			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
 			<!-- Or class "fixed" to  always fix the footer to the end of page -->
-			<footer class="main-footer sticky footer-type-1">
-				<div class="footer-inner">
-					<!-- Add your copyright text here -->
-					<div class="footer-text">
-						&copy; 2016 
-						<strong>中孝科技（北京）有限公司</strong> 
-					</div>
-					<!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
-					<div class="go-up">
-						<a href="#" rel="go-top">
-							<i class="fa-angle-up"></i>
-						</a>				
-					</div>					
-				</div>				
-			</footer>
 		</div>			
 	</div>
 	<!-- 界面加载效果 -->

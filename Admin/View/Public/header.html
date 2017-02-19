@@ -1,0 +1,71 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Xenon Boostrap Admin Panel" />
+        <meta name="author" content="" />
+        <title>前程保</title>
+        <link rel="stylesheet" href="__PUBLIC__/assets/css/fonts/linecons/css/linecons.css">
+        <link rel="stylesheet" href="__PUBLIC__/assets/css/fonts/fontawesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="__PUBLIC__/assets/css/bootstrap.css">
+        <link rel="stylesheet" href="__PUBLIC__/assets/css/xenon-core.css">
+        <link rel="stylesheet" href="__PUBLIC__/assets/css/xenon-forms.css">
+        <link rel="stylesheet" href="__PUBLIC__/assets/css/xenon-components.css">
+        <link rel="stylesheet" href="__PUBLIC__/assets/css/xenon-skins.css">
+        <link rel="stylesheet" href="__PUBLIC__/assets/css/custom.css">
+        <script src="__PUBLIC__/assets/js/jquery-1.11.1.min.js"></script>
+    </head>
+    <body class="page-body">
+        <div class="page-container">
+            <div class="sidebar-menu toggle-others fixed">			
+                <div>		
+                    <!-- 首页导航 -->
+                    <!-- 左侧菜单 -->
+                    <ul id="main-menu" class="main-menu">
+                        <li>
+                            <a href="__MODULE__/Search/index" style="color:#fff;">
+                               <i class="linecons-star"></i>
+                                <span class="title">注册用户信息表</span>
+                            </a>
+                        </li>
+                          <li>
+                            <a href="__MODULE__/Search/cinfo" style="color:#fff;">
+                               <i class="linecons-star"></i>
+                                <span class="title">参保人信息表</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="__MODULE__/Search/tinfo" style="color:#fff;">
+                               <i class="linecons-star"></i>
+                                <span class="title">投保人信息表</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-content">
+                <!-- User Info, Notifications and Menu Bar -->
+                <nav class="navbar user-info-navbar" role="navigation">
+                    <!-- Left links for user info navbar -->
+                    <ul class="user-info-menu left-links list-inline list-unstyled">
+                        <!-- 菜单隐藏与显示 -->
+                        <li class="hidden-sm hidden-xs">
+                            <a href="#" data-toggle="sidebar">
+                                <i class="fa-bars"></i>
+                            </a>
+                        </li>				
+                    </ul>
+                    <!-- 检索 -->
+                    <ul class="user-info-menu right-links list-inline list-unstyled">
+                        <!-- 用户信息 -->
+                        <li class="dropdown user-profile">
+                            <a href="__MODULE__/Manager/loginlogout" >
+                                <span>
+                                    安全退出
+                                    <i class="fa-lock"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>

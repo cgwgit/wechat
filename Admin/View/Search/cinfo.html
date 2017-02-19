@@ -1,0 +1,127 @@
+		<include file='Public:header' />
+			<div class="page-title">
+				<div class="title-env">
+					<h1 class="title">前程保相关信息查询</h1>
+					<p class="description"></p>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="row">
+					<div class="col-md-12">
+						<form role="form" class="form-horizontal" name="frm" action="__MODULE__/Search/cinfo" method="post">
+							<div class="panel-body">
+								<div class="form-group">
+										<label class="col-sm-1 control-label" for="username">身份证号码：</label>
+									<div class="col-sm-2">
+									       <input type="text" class="form-control" id="username" name="idnumber" placeholder="请输入"  >
+									</div>
+										<label class="col-sm-1 control-label" for="username">用户名：</label>
+									<div class="col-sm-2">
+									       <input type="text" class="form-control" id="username" name="cname" placeholder="请输入"  >
+									</div>
+									<label class="col-sm-1 control-label" for="username">参保状态：</label>
+									<div class="col-sm-1">
+									<select class="form-control" name="status">
+									      <option value="">请选择</option>
+									      <option value="1">已支付</option>
+									      <option value="2">未支付</option>
+									</select>
+									</div>
+							
+								
+								</div>
+							</div>
+									<label class="col-sm-1 control-label" for="bankno">
+									 社保参保月份：</label>
+									<div class="col-sm-2">
+										<input id="finishdate" name="sdate" class="form-control daterange" data-format="YYYY-MM-DD" data-start-date="2016-11-01 13:18:45" data-end-date="2016-11-01 13:18:45" data-separator=" 至 " value="{$date}" type="text">
+									</div>
+						            <label class="col-sm-1 control-label" for="bankno">
+									 公积金参保月份：</label>
+									<div class="col-sm-2">
+										<input id="finishdate" name="gdate" class="form-control daterange" data-format="YYYY-MM-DD" data-start-date="2016-11-01 13:18:45" data-end-date="2016-11-01 13:18:45" data-separator=" 至 " value="{$date}" type="text">
+									</div>
+										<button class="btn btn-secondary col-sm-1">查询</button>
+						</form>
+					</div>
+				</div>
+				<div class="row" >					
+					<div class="panel-body">
+						<table class="table table-striped table-bordered" cellspacing="0" style="font-size: 90%;" width="100%">
+							<thead>
+								<tr>
+									<th>序号</th>
+									<th>参保人员姓名</th>
+									<th>身份证号码</th>
+									<th>手机号</th>
+									<!-- <th>户口所在地</th> -->
+									<th>参保类型</th>
+									<th>参保状态</th>
+									<th>社保基数</th>
+									<th>公积金基数</th>
+									<th>公积金</th>
+									<th>五险</th>
+									<th>社保参保月份</th>
+									<th>公积金参保月份</th>
+								</tr>
+							</thead>
+							<tbody>
+                               <foreach name="cinfo" item="vo" >  
+									<tr>
+										<td>{$vo.id}</td>
+										<td>{$vo.cname}</td>
+										<td>{$vo.idnumber}</td>
+										<td>{$vo.mphone}</td>
+										<!-- <td>{$vo.city}</td> -->
+										<td><if condition="$vo.htype eq 1">农村<else />城市</if></td>
+										<td><if condition="$vo.status eq 1">已支付<else />未支付</if></td>
+										<td>{$vo.sbase}</td>
+										<td>{$vo.gbase}</td>
+										<td>{$vo.gjj}</td>
+										<td>{$vo.wuxian}</td>
+										<td>{$vo.stime}-{$vo.etime}</td>
+										<td>{$vo.gstime}-{$vo.getime}</td>
+								    </tr>
+                               </foreach>
+							</tbody>
+						</table>
+					                                <div class="row"><div class="col-xs-6"><div class="dataTables_info" id="example-1_info" role="status" aria-live="polite"></div></div><div class="col-xs-6"><div class="dataTables_paginate paging_simple_numbers" id="example-1_paginate">{$page}</div></div></div>
+					</div>
+				</div>
+			</div>
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+		</div>			
+	</div>
+	<!-- 界面加载效果 -->
+	<!-- -->
+	<div class="page-loading-overlay">
+		<div class="loader-2"></div>
+	</div>
+	
+	<!-- Imported styles on this page -->
+	<link rel="stylesheet" href="__PUBLIC__/assets/js/datatables/dataTables.bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/assets/js/daterangepicker/daterangepicker-bs3.css">
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/assets/js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/assets/js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/assets/js/resizeable.js"></script>
+	<script src="__PUBLIC__/assets/js/joinable.js"></script>
+	<script src="__PUBLIC__/assets/js/xenon-api.js"></script>
+	<script src="__PUBLIC__/assets/js/xenon-toggles.js"></script>
+	<script src="__PUBLIC__/assets/js/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="__PUBLIC__/assets/js/moment.min.js"></script>
+
+	<!-- Imported scripts on this page -->
+	<script src="__PUBLIC__/assets/js/datatables/dataTables.bootstrap.js"></script>
+	<script src="__PUBLIC__/assets/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
+	<script src="__PUBLIC__/assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
+	<script src="__PUBLIC__/assets/js/daterangepicker/daterangepicker.js"></script>
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/assets/js/xenon-custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+[ 2017-02-19T14:55:39+08:00 ] 127.0.0.1 /index.php/Admin/Manager/login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003096s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004493s ]
+SQL: SHOW COLUMNS FROM `tp_manager` [ RunTime:0.0242s ]
+SQL: SELECT * FROM `tp_manager` WHERE `name` = 'admins' AND `pwd` = '654321' LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-02-19T14:55:49+08:00 ] 127.0.0.1 /index.php/Admin/Manager/login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015840s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.017827s ]
+SQL: SHOW COLUMNS FROM `tp_manager` [ RunTime:0.0265s ]
+SQL: SELECT * FROM `tp_manager` WHERE `name` = 'admins' AND `pwd` = '654321' LIMIT 1   [ RunTime:0.0013s ]
+
+[ 2017-02-19T14:57:17+08:00 ] 127.0.0.1 /index.php/Admin/Manager/login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001925s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002809s ]
+SQL: SHOW COLUMNS FROM `tp_manager` [ RunTime:0.0163s ]
+SQL: SELECT * FROM `tp_manager` WHERE `name` = 'admins' AND `pwd` = '654321' LIMIT 1   [ RunTime:0.0012s ]
+
+[ 2017-02-19T15:50:13+08:00 ] 127.0.0.1 /index.php/Admin/Search/index
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`retime` between '1483200000 and '1483891200' ) LIMIT 0,10' at line 1
+ [ SQL语句 ] : SELECT * FROM `tp_user` WHERE ( 2>1AND `retime` between '1483200000 and '1483891200' ) LIMIT 0,10  
+
+[ 2017-02-19T18:40:41+08:00 ] 127.0.0.1 /index.php/Admin/Search/cinfo
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.cid  WHERE ( 2>1 ) LIMIT 0,10' at line 1
+ [ SQL语句 ] : SELECT * FROM `tp_cinfo` INNER JOIN tp_cinfo.id=tp_chargedetail.cid  WHERE ( 2>1 ) LIMIT 0,10  
+
+[ 2017-02-19T18:48:21+08:00 ] 127.0.0.1 /index.php/Admin/Search/cinfo
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`retime` DESC ) LIMIT 0,10' at line 1
+ [ SQL语句 ] : SELECT * FROM `tp_cinfo` INNER JOIN tp_chargedetail on tp_cinfo.id=tp_chargedetail.cid  WHERE ( 2>1`retime` DESC ) LIMIT 0,10  
+
+[ 2017-02-19T18:50:26+08:00 ] 127.0.0.1 /index.php/Admin/Search/cinfo
+ERR: 1054:Unknown column 'retime' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `tp_cinfo` INNER JOIN tp_chargedetail on tp_cinfo.id=tp_chargedetail.cid  WHERE ( 2>1 ) ORDER BY `retime` DESC LIMIT 0,10  
+
+[ 2017-02-19T18:51:37+08:00 ] 127.0.0.1 /index.php/Admin/Search/cinfo
+ERR: 1054:Unknown column 'retime' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `tp_cinfo` INNER JOIN tp_chargedetail on tp_cinfo.id=tp_chargedetail.cid  WHERE ( 2>1 ) ORDER BY `retime` DESC LIMIT 0,10  
+
+[ 2017-02-19T19:13:47+08:00 ] 127.0.0.1 /index.php/Admin/Search/cinfo
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '2017-07 ) LIMIT 0,10' at line 1
+ [ SQL语句 ] : SELECT * FROM `tp_cinfo` INNER JOIN tp_chargedetail on tp_cinfo.id=tp_chargedetail.cid  WHERE ( 2>1 AND `stime`='2017-04 AND `etime`='2017-07 ) LIMIT 0,10  
+
+[ 2017-02-19T20:32:20+08:00 ] 127.0.0.1 /index.php/Admin/Search/tinfo
+ERR: 1054:Unknown column 'tp_cifo.uid' in 'on clause'
+ [ SQL语句 ] : SELECT * FROM `tp_tinfo` INNER JOIN tp_cinfo on tp_tinfo.uid=tp_cifo.uid  WHERE ( 2>1 ) LIMIT 0,10  
+
