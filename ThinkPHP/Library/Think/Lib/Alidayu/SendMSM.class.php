@@ -11,8 +11,8 @@ class SendMSM {
     //$smsTemplateCode
     // 短信模板ID，传入的模板必须是在阿里大于“管理中心-短信模板管理”中的可用模板。示例：SMS_585014?
     // $smsFreeSignName短信签名
-    // 短信签名，传入的短信签名必须是在阿里大于“管理中心-短信签名管理”中的可用签名。如“阿里大于”已在短信签名管理中通过审核，则可传入”阿里大于“（传参时去掉引号）作为短信签名。短信效果示例：【阿里大于】欢迎使用阿里大于服务。
-    public function send($recNum='', $smsParam='', $smsTemplateCode='SMS_39360132', $smsFreeSignName='短信测试'){
+    // 短信签名，传入的短信签名必须是在阿里大于“管理中心-短信签名管理”中的可用签名。如“阿里大于”已在短信签名管理中通过审核，则可传入”阿里大于“（传参时去掉引号）作为短信签名。短信效果示例：【阿里大于】欢迎使用阿里大于服务。SMS_39360132
+    public function send($recNum='', $smsParam='', $smsTemplateCode='SMS_46955038', $smsFreeSignName='前程保'){
         $c = new TopClient;
         $c->format = "json";
         //在配置文件中做相应的配置appid和secret

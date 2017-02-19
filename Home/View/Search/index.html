@@ -3,19 +3,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>无标题文档</title>
+<title>查社保</title>
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
 </head>
-
+<include file="Public:tanchuang" />
 <body>
 <div id="app">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
-<div class="conttop_div1"><img src="{$Think.const.IMG}wodeqianchengbao2.jpg" /></div>
-<div id="shebao_jisuanqi"><img src="{$Think.const.IMG}chashebao.jpg" /></div>
-<div class="conttop_div3"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></div>
+<div class="conttop_div1" ><a href="{:U('Social/social_buy',array('cid' => $cinfo['id']))}" style="color: white"><</a></div>
+<div id="shezhi_title"><span style="font-size: 130%;">查社保</span></div>
+<div class="conttop_div3"><span style="float:right;"onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></span>
 </div>
+</div>
+<include file="Public:tanchu" />
 <div id="content">
 <div id="chashebao_top">
 <div id="chashebao_topleft"><img src="{$Think.const.IMG}tu.png" /></div>

@@ -19,7 +19,7 @@
 <div id="conttop">
 <div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white;"><</a></div>
 <div class="conttop_divmiddle" style="text-align: center;"><span style="font-size: 130%;">账号设置</span></div>
-<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
+<div class="conttop_div3"><span style="float:right;" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></span>
 </div>
 
 </div>
@@ -44,17 +44,17 @@
     // };
 </script>
 	</div>
-<li id="btn2"><a href="{:U('Manager/editpwd')}">修改密码</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-<li><a href="{:U('loginusername')}">登录用户名:{$user.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+<a href="{:U('Manager/editpwd')}"><li id="btn2">修改密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li></a>
+<a href="{:U('loginusername')}"><li>登录用户名:{$user.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li></a>
 <li style="background-color:#B0FF62;">基本信息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 <if condition="$tinfo != null">
 <a href="{:U('editusername')}"><li>投保人姓名:{$tinfo.tname}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li></a>
 <a href="{:U('editemail')}"><li>联系邮箱:{$tinfo.email}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li></a>
 <a href="{:U('editaddress')}"><li>联系地址:{$area[0][name]}{$area[1][name]}{$area[2][name]}{$tinfo.detailarea}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 </a>
-<li><a href="{:U('erweima')}">我的二维码</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<a href="{:U('erweima')}"<li>我的二维码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li></a>
 <else />
-<li><a href="{:U('Tinfo/addtinfo')}">请添加用户信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<a href="{:U('Tinfo/addtinfo')}"><li>请添加用户信息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li></a>
 </if>
 </ul>
 </div>

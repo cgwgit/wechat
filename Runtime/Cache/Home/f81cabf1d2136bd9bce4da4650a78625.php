@@ -6,7 +6,7 @@
 <title>服务大厅</title>
 <style>
 div { width:100%; height:auto; overflow:hidden; margin:0 auto; }
-ul { list-style:none; font-size:70%; } 
+ul { list-style:none; font-size:90%; } 
 li { padding:2% 2%; border-bottom:1px solid #CCC; }
 </style>
 <link rel="stylesheet" type="text/css" href="<?php echo (CSS); ?>content.css">
@@ -115,18 +115,18 @@ if(targetObj.style.display!="none"){
 <div id="fuwu">
 <div id="fuwu_div1"><img src="<?php echo (IMG); ?>kefu.png" /><br/>在线客服</div>
 <div id="fuwu_div1"><img src="<?php echo (IMG); ?>im4.png" /><br/>咨询热线</div>
-<div id="fuwu_div1" style="border-right:0px;"><img src="<?php echo (IMG); ?>fankui.png" /><br/>我要反馈</div>
+<a href="<?php echo U('Service/woyaofankui');?>"><div id="fuwu_div1" style="border-right:0px;"><img src="<?php echo (IMG); ?>fankui.png" /><br/>我要反馈</div>
+</a>
 </div>
-
 <div id="fuwu_m" style="font-size:100%; padding:0 0%;">
 <p>
 <ul>
 <li><span style="color:#0C0;">热门问题</span></li>
-<li>首次参保问题</li>
-<li>退款问题</li>
-<li>续保问题</li>
-<li>支付问题</li>
-<li>在保状态查询问题</li>
+<a href="<?php echo U('shoucicanbaowenti');?>"><li>首次参保问题</li></a>
+<a href="<?php echo U('tuikuanwenti');?>"><li>退款问题</li></a>
+<a href="<?php echo U('xubaowenti');?>"><li>续保问题</li></a>
+<a href="<?php echo U('zhifuwenti');?>"><li>支付问题</li></a>
+<!-- <a href="<?php echo U('zaixianzixun');?>"><li>在保状态查询问题</li></a> -->
 </ul>
 </p>
 </div>

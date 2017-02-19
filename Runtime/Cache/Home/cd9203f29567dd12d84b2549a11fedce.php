@@ -35,7 +35,7 @@ if(targetObj.style.display!="none"){
 <div id="conttop">
 <div class="conttop_div1" ><a href="<?php echo U('Index/index');?>" style="font-size: 130%;color: white"><</a></div>
 <div class="conttop_divmiddle" align="center"><span style="color:white;font-size: 130%;"> 买社保</span></div>
-<div class="conttop_div3"><a style="float:right;margin-top: 5px" href="###" onclick="openShutManager(this,'box4')"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></a>
+<div class="conttop_div3"><span style="float:right;margin-top: 5px"onclick="openShutManager(this,'box4')"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></span>
 </div>
 </div>
 <style type="text/css">
@@ -56,7 +56,7 @@ if(targetObj.style.display!="none"){
 </a>
 </ul>
 </div>
-<div id="shebao_div" style="background: #FFF; margin: 1.5% 0; padding: 1% 0; font-size: 85%;"><a href="<?php echo U('shuoming');?>" style="color: black">
+<div id="shebao_div" style="background: #FFF; margin: 1.5% 0; padding: 1% 0; font-size: 90%;"><a href="<?php echo U('Service/fuwushuoming');?>" style="color: black">
 &nbsp;&nbsp;服务说明</span> &nbsp;<span style="color: #F00; font-size: 90%;">社保/公积金同时缴纳仅收一次服务费</span></a></div>
 <?php if($cinfo['id'] == NULL): ?><a href="<?php echo U('Cinfo/addperson');?>">
 <div id="jiaoshebao" style="background:#FFF;">
@@ -76,9 +76,8 @@ if(targetObj.style.display!="none"){
 </div><?php endif; ?>
 <div id="jiaoshebao_city" style="background:#FFF;">
 <div id="jiaoshebao_city_left"><img src="<?php echo (IMG); ?>citytu.jpg" width="20" height="23" /></div>
-<a href="<?php echo U('Social/selectCity',array('cid'=>$cinfo['id']));?>" style="color:black;font-size: 80%"><div style="width:80%;float:left;margin-top: 5px" >&nbsp;&nbsp;参保城市&nbsp;&nbsp;<?php echo ($cinfo['ccity']); ?></div></a>
+<a href="<?php echo U('Service/selectCity',array('cid'=>$cinfo['id']));?>" style="color:black;font-size: 90%"><div style="width:80%;float:left;margin-top: 5px" >&nbsp;&nbsp;参保城市&nbsp;&nbsp;<?php echo ($cinfo['ccity']); ?></div></a>
 </div>
-
 <div id="jiaoshebao_list">
 <ul>
 <li></li>
@@ -86,7 +85,7 @@ if(targetObj.style.display!="none"){
 <li></li>
 <li></li>
 <li></li>
-<li style="padding: 1% 0; background:#fdb813; margin-top: 9%; color:#fff ; text-align: center;"><a href="<?php echo U('Social/cplan',array('cid' => $cinfo['id']));?>">下一步</a></li>
+<a href="<?php echo U('Social/cplan',array('cid' => $cinfo['id']));?>"><li style="text-align:center;"><input type="button" value="下一步" name="" style="padding:1% 15%; background:#fdb813;"/></li></a>
 </ul>
 </div>
 

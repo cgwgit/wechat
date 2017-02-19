@@ -74,14 +74,14 @@ li { padding:1% 0; }
 <div id="app" style="background:#DADADA;">
 <div id="conttop">
 <div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white"><</a></div>
-<div id="shezhi_title">投保人信息设置</div>
-<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
+<div id="shezhi_title" style="color:white;font-size: 120%;">投保人信息设置</div>
+<div class="conttop_div3"><span style="float:right;" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></span>
 </div>
 </div>
 <include file="Public:tanchu" />
-<p style=" padding:2% 2%; font-size: 70%;">下单成功后服务人员与您确认参保信息，以下信息将作为您的联系方式，建议您填完整：</p>
+<p style=" padding:2% 2%; font-size: 90%;">下单成功后服务人员与您确认参保信息，以下信息将作为您的联系方式，建议您填完整：</p>
 <form method="post" action="{:U('addtinfo')}">
-<table style="background:#FFF; font-size:70%; padding: 0% 2%;" width="100%" border="0">
+<table style="background:#FFF; font-size:90%; padding: 0% 2%;" width="100%" border="0">
   <tr>
     <td width="50%" height="35">投保人姓名<span style="color:#F00;">*</span></td>
     <td width="50%" align="right"><input style="width:120px; text-align:right;   margin-right: 8px" type="text" name="tname" /></td>

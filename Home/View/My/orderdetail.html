@@ -15,7 +15,7 @@
 <div id="conttop">
 <div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white"><</a></div>
 <div class="conttop_divmiddle" style="text-align: center;"><span style="font-size: 130%;">订单详情</span></div>
-<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
+<div class="conttop_div3"><span style="float:right;" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></span>
 </div>
 </div>
 <include file="Public:tanchu" />
@@ -24,19 +24,31 @@
       <if condition="$detailinfo[0][order_status]==1">
            <span style="float:right;width: 15%">已支付 &nbsp;&nbsp;&nbsp;</span>
    	   <else />
-   	     	 <span style="float:right;width: 15%"">待支付 &nbsp;&nbsp;&nbsp;</span>
+   	     	 <span style="float:right;width: 15%">待支付 &nbsp;&nbsp;&nbsp;</span>
    	   </if>
  </div>
-<div id="dingdan_content">
-<ul>
-	<li>参保人：{$detailinfo[0].cname}{$detailinfo[0].idnumber}</li>
+<div id="dingdan_content" >
+<ul style="font-size: 90%">
+	<li>参保人：{$detailinfo[0].cname}</li>
+	<li>身份证号：{$detailinfo[0].idnumber}</li>
 	<li>户口信息：{$detailinfo[0].province},{$detailinfo[0].citys},{$detailinfo[0].county}/<if condition="$detailinfo[0][htype] eq 0">城市<else />农村</if></li>
 	<li style="border-bottom:1px solid #CCC;">参保地	：{$detailinfo[0].city}</li>
-	<li>社保保费：2017.02.02—-2017.02.04 <span style="float:right;">{$detailinfo[0].chargecount}</span></li>
-	<li style="border-bottom:1px solid #CCC;">服务费 <span style="float:right;">{$detailinfo[0].servicemoney}</span></li>
-	<li style="border-bottom:2px solid #CCC;">实付款：<span style="float:right;">{$detailinfo[0].allcount}</span></li>
+	<if condition="$detailinfo['0']['ctype'] eq 1">
+		<li>社保保费：{$detailinfo[0]['stime']}-{$detailinfo[0]['etime']} <span style="float:right;">{$detailinfo[0]['wuxian']*$detailinfo[0]['smonths']}</span></li>
+		<li style="border-bottom:1px solid #CCC;">服务费 <span style="float:right;">{$detailinfo[0]['servicemoney']*$detailinfo[0]['smonths']}</span></li>
+		<li style="border-bottom:2px solid #CCC;">实付款：<span style="float:right;">{$detailinfo[0].allcount}</span></li>
+	<elseif condition="$detailinfo['0']['ctype'] eq 2"/>
+	    <li>公积金保费：{$detailinfo[0]['gstime']}-{$detailinfo[0]['getime']} <span style="float:right;">{$detailinfo[0]['gjj']*$detailinfo[0]['gmonths']}</span></li>
+		<li style="border-bottom:1px solid #CCC;">服务费 <span style="float:right;">{$detailinfo[0]['servicemoney']*$detailinfo[0]['gmonths']}</span></li>
+		<li style="border-bottom:2px solid #CCC;">实付款：<span style="float:right;">{$detailinfo[0].allcount}</span></li>
+	<else />
+	     <li>社保保费：{$detailinfo[0]['stime']}-{$detailinfo[0]['etime']} <span style="float:right;">{$detailinfo[0]['wuxian']*$detailinfo[0]['smonths']}</span></li>
+	     <li>公积金保费：{$detailinfo[0]['gstime']}-{$detailinfo[0]['getime']} <span style="float:right;">{$detailinfo[0]['gjj']*$detailinfo[0]['gmonths']}</span></li>
+	     <li style="border-bottom:1px solid #CCC;">服务费 <span style="float:right;">{$detailinfo[0]['servicemoney']*$detailinfo[0]['smonths']+$detailinfo[0]['servicemoney']*$detailinfo[0]['gmonths']}</span></li>
+		<li style="border-bottom:2px solid #CCC;">实付款：<span style="float:right;">{$detailinfo[0].allcount}</span></li>
+	</if>
 	<li>提交时间：{$detailinfo[0].ordertime|date="Y-m-d H:i:s",###}</li>
-	<li style="text-align:center;">客服热线：400-66613331</li>
+	<li style="text-align:center;">客服热线：400-655-6063</li>
 </ul>
 </div>
 </div>

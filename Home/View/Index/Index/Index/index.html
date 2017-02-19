@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>首页</title>
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
+<link rel="stylesheet" type="text/css" href="{$Think.const.CSS}style1.css">
+<script type="text/javascript" src="js/shangxia.js"></script>
+<script type="text/javascript">
+Qfast.add('widgets', { path: "js/terminator2.2.min.js", type: "js", requires: ['fx'] });
+Qfast(false, 'widgets', function () {
+K.tabs({
+id: 'decoroll2', //焦点图包裹id
+conId: "decoimg_a2", //大图域包裹id
+tabId: "deconum2", //小圆点数字提示id
+tabTn: "a",
+conCn: '.decoimg_b2', //大图域配置class
+auto: 1, //自动播放 1或0
+effect: 'fade', //效果配置
+eType: 'mouseover', // 鼠标事件
+pageBt: true, //是否有按钮切换页码
+bns: ['.prev', '.next'], //前后按钮配置class
+interval: 3000// 停顿时间
+})
+})
+</script>
+</head>
+
+<body class="home">
+<div id="app" style="background:#FFF;">
+<!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
+<div id="conttop">
+<div class="conttop_div1" ><a href="javascript:void(0);"style="color: white">&nbsp;</a></div>
+<div id="shezhi_title" align="center"><span style="color:white;font-size: 130%;"> 首页</span></div>
+<a href="{:U('My/myinfo')}"><div class="conttop_div3"><span style="float:right;" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}shouye_renwu.png" /></span>
+</div>
+</a>
+</div>
+<div id="decoroll2" class="imgfocus">
+<div id="decoimg_a2" class="imgbox">
+<div class="decoimg_b2">
+<img src="image/baofeijisuan2.jpg" /> 
+</div>
+<div class="decoimg_b2">
+<img src="image/index_img2.jpg" /> 
+</div>
+<div class="decoimg_b2">
+<img src="image/shebao_img1.jpg" /> 
+</div>
+<div class="decoimg_b2">
+<img src="image/shebaojisuan2.jpg" /> 
+</div>
+</div>
+<ul id="deconum2" class="num_a2">
+<li><a href="#"></a></li>
+<li><a href="#"></a></li>
+<li><a href="#" ></a></li>
+<li><a href="#"></a></li>
+</ul>
+</div>>
+
+
+<div id="index_main">
+<div id="index_main_img1"><a href="{:U('Social/social_buy')}" style="color:black"><img src="{$Think.const.IMG}index-img1.jpg" /><br/>买社保</a></div>
+<div id="index_main_img2"><a href="{:U('Search/index')}" style="color:black"><img src="{$Think.const.IMG}index-img2.jpg" /><br/>查社保</a></div>
+<div id="index_main_img3"><a href="{:U('Socialfare/jisuan')}" style="color:black"><img src="{$Think.const.IMG}index-img3.jpg" /><br/>算保费</a></div>
+</div>
+<div id="index_main_middle">
+<a href="{:U('My/order')}"><div class="index_main_middle_div"><img src="{$Think.const.IMG}index-img4.jpg" /></div>
+</a>
+<a href="{:U('Service/bidu')}"><div class="index_main_middle_div"><img src="{$Think.const.IMG}index-img5.jpg" /></div></a>
+<a href="{:U('Service/fuwuneirong')}"><div class="index_main_middle_div"><img src="{$Think.const.IMG}index-img6.jpg" /></div> 
+</a>
+<a href="{:U('Service/index')}"><div class="index_main_middle_div"><img src="{$Think.const.IMG}index-img7.jpg" /></div>
+</a>
+
+</div>
+<p style="margin:2% 0;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;社保刊物</p>
+  <a href="{:U('Service/shebaozhoukan')}"><div id="banner"><img src="{$Think.const.IMG}index_img8.jpg" width="100%" /></div>
+  </a>
+  <p style="margin:2% 0;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;社保用途</p>
+<div id="index_main_bottom">
+<div id="index_main_bottom_img1"><img src="{$Think.const.IMG}index-img9.jpg" /></div>
+<div id="index_main_bottom_img2"><img src="{$Think.const.IMG}index-img10.jpg" /></div>
+<div id="index_main_bottom_img3"><img src="{$Think.const.IMG}index-img11.jpg" /></div>
+<div id="index_main_bottom_img4"><img src="{$Think.const.IMG}index-img12.jpg" /></div>
+</div>
+<p style="margin: 2% 0; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;社保咨询</p>
+  <p>
+  <li style="font-size: 100%; color: #000; margin: 0.5em;">职工怎样缴纳养老保险费？</li>
+  <li style="font-size: 100%; color: #000; margin:0.5em;">如何申请公司购买社保？</li>
+  <li style="font-size: 100%; color: #000; margin:0.5em;">多少岁能购买社保？</li>
+  <li style="font-size: 100%; color: #000; margin:0.5em;">公司每月办理社保的时间？</li>
+  <li style="font-size: 100%; color: #000; margin:0.5em;">如何申请公司购买社保？</li>
+  <li style="font-size: 100%; color: #000; margin:0.5em;">如何申请公司购买社保？</li>
+  </p>
+
+</div>
+
+</body>
+</html>

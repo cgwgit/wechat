@@ -80,6 +80,8 @@ class SocialController extends Controller {
         $id = I('get.id');
         $chargeinfo = M('chargedetail')->where(array('cid' => $cid,'status' =>'0'))->order('id desc')->find();
         $chargeinfo['sid'] = $id;
+        $chargeinfo['allcount'] = $chargeinfo['wuxian']*$chargeinfo['smonths'];
+        $chargeinfo['allcount'] = number_format($chargeinfo['allcount'],2);
         $chargeinfo['endowment'] = number_format($chargeinfo['endowment'],2);
         $chargeinfo['yiliao'] = number_format($chargeinfo['yiliao'],2);
         $chargeinfo['unemployment'] = number_format($chargeinfo['unemployment'],2);
@@ -116,7 +118,8 @@ class SocialController extends Controller {
             if($err){
                 $this->error($err, U('Social/cplan',array('cid' => $cid)), 1);exit;
             }
-            $months = substr($etime, 5)-substr($stime, 5);
+            $time = strtotime($etime)-strtotime($stime);
+            $months = round($time/2592000,0);
             if($months>0){
                 //五险缴费
                 $endowment = $sbase*0.26;
@@ -142,7 +145,8 @@ class SocialController extends Controller {
             if($err){
                 $this->error($err, U('Social/cplan',array('cid' => $cid)), 1);exit;
             }
-            $gmonths = substr($getime, 5)-substr($gstime, 5); 
+            $time = strtotime($getime)-strtotime($gstime);
+            $gmonths = round($time/2592000,0);
             if($gmonths > 0){
                 $gjj = $gbase*0.24;
                 $chargecount = $gjj;
@@ -165,8 +169,10 @@ class SocialController extends Controller {
             if($err){
                 $this->error($err, U('Social/cplan',array('cid' => $cid)), 1);exit;
             }
-            $months = substr($etime, 5)-substr($stime, 5);
-            $gmonths = substr($getime, 5)-substr($gstime, 5);
+            $gtime = strtotime($getime)-strtotime($gstime);
+            $gmonths = round($gtime/2592000,0);
+            $time = strtotime($etime)-strtotime($stime);
+            $months = round($time/2592000,0);
             if($months > 0 && $gmonths > 0){
                 //五险缴费
                 $endowment = $sbase*0.26;
@@ -178,7 +184,7 @@ class SocialController extends Controller {
                 //公积金
                 $gjj = $gbase*0.24;
                 $chargecount = $wuxian+$gjj;
-                $servicemoney =  160;
+                $servicemoney =  80;
                 $allcount = $wuxian*$months+$gjj*$gmonths+80*($months+$gmonths); 
                 $ctype = 3;
             }else{
@@ -214,8 +220,6 @@ class SocialController extends Controller {
         if($chargeinfo){
            return M('chargedetail')->where(array('id' => $chargeinfo['id']))->save($data);
         }else{
-          // $order = makeSn();
-          // $data['order_sn'] = $order;
           return M('chargedetail')->add($data);  
         }
 
@@ -224,9 +228,12 @@ class SocialController extends Controller {
     public function orderinfo(){
     	$id = I('get.cid');
     	$cinfo = M('cinfo')->alias('`c`')->field('`c`.`cname`,`ch`.*')->join('`tp_chargedetail` as ch on c.id=ch.cid')->where(array('c.id' => $id))->find();
-        $cinfo['sum'] =number_format($cinfo['wuxian']*$cinfo['smonths']+$cinfo['gjj']*$cinfo['gmonths'],2) ;
-        $cinfo['service'] = number_format(80*$cinfo['smonths']+80*$cinfo['gmonths'],2);
-        $cinfo['count'] = number_format($cinfo['sum']+$cinfo['service'],2);
+        $cinfo['sum'] =$cinfo['wuxian']*$cinfo['smonths']+$cinfo['gjj']*$cinfo['gmonths'];
+        $cinfo['service'] = 80*$cinfo['smonths']+80*$cinfo['gmonths'];
+        $cinfo['count'] = $cinfo['sum']+$cinfo['service'];
+        $cinfo['sum'] = number_format($cinfo['sum'], 2);
+        $cinfo['service'] = number_format($cinfo['service'], 2);
+        $cinfo['count'] = number_format($cinfo['count'], 2);
     	$this->assign('cinfo',$cinfo);
         $this->assign('cid', $id);
         //查询投保人信息
@@ -244,38 +251,4 @@ class SocialController extends Controller {
         $this->display();
     }
 
-    //选择参保城市
-    public function selectCity(){
-        $id = I('get.cid');
-        if(IS_POST){
-          $post = I('post.');
-          $area = M('area')->where(array('id' => $post['city']))->find();
-          if($post['jid']==2){
-            $this->assign('city',$area['name']);
-            $this->display('Socialfare/jisuan');exit;
-          }
-          $rst = M('city')->where(array('cid' =>$id))->find();
-          if($rst){
-           $data = array(
-             'id' => $rst['id'],
-             'city' => $area['name']
-            );
-          $result = M('city')->save($data);
-          if($result){
-            $this->redirect('social_buy',array('cid' => $id));exit;
-          }
-          }else{
-            $data = array('cid' => $id,'city' => $area['name']);
-            $result = M('city')->add($data);
-            if($result){
-                $this->redirect('social_buy',array('cid' => $id));exit;
-            }
-          }
-        }
-          if(I('get.jid')==2){
-            $this->assign('jid',I('get.jid'));
-          }
-          $this->assign('id', $id);
-          $this->display();
-    }
 }

@@ -43,8 +43,8 @@ if(targetObj.style.display!="none"){
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
 <div class="conttop_div1" ><a href="{:U('Social/cplan',array('cid' => $chargeinfo['cid']))}" style="color: white"><</a></div>
-<div id="shezhi_title">保费明细</div>
-<div class="conttop_div3"><a style="float:right;" href="javascript:void(0)" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
+<div id="shezhi_title"><span style="color:white;font-size: 130%;">保费明细</span></div>
+<div class="conttop_div3"><span style="float:right;" href="javascript:void(0)" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></span>
 </div>
 </div>
 <include file="Public:tanchu" />
@@ -94,9 +94,8 @@ if(targetObj.style.display!="none"){
 <li> &nbsp;青岛市就业表</li>
 <li> &nbsp;温馨提示：企业法人将无法通过前程保申请社保</li>
 </ul>
+<a href="{:U('orderinfo',array('cid' => $chargeinfo['cid']))}"><li style="text-align:center;list-style: none;"><input type="button" value="立即参保" name="" style="padding:1% 15%; background:#fdb813;"/></li></a>
 </div>
-<a href="{:U('orderinfo',array('cid' => $chargeinfo['cid']))}" style="color:black"><div id="baofeimingxi_foot"><font style=" background:#F90; padding:10px;">立即参保</font></div>
-</a>
 </div>
 </body>
 </html>

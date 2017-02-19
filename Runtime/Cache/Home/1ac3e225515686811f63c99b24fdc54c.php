@@ -7,7 +7,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable">
 <meta content="black" name="apple-mobile-web-app-status-bar-style">
 <meta content="telephone=no" name="format-detection">
-<title>社保计算</title>
+<title>保费计算</title>
 <link rel="stylesheet" type="text/css" href="<?php echo (CSS); ?>content.css">
 <link rel="stylesheet" type="text/css" href="<?php echo (CSS); ?>base.css">
 <link rel="stylesheet" href="<?php echo (CSS); ?>cityPicker.css">
@@ -23,9 +23,37 @@ ul li { padding:2% 0; border-bottom:1px solid #CCC; }
 <!--城市-->
 <script src="<?php echo (JS); ?>jquery-2.1.4.min.js"></script>
 <script src="<?php echo (JS); ?>cityPicker.js"></script>
-<!--时间-->
-<script type="text/javascript" src="<?php echo (JS); ?>hDate.js"></script>
-<link href="<?php echo (CSS); ?>hDate.css" rel="stylesheet" />
+<!--日期-->
+<script type="text/javascript" src="<?php echo (JS); ?>jquery.min.riqi.js"></script>
+<script src="<?php echo (JS); ?>jquery.monthpicker.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#monthpicker').monthpicker({
+        years: [2017,2018, 2019, 2020, 2021,2022,],
+        topOffset: 6,
+        onMonthSelect: function(m, y) {
+          console.log('Month: ' + m + ', year: ' + y);
+        }
+    });
+	$('#monthly').monthpicker({
+		years: [2017,2018, 2019, 2020, 2021,2022,],
+        topOffset: 6
+	})
+});
+$(function(){
+	$('#monthpicker').monthpicker({
+        years: [2017,2018, 2019, 2020, 2021,2022,],
+        topOffset: 6,
+        onMonthSelect: function(m, y) {
+          console.log('Month: ' + m + ', year: ' + y);
+        }
+    });
+	$('#monthly1').monthpicker({
+		years: [2017,2018, 2019, 2020, 2021,2022,],
+        topOffset: 6
+	})
+});
+</script>
 <script type="text/javascript">
 //===========================点击展开关闭效果====================================
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
@@ -74,8 +102,8 @@ if(targetObj.style.display!="none"){
 <!--<div id="header"><img src="<?php echo (IMG); ?>zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
 <div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white"><</a></div>
-<div id="shezhi_title">社保计算</div>
-<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></a>
+<div id="shezhi_title">保费计算</div>
+<div class="conttop_div3"><span style="float:right;" onclick="openShutManager(this,'box4')"><img src="<?php echo (IMG); ?>zhuce_img4.jpg" /></span>
 </div>
 </div>
 <style type="text/css">
@@ -105,9 +133,9 @@ if(targetObj.style.display!="none"){
 </div>
 <div id="banner"><img src="<?php echo (IMG); ?>baofeijisuan2.jpg" width="100%" /></div>
 <form method="post" action="<?php echo U('Socialfare/socialfare');?>">
-<div id="shebao_jisuanqi_middle" style="background:white;color: black;" >
+<div id="shebao_jisuanqi_middle" style="background:white;color: black;font-size: 85%;padding-top:20px " >
 <ul>
-<a href="<?php echo U('Social/selectCity',array('jid' =>2));?>"><li>参保城市
+<a href="<?php echo U('Service/selectCity',array('jid' =>2));?>"><li>参保城市
 <?php if($city!=null): ?><span style="float: right;"><?php echo ($city); ?></span><?php else: ?><span style="float: right;"><img src="<?php echo (IMG); ?>jiantou.jpg" />
 </span><?php endif; ?>
 </li>
@@ -116,14 +144,14 @@ if(targetObj.style.display!="none"){
   <tr>
     <td width="59%">户口性质</td>
     <td width="13%">农村</td>
-    <td width="9%"><input type="radio" name="pay" value="1" /></td>
+    <td width="9%"><input type="radio" name="pay" checked="checked" value="1" /></td>
     <td width="13%">城市</td>
     <td width="6%"><input type="radio" name="pay" value="2" /></td>
   </tr>
 </table>
 </li>
-<li>参保年月<input name="stime" style="width:60%; height:24px; font-size:1em; margin-left:2%; background-color:transparent; color:#000; border:0px;" id="Text1" onClick="calendar.show({ id: this })" type="text" readonly="readonly" placeholder="请选择参保年月" /></li>
-<li>截止年月<input name="etime" style="width:60%; height:24px; font-size:1em; margin-left:2%; background-color:transparent; color:#000; border:0px;" id="Text1" onClick="calendar.show({ id: this })" type="text" readonly="readonly" placeholder="请选择截止年月" /></li>
+<li>参保年月<input name= "stime" type="text" class="input" id="monthly" style="width:18%; height:13px; line-height:13px; padding:2px; float:right;"/></li>
+<li>截止年月<input name= "etime" type="text" class="input" id="monthly1" style="width:18%; height:13px; line-height:13px; padding:2px; float:right;"/></li>
 <li>计算社保费用<span style="float:right;margin-top: 3px" onclick="openShutManager(this,'box')"><input type="checkbox" name="stype[]" value="1" ></input></span></li>
 <li  id="box" style="display:none; background:#FFF; margin:1% 0; padding-bottom:3%;">
 <ul>

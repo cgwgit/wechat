@@ -181,7 +181,7 @@ if(targetObj.style.display!="none"){
 <div class="acc_apply">
 	<ul>
 		<li class="clearfix" style="border-top: 0px solid #d6d6d6;">
-		  <label class="tl acc_five" style="font-size: 80%">修改联系人地址:</label>
+		  <label class="tl acc_five" style="font-size: 80%">选择地址:</label>
 		  	  <select name="province" id="first" style="font-size: 80%">
 		  	       <option>参保省份</option>
 		           <option value="<?php echo ($area[0]['id']); ?>"><?php echo ($area[0]['name']); ?></option>

@@ -45,7 +45,7 @@ class MyController extends Controller{
 		$orderid = I('get.id');
 		$detailinfo = M('chargedetail')
 		             ->alias('`ch`')
-		             ->field('`ch`.`order_sn`,`ch`.`order_status`,`ch`.`ordertime`,`ch`.`chargecount`,`ch`.`servicemoney`,`ch`.`allcount`,`c`.`cname`,`c`.`city` as citys,`c`.`idnumber`,`tp_city`.`city`,`c`.`htype`')
+		             ->field('`ch`.*,`c`.`cname`,`c`.`city` as citys,`c`.`idnumber`,`tp_city`.`city`,`c`.`htype`')
 		             ->join('`tp_cinfo` as `c` on `ch`.`cid`=`c`.`id`')
 		             ->join('`tp_city` on `c`.`id`=`tp_city`.`cid`')
 		             ->where('`ch`.`id`='.$orderid)->select();
@@ -58,13 +58,12 @@ class MyController extends Controller{
           $rst = M('area')->where(array('id' => $arr['2']))->find();
           $detailinfo[$key]['county'] = $rst['name'];
       }
-      // var_dump($detailinfo);die;
         $this->assign('detailinfo', $detailinfo);
         $this->display();
 	}
 	//我的参保人(以参保)
 	public function ycperson(){
-        $yperson = M('cinfo')->where(array('status' => '1','uid' => session('uid')))->select();
+        $yperson = M('cinfo')->where(array('status' => '1','uid' => session('uid')))->order('id desc')->select();
         foreach ($yperson as $key => $value) {
           $arr = explode(',', $value['city']);
           $rst = M('area')->where(array('id' => $arr['0']))->find();
@@ -80,13 +79,7 @@ class MyController extends Controller{
 
 	//待参保的参保人
 	public function ncperson(){
-        // echo session('uid');die;
-       // $ncperson = M('cinfo')
-       //    ->field('cname,tp_cinfo.city,idnumber,htype')
-	      //   ->join('tp_chargedetail on tp_cinfo.id=tp_chargedetail.cid')
-	      //   ->where("tp_chargedetail.order_status='0' and tp_cinfo.uid=".session('uid'))
-       //    ->select();
-        $ncperson = M('cinfo')->where(array('status' => '0','uid' => session('uid')))->select();
+        $ncperson = M('cinfo')->where(array('status' => '0','uid' => session('uid')))->order('id desc')->select();
         foreach ($ncperson as $key => $value) {
           $arr = explode(',', $value['city']);
           $rst = M('area')->where(array('id' => $arr['0']))->find();
@@ -232,7 +225,7 @@ class MyController extends Controller{
           if($rst1){
             $this->redirect('Mysetinfo');exit;
           }else{
-            $this->error('非法操作', U('Mysetinfo'), 2);exit; 
+            $this->error('地址未修改', U('Mysetinfo'), 2);exit; 
           }
         }else{
            $tinfo = M('tinfo')->where(array('uid' => session('uid')))->find();

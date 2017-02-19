@@ -7,12 +7,16 @@
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}content.css">
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
 </head>
+<include file="Public:tanchuang" />
 <body>
 <div id="app">
 <!--<div id="header"><img src="{$Think.const.IMG}zhuce_img1.jpg" width="100%"  height="40" /></div>-->
 <div id="conttop">
-<div class="conttop_divmiddle" align="center"><span style="color:white;font-size: 130%;"> 前程保登录</span></div>
+<div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white;"><</a></div>
+<div class="conttop_divmiddle" style="text-align: center;"><span style="font-size: 130%;">前程保登录</span></div><div class="conttop_div3"><span style="float:right;" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></span>
 </div>
+</div>
+<include file="Public:tanchu" />
 <div id="logo"><img src="{$Think.const.IMG}zhuce_logo.jpg"  /></div>
 <form action="{:U('login')}" method="post" name="form1">
 <div id="centent">

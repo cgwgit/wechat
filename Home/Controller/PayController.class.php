@@ -53,11 +53,12 @@ class PayController extends Controller {
         	//取出查看支付的这条订单
 			$check = M('chargedetail')->where(array('order_sn' => I('out_trade_no')))->find();
 			//如果没有支付，修改支付状态，支付成功
-			if(!$check['paystatus']){
-				$data['payid'] = I('trade_no');
-				$data['order_status'] = 1;
+			if(!$check['order_status']){
+				// $data['payid'] = I('trade_no');
+				$data['order_status'] = '1';
 				$data['paytime'] = time();
 				$res = M('chargedetail')->where(array('order_sn' => I('out_trade_no')))->save($data);
+				M('cinfo')->where(array('id' => $check['cid']))->save(array('status' => '1'));
 				if(res){
 					echo 'success';exit();
 				}

@@ -42,8 +42,8 @@ if(targetObj.style.display!="none"){
 <div id="conttop">
 <div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white"><</a></div>
 <div class="conttop_div1"></div>
-<div id="shezhi_title">社保险种收费明细</div>
-<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
+<div id="shezhi_title"><span style="color:white;font-size: 130%;">社保险种收费明细</span></div>
+<div class="conttop_div3"><span style="float:right;"  onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></span>
 </div>
 </div>
 <include file="Public:tanchu" />
@@ -81,7 +81,7 @@ if(targetObj.style.display!="none"){
   </tr>
   <tr>
     <td height="45" >当前时段费用小计</td>
-    <td align="right">{$chargeinfo['wuxian']|number_format=###,2}*{$chargeinfo['smonths']}个月={$chargeinfo['wuxian']*$chargeinfo['smonths']|number_format=###,2}</td>
+    <td align="right">{$chargeinfo['wuxian']}*{$chargeinfo['smonths']}个月={$chargeinfo['allcount']}</td>
   </tr>
 </table>
 </div>

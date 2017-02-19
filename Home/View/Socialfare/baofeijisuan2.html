@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/content.css">
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" href="css/cityPicker.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.monthpicker.css">
+<style>
+ul { list-style:none; }
+ul li { padding:2% 0; border-bottom:1px solid #CCC; position:relative; }
+	
+</style>
+<script type="text/javascript" src="js/hDate.js"></script>
+<link href="css/hDate.css" rel="stylesheet" />
+
+<!--城市-->
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/cityPicker.js"></script>
+<!--日期-->
+<script type="text/javascript" src="js/jquery.min.riqi.js"></script>
+<script src="js/jquery.monthpicker.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#monthpicker').monthpicker({
+        years: [2017,2018, 2019, 2020, 2021,2022,],
+        topOffset: 6,
+        onMonthSelect: function(m, y) {
+          console.log('Month: ' + m + ', year: ' + y);
+        }
+    });
+	$('#monthly').monthpicker({
+		years: [2017,2018, 2019, 2020, 2021,2022,],
+        topOffset: 6
+	})
+});
+$(function(){
+	$('#monthpicker').monthpicker({
+        years: [2017,2018, 2019, 2020, 2021,2022,],
+        topOffset: 6,
+        onMonthSelect: function(m, y) {
+          console.log('Month: ' + m + ', year: ' + y);
+        }
+    });
+	$('#monthly1').monthpicker({
+		years: [2017,2018, 2019, 2020, 2021,2022,],
+        topOffset: 6
+	})
+});
+</script>
+
+<script type="text/javascript">
+//===========================点击展开关闭效果====================================
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = shutTip; 
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = openTip; 
+   }
+}
+}
+</script>
+</head>
+
+<body>
+<div id="app" style="background:#fff;">
+<!--<div id="header"><img src="image/zhuce_img1.jpg" width="100%"  height="40" /></div>-->
+<div id="conttop">
+<div class="conttop_div1" style="margin-top:0px;"><</div>
+<div id="shebao_jisuanqi">保费计算</div>
+<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="image/zhuce_img4.jpg" /></a>
+</div>
+</div>
+<div id="box4" style="display:none; width:120px; background:#fdb813; margin:1% 2%; right:0px; position:absolute; z-index:9999; padding-bottom:1%;">
+<ul>
+<li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="image/home.png" />首页</li>
+<li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="image/news.png" />消息</li>
+<li style="border-bottom:1px solid #CCC;"><img style="float:left; padding:0 10px 0 10px;" src="image/fuwubiaozhi.png" />服务大厅</li>
+</ul>
+</div>
+<div id="banner"><img src="image/baofeijisuan2.jpg" width="100%" /></div>
+<form>
+<div id="shebao_jisuanqi_middle">
+<ul>
+<li>参保城市<span style="float: right;"><img src="image/jiantou.jpg" /></span></li>
+<li><table width="100%" border="0">
+  <tr>
+    <td width="59%">户口性质</td>
+    <td width="13%">农村</td>
+    <td width="9%"><input type="radio" name="pay"/></td>
+    <td width="13%">城市</td>
+    <td width="6%"><input type="radio" name="pay"/></td>
+  </tr>
+</table>
+</li>
+<li>参保年月<input type="text" class="input" id="monthly" style="width:18%; height:13px; line-height:13px; padding:2px; float:right;"/></li>
+<li style="position:relative;">截止年月<input type="text" class="input" id="monthly1" style="width:18%; height:13px; line-height:13px; padding:2px; float:right;"/></li>
+<li>计算社保费用<span style="float:right;margin-top: 3px" onclick="openShutManager(this,'box')"><input type="checkbox" name="stype[]"></input></span></li>
+<li  id="box" style="display:none; background:#FFF; margin:1% 0; padding-bottom:3%;">
+<ul>
+<li>参保类型<span style="float:right;">农村</span></li>
+<li>参保基数<span style="float:right;"><input style="width:25%; float:right;" type="text" name="" value="3036"/></span></li>
+</ul>
+</li>
+<li>计算公积金费用<span style="float:right;margin-top: 3px" onclick="openShutManager(this,'box1')"><input type="checkbox" name="stype[]"></input></span></li>
+<li id="box1" style="display:none; background:#FFF; margin:1% 0; padding-bottom:3%;">
+<ul>
+<li>参保基数<span style="float:right;"><input style="width:25%; float:right;" type="text" name="" value="3036"/></span></li>
+</ul>
+</li>
+<li style="border:0px;"><input style="padding:1.5% 20%; background:#fdb813; text-align:center; margin:8% 20%;" type="button" name="" value="计算保费"/></li>
+</ul>
+</div>
+
+</form>
+</div>
+</body>
+</html>

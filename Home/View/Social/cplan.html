@@ -87,8 +87,8 @@ $(function(){
 <form method="post" action="{:U('Social/detail')}">
 <div id="conttop">
 <div class="conttop_div1" ><a href="{:U('Social/social_buy',array('cid' => $cinfo['id']))}" style="color: white"><</a></div>
-<div id="shezhi_title">设置{$cinfo['cname']}的参保方案</div>
-<div class="conttop_div3"><a style="float:right;" href="###" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></a>
+<div id="shezhi_title"><span style="color:white;font-size: 130%;">设置{$cinfo['cname']}的参保方案</span></div>
+<div class="conttop_div3"><span style="float:right;" onclick="openShutManager(this,'box4')"><img src="{$Think.const.IMG}zhuce_img4.jpg" /></span>
 </div>
 </div>
 <include file="Public:tanchu" />
@@ -122,7 +122,7 @@ $(function(){
 </div> 
 <div id="shezhi_bottom">
 <input type="hidden" name="cid" value="{$cinfo['id']}"></input>
-<input type="submit" value="计算保费" style="background:#fdb813; border-radius:10px;"></input>
+<li style="text-align:center;list-style: none;"><input type="submit" value="计算保费" style="padding:1% 15%; background:#fdb813;"/></li>
 </div>
 </form>
 </div>

@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{$Think.const.CSS}base.css">
 </head>
 <include file="Public:tanchuang" />
-<body style="position:relative;font-size: 100%;">
+<body style="position:relative;font-size: 90%;">
 <div id="app" style="background:white;">
 <div id="conttop">
 <div class="conttop_div1" ><a href="javascript:history.go(-1);"style="color: white"><</a></div>
@@ -22,14 +22,16 @@
 <a href="{:U('My/ycperson')}"><div id="content_daicanbao_navleft">已参保</div></a>
 <div id="content_daicanbao_navright">待参保</div>
 </div>
-
-<div id="content_cont">
+<div id="content_cont" style="font-size: 90%">
 <ul>
 <foreach name="ncperson" item="v">
-<li>
-   <a href="{:U('Social/social_buy',array('cid' => $v['id']))}" style="color: #999">&nbsp;&nbsp;&nbsp;<span style="color: #0C0;">{$v.cname}</span><br/>
+<li style="padding: 2% 0">
+   <a href="{:U('Social/social_buy',array('cid' => $v['id']))}" style="color: #999">&nbsp;&nbsp;&nbsp;<span style="color: #0C0;"><img src="{$Think.const.IMG}souso_tubao.png" width="25" height="24" style="float:left; padding-top:5px;" />{$v.cname}</span><br/>
 &nbsp;&nbsp;&nbsp;户口信息：{$v.province},{$v.citys},{$v.county},<if condition="$v.htype eq 0 "> 城市<else />农村</if></a><span style="float: right; color:#3C0;">
-<a href="__MODULE__/Cinfo/editperson/cid/{$v.id}" style="color:blue">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="__MODULE__/Cinfo/delperson/cid/{$v.id}" style="color:blue">删除</a>&nbsp;&nbsp;&nbsp; </span></li>
+<a href="__MODULE__/Cinfo/editperson/cid/{$v.id}" style="color:blue">
+<img style="float:left; margin-right:7px;padding-right:5px " src="{$Think.const.IMG}bianji.jpg" /></a>
+<a href="__MODULE__/Cinfo/delperson/cid/{$v.id}" style="color:blue">
+<img style="float:left;" src="{$Think.const.IMG}sahnchu.jpg" /></a>&nbsp;&nbsp;&nbsp; </span></li>
 </foreach>
 </ul>
 </div>
@@ -43,6 +45,5 @@
 </div>
 </div>
 </div>
-
 </body>
 </html>

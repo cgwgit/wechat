@@ -135,7 +135,7 @@ class CinfoController extends Controller {
                 $up_pics = true;
                 break;
             }else{
-            	$this->redirect('Social/social_buy');exit;
+            	$this->redirect('Cinfo/selectperson',array('cid' => $cid));exit;
             }
         }
         if($up_pics === true){
@@ -167,7 +167,7 @@ class CinfoController extends Controller {
                 $arr['small_pics'] = $small_pics;
                $rst = D('idpicture')->where(array('cid'=>$cid))->save($arr);
             }
-            $this->redirect('Social/social_buy',array('cid' => $cid));exit;
+            $this->redirect('Cinfo/selectperson',array('cid' => $cid));exit;
         }
     }
 
