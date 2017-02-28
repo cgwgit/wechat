@@ -10,15 +10,15 @@ return array(
      //设置跟踪日志(以便查看function.php文件是否被引入)
     'SHOW_PAGE_TRACE' => true,
     //阿里大鱼短信配置信息
-    'AlidayuAppKey' => '23635897',
-    'AlidayuAppSecret' => '245666233bdbbaa15358946f4904559e',
+    'AlidayuAppKey' => '',
+    'AlidayuAppSecret' => ',
     //支付宝配置信息
      "alipay_service" => "create_direct_pay_by_user",//快速付款(即时到账接口)
      "alipay_account" => "zxapp@zxyl1688.com",//阿里巴巴的网上支付帐户
-     "alipay_key" => "8lq2munnhk60fmirb9hpfk0jnvr1n56y",
-     "alipay_partner" => "2088521057130925",//支付宝的合作伙伴
+     "alipay_key" ",
+     "alipay_partner" => "20885210571",//支付宝的合作伙伴
      //微信配置信息wx7cf3087121745de2 1399605202 j7YNOB49iF47y5Akyekvw5kH6r4F8KC6
-     "appid" => 'wx41871b70672ede37',
-     "mchid" => '1432685802',
-     "key" => '483a7b92d286d87b8b622b0285b38d1f',
+     "appid" => 'wx41871b70677',
+     "mchid" => '14802',
+     "key" => '483a7b92d286d87b8b6238d1f',
 );
